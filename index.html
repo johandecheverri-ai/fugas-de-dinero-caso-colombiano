@@ -1,0 +1,2701 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CONECTA | Inteligencia Comercial & Auditoría de Fugas</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            navy: {
+              950: '#07111A',
+              900: '#0A1926',
+              800: '#0F2537',
+              700: '#16354D',
+              600: '#1E4666',
+            },
+            emerald: {
+              700: '#047857',
+              600: '#059669',
+              500: '#10B981',
+              400: '#34D399',
+              50: '#ECFDF5',
+            },
+            crimson: {
+              700: '#BE123C',
+              600: '#E11D48',
+              500: '#F43F5E',
+              50: '#FFF1F2',
+            },
+            amber: {
+              700: '#B45309',
+              600: '#D97706',
+              500: '#F59E0B',
+              50: '#FFFBEB',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      background-color: #F8FAFC;
+      color: #0F172A;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F1F5F9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94A3B8;
+    }
+    .tab-btn {
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .tab-btn.active {
+      background-color: #0F2537;
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(15, 37, 55, 0.22);
+    }
+    .tab-btn.active-roi {
+      background-color: #059669;
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(5, 150, 105, 0.35);
+    }
+    .card-hover {
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+    }
+    input[type=range] {
+      accent-color: #059669;
+    }
+    .pulse-dot {
+      animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    @keyframes pulse-ring {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.55; transform: scale(1.18); }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- =====================================================================
+       TOP EXECUTIVE BRAND HEADER & GLOBAL FILTERS
+       ===================================================================== -->
+  <header class="bg-navy-800 text-white border-b border-slate-700/80 sticky top-0 z-40 shadow-lg">
+    <div class="max-w-[1600px] mx-auto px-4 sm:px-6 py-3">
+      <div class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-3">
+        
+        <!-- Logo & Executive Title -->
+        <div class="flex items-start sm:items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center shadow-md shrink-0 mt-0.5 sm:mt-0 border border-emerald-400/30">
+            <i data-lucide="shield-alert" class="w-5 h-5 text-white"></i>
+          </div>
+          <div>
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="font-extrabold tracking-tight text-base sm:text-lg text-white">CONECTA</span>
+              <span class="text-slate-400 hidden sm:inline">|</span>
+              <h1 class="text-sm sm:text-base font-semibold text-slate-100">Inteligencia Comercial & Auditoría de Fugas</h1>
+              <span class="bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-[11px] font-mono uppercase px-2 py-0.5 rounded-full">Diagnóstico B2B Colombia (COP)</span>
+            </div>
+            <p class="text-xs text-slate-300 mt-0.5">
+              Auditoría Forense Transaccional: <span class="text-emerald-400 font-medium">Compras • Inventario • Facturación • Logística • Cartera</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Global Filters + Action CTA Buttons -->
+        <div class="flex flex-wrap items-center gap-2.5">
+          
+          <!-- Filtro 1: Sucursal -->
+          <div class="flex items-center gap-2 bg-navy-900/90 border border-slate-700 rounded-xl px-3 py-1.5">
+            <i data-lucide="building-2" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+            <div>
+              <label for="branchSelect" class="block text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Sucursal (dim_sucursal)</label>
+              <select id="branchSelect" onchange="updateDashboard()" class="bg-transparent text-xs font-semibold text-white focus:outline-none cursor-pointer pr-2">
+                <option value="ALL" class="bg-navy-800 text-white">Todas las Sucursales (100%)</option>
+                <option value="CALI" class="bg-navy-800 text-white">Cali Principal (38%)</option>
+                <option value="BOG" class="bg-navy-800 text-white">Bogotá Norte (32%)</option>
+                <option value="MED" class="bg-navy-800 text-white">Medellín Sur (18%)</option>
+                <option value="BAQ" class="bg-navy-800 text-white">Barranquilla Costa (12%)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Filtro 2: Canal Comercial -->
+          <div class="flex items-center gap-2 bg-navy-900/90 border border-slate-700 rounded-xl px-3 py-1.5">
+            <i data-lucide="network" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+            <div>
+              <label for="channelSelect" class="block text-[10px] uppercase tracking-wider text-slate-400 font-semibold">Canal Comercial (dim_canal)</label>
+              <select id="channelSelect" onchange="updateDashboard()" class="bg-transparent text-xs font-semibold text-white focus:outline-none cursor-pointer pr-2">
+                <option value="ALL" class="bg-navy-800 text-white">Todos los Canales (100%)</option>
+                <option value="MAY" class="bg-navy-800 text-white">Mayorista (42%)</option>
+                <option value="TAT" class="bg-navy-800 text-white">Distribuidores TAT (26%)</option>
+                <option value="INST" class="bg-navy-800 text-white">Institucional B2B (22%)</option>
+                <option value="ECOM" class="bg-navy-800 text-white">E-Commerce (10%)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Botón Destacado Esmeralda: Simulador ROI Consultoría -->
+          <button type="button" onclick="switchTab(6)" class="bg-emerald-600 hover:bg-emerald-500 text-white border border-emerald-400/50 rounded-xl px-3.5 py-2 text-xs font-bold flex items-center gap-2 shadow-md transition">
+            <span class="w-2 h-2 rounded-full bg-white pulse-dot"></span>
+            <i data-lucide="calculator" class="w-4 h-4"></i>
+            <div class="text-left">
+              <div class="leading-none">Simulador ROI Consultoría</div>
+              <div class="text-[10px] font-mono text-emerald-100 mt-0.5" id="headerPaybackBadge">Payback: 23 días</div>
+            </div>
+          </button>
+
+          <!-- Botón Técnico: Modelo Estrella & DAX/SQL -->
+          <button type="button" onclick="openSqlModal()" class="bg-slate-700/80 hover:bg-slate-600 text-slate-100 border border-slate-500/50 rounded-xl px-3 py-2 text-xs font-semibold flex items-center gap-1.5 transition">
+            <i data-lucide="database" class="w-4 h-4 text-emerald-400"></i>
+            <span>Modelo Estrella & DAX/SQL</span>
+          </button>
+
+          <!-- Botón Reset -->
+          <button type="button" onclick="resetFilters()" title="Restaurar filtros globales" class="bg-navy-900 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 rounded-xl p-2 transition">
+            <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+          </button>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- NAVIGATION TABS (7 INTERACTIVE VIEWS: 0 TO 6) -->
+    <div class="bg-white border-b border-slate-200 text-slate-700">
+      <div class="max-w-[1600px] mx-auto px-4 sm:px-6 py-2 overflow-x-auto">
+        <nav class="flex items-center gap-1.5 min-w-max" aria-label="Navegación de páginas de auditoría">
+          <button type="button" onclick="switchTab(0)" id="tab-btn-0" class="tab-btn active px-3 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5">
+            <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+            <span>0. Resumen Ejecutivo</span>
+            <span class="bg-crimson-600 text-white text-[10px] font-mono px-1.5 py-0.5 rounded-full">6</span>
+          </button>
+          <button type="button" onclick="switchTab(1)" id="tab-btn-1" class="tab-btn px-3 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5 hover:bg-slate-100">
+            <i data-lucide="trending-down" class="w-4 h-4 text-crimson-600"></i>
+            <span>1. Erosión del Margen</span>
+          </button>
+          <button type="button" onclick="switchTab(2)" id="tab-btn-2" class="tab-btn px-3 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5 hover:bg-slate-100">
+            <i data-lucide="file-warning" class="w-4 h-4 text-amber-600"></i>
+            <span>2. Devoluciones y NC</span>
+          </button>
+          <button type="button" onclick="switchTab(3)" id="tab-btn-3" class="tab-btn px-3 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5 hover:bg-slate-100">
+            <i data-lucide="package-search" class="w-4 h-4 text-amber-600"></i>
+            <span>3. Inventario y Kardex</span>
+          </button>
+          <button type="button" onclick="switchTab(4)" id="tab-btn-4" class="tab-btn px-3 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5 hover:bg-slate-100">
+            <i data-lucide="shopping-cart" class="w-4 h-4 text-blue-600"></i>
+            <span>4. Compras y CXP</span>
+          </button>
+          <button type="button" onclick="switchTab(5)" id="tab-btn-5" class="tab-btn px-3 py-2 rounded-lg text-xs font-semibold flex items-center gap-1.5 hover:bg-slate-100">
+            <i data-lucide="truck" class="w-4 h-4 text-crimson-600"></i>
+            <span>5. Cartera y Costos de Servir</span>
+          </button>
+          <button type="button" onclick="switchTab(6)" id="tab-btn-6" class="tab-btn px-3.5 py-2 rounded-lg text-xs font-bold flex items-center gap-1.5 bg-emerald-50 text-emerald-700 border border-emerald-300 hover:bg-emerald-100 ml-1">
+            <i data-lucide="trending-up" class="w-4 h-4 text-emerald-600"></i>
+            <span>6. Caso de Negocio & ROI Consultoría</span>
+          </button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN WORKSPACE CONTAINER -->
+  <main class="flex-1 max-w-[1600px] w-full mx-auto px-4 sm:px-6 py-6">
+
+    <!-- =====================================================================
+         PAGE 0: RESUMEN EJECUTIVO (CENTRO DE ALERTAS E IMPACTO GLOBAL)
+         ===================================================================== -->
+    <section id="page-0" class="space-y-6">
+      
+      <!-- Executive Context Banner -->
+      <div class="bg-gradient-to-r from-navy-800 via-navy-700 to-navy-800 rounded-2xl p-5 text-white shadow-md border border-slate-700 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+        <div class="space-y-1">
+          <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-emerald-400">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+            <span>Diagnóstico Forense de Datos • Contexto Activo: <span id="p0-context-label" class="text-white underline">Todas las Sucursales / Todos los Canales</span></span>
+          </div>
+          <h2 class="text-lg sm:text-xl font-bold">La contabilidad tradicional reporta un margen bruto aparente del 24.2%, pero la comercializadora pierde el 7.7% de su facturación en 5 fugas operativas silenciosas.</h2>
+          <p class="text-xs sm:text-sm text-slate-300 max-w-4xl">
+            Al auditar las tablas transaccionales a nivel de línea de factura y movimiento de kardex (<code class="text-amber-300 font-mono">fact_ventas</code> + <code class="text-amber-300 font-mono">fact_notas_credito</code> + <code class="text-amber-300 font-mono">fact_kardex</code> + <code class="text-amber-300 font-mono">fact_compras</code> + <code class="text-amber-300 font-mono">fact_recaudos</code>), identificamos una pérdida mensual de <strong id="p0-banner-leak-inline" class="text-white">$142.5M COP</strong>.
+          </p>
+        </div>
+        <div class="bg-white/10 backdrop-blur-sm border border-white/15 rounded-xl p-3.5 shrink-0 flex items-center gap-3">
+          <div class="p-2.5 rounded-lg bg-emerald-500/20 text-emerald-300">
+            <i data-lucide="rocket" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <div class="text-[11px] text-slate-300 uppercase">Retorno de la Consultoría</div>
+            <div class="text-lg font-mono font-extrabold text-emerald-400" id="p0-banner-payback">Se paga sola en 23 días</div>
+            <button type="button" onclick="switchTab(6)" class="text-[11px] text-emerald-300 hover:text-white underline font-semibold flex items-center gap-1 mt-0.5">
+              <span>Simular Caso de Negocio en vivo</span>
+              <i data-lucide="arrow-right" class="w-3 h-3"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 Top Global Hero KPIs -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
+        
+        <!-- KPI 1: Fuga Mensual Total Detectada -->
+        <div class="bg-white rounded-2xl p-5 border-l-4 border-l-crimson-600 border border-slate-200 shadow-sm card-hover">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold uppercase tracking-wider text-crimson-600">1. Fuga Mensual Total Detectada</span>
+            <span class="p-2 rounded-lg bg-crimson-50 text-crimson-600"><i data-lucide="flame" class="w-4 h-4"></i></span>
+          </div>
+          <div class="mt-3 flex items-baseline gap-2">
+            <span class="text-2xl sm:text-3xl font-mono font-extrabold text-crimson-600" id="kpi-monthly-leak">$142.5M</span>
+            <span class="text-xs font-mono font-semibold bg-crimson-50 text-crimson-600 px-2 py-0.5 rounded-full">7.7% de la venta</span>
+          </div>
+          <div class="mt-2 flex items-center justify-between text-xs text-slate-500 border-t border-slate-100 pt-2">
+            <span>Facturación Base Auditada:</span>
+            <span class="font-mono font-semibold text-slate-800" id="kpi-gross-sales">$1,850.0M / mes</span>
+          </div>
+        </div>
+
+        <!-- KPI 2: Impacto Anualizado -->
+        <div class="bg-white rounded-2xl p-5 border-l-4 border-l-amber-500 border border-slate-200 shadow-sm card-hover">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold uppercase tracking-wider text-amber-600">2. Impacto de Fuga Anualizado</span>
+            <span class="p-2 rounded-lg bg-amber-50 text-amber-600"><i data-lucide="calendar-clock" class="w-4 h-4"></i></span>
+          </div>
+          <div class="mt-3 flex items-baseline gap-2">
+            <span class="text-2xl sm:text-3xl font-mono font-extrabold text-slate-900" id="kpi-annual-leak">$1,710.0M</span>
+            <span class="text-xs font-mono text-slate-500">COP / año</span>
+          </div>
+          <div class="mt-2 flex items-center justify-between text-xs text-slate-500 border-t border-slate-100 pt-2">
+            <span>Capital atrapado en Kardex:</span>
+            <span class="font-mono font-semibold text-amber-600" id="kpi-trapped-capital">$420.0M (GMROI &lt; 1)</span>
+          </div>
+        </div>
+
+        <!-- KPI 3: Equivalencia en Ventas Nuevas -->
+        <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm card-hover">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold uppercase tracking-wider text-slate-600">3. Equivalencia en Ventas Nuevas</span>
+            <span class="p-2 rounded-lg bg-slate-100 text-navy-800"><i data-lucide="scale" class="w-4 h-4"></i></span>
+          </div>
+          <div class="mt-3 flex items-baseline gap-2">
+            <span class="text-2xl sm:text-3xl font-mono font-extrabold text-navy-800" id="kpi-equiv-sales">$427.5M</span>
+            <span class="text-xs font-mono text-slate-500">COP / mes</span>
+          </div>
+          <p class="mt-2 text-[11px] text-slate-600 leading-snug border-t border-slate-100 pt-2" id="kpi-equiv-text">
+            Al <strong>6.0%</strong> de margen neto, recuperar solo el <strong>18%</strong> equivale a vender <strong>$5,130.0M</strong> extra al año.
+          </p>
+        </div>
+
+        <!-- KPI 4: Meta de Recuperación Conservadora + CTA Caso de Negocio -->
+        <div class="bg-emerald-50/80 rounded-2xl p-5 border-l-4 border-l-emerald-600 border border-emerald-200 shadow-sm card-hover flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold uppercase tracking-wider text-emerald-700">4. Recuperación Conservadora (<span id="kpi-rec-pct">18%</span>)</span>
+              <span class="p-1.5 rounded-lg bg-emerald-500/20 text-emerald-700"><i data-lucide="trending-up" class="w-4 h-4"></i></span>
+            </div>
+            <div class="mt-2 flex items-baseline gap-2">
+              <span class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-700" id="kpi-rec-val">+$25.7M</span>
+              <span class="text-xs font-mono font-semibold text-emerald-700">COP / mes</span>
+            </div>
+          </div>
+          <button type="button" onclick="switchTab(6)" class="mt-3 w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs py-2 px-3 rounded-xl transition flex items-center justify-center gap-1.5 shadow-sm">
+            <span>Abrir Caso de Negocio & ROI</span>
+            <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Visual Breakdown of the 5 Leakage Pillars + Interactive Navigation Cards -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Left 7 cols: Horizontal Impact Breakdown Chart -->
+        <div class="lg:col-span-7 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
+              <div>
+                <h3 class="text-base font-bold text-slate-900">Comparativo de los 5 Frentes de Fuga Operativa (Participación Mensual)</h3>
+                <p class="text-xs text-slate-500">Haz clic en cualquier frente para auditar las transacciones y causas raíz</p>
+              </div>
+              <span class="text-xs font-mono bg-crimson-50 text-crimson-600 border border-crimson-200 px-2.5 py-1 rounded-md font-bold" id="p0-total-badge">Fuga Total: $142.5M / mes</span>
+            </div>
+
+            <!-- Interactive Bars Container -->
+            <div id="p0-pillars-bars" class="space-y-4 mt-4">
+              <!-- Populated dynamically by JS -->
+            </div>
+          </div>
+
+          <!-- Bottom Insight Box -->
+          <div class="mt-6 bg-slate-50 border border-slate-200 rounded-xl p-4 flex items-start gap-3">
+            <i data-lucide="lightbulb" class="w-5 h-5 text-amber-500 shrink-0 mt-0.5"></i>
+            <div class="text-xs text-slate-600 leading-relaxed">
+              <strong class="text-slate-900">Concentración de Pareto:</strong> El <strong class="text-crimson-600">55.1%</strong> del drenaje de caja proviene de la <strong>Erosión del Margen Comercial</strong> (descuentos fuera de política y ventas bajo costo de reposición) y de <strong>Cartera y Costos Ocultos de Servir</strong> (clientes de contado pagando a 42 días y micro-pedidos).
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 5 cols: 5 Interactive Deep-Dive Cards -->
+        <div class="lg:col-span-5 space-y-3" id="p0-pillar-cards">
+          <!-- Populated dynamically by JS -->
+        </div>
+
+      </div>
+
+      <!-- Semáforo de Hallazgos Críticos (Top 6 Alertas Transaccionales) -->
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="p-5 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 bg-slate-50/60">
+          <div class="flex items-center gap-2.5">
+            <span class="w-3 h-3 rounded-full bg-crimson-600 pulse-dot"></span>
+            <div>
+              <h3 class="text-base font-bold text-slate-900">Semáforo de Alertas Críticas Detectadas en el ERP</h3>
+              <p class="text-xs text-slate-500">Hallazgos transaccionales listos para intervenir con alertas automáticas y reglas de negocio</p>
+            </div>
+          </div>
+          <button type="button" onclick="switchTab(6)" class="text-xs font-mono font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-lg hover:bg-emerald-100 transition">
+            Simular ahorro por frente en Pestaña 6 →
+          </button>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="border-b border-slate-200 text-[11px] font-semibold uppercase tracking-wider text-slate-500 bg-slate-50">
+                <th class="py-3 px-4">Severidad</th>
+                <th class="py-3 px-4">Frente / Anomalía Detectada</th>
+                <th class="py-3 px-4">Tablas / Dimensiones Cruzadas</th>
+                <th class="py-3 px-4 text-right">Fuga Mensual</th>
+                <th class="py-3 px-4 text-right">Recuperable (<span class="goal-pct-inline">18%</span>)</th>
+                <th class="py-3 px-4 text-center">Acción</th>
+              </tr>
+            </thead>
+            <tbody id="p0-alerts-table" class="divide-y divide-slate-200 text-xs">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- =====================================================================
+         PAGE 1: 1. EROSIÓN DEL MARGEN COMERCIAL (LA CASCADA DEL PRECIO)
+         ===================================================================== -->
+    <section id="page-1" class="space-y-6 hidden">
+      
+      <!-- Page Header -->
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-crimson-50 text-crimson-600 border border-crimson-200">Frente 1 de 5</span>
+            <span class="text-xs font-mono text-slate-500">Tablas: fact_ventas • dim_lista_precios • dim_vendedor • fact_ordenes_compra</span>
+          </div>
+          <h2 class="text-xl font-bold text-slate-900 mt-1">1. Erosión del Margen Comercial (La Cascada del Precio y Costo de Reposición)</h2>
+          <p class="text-xs text-slate-600 mt-0.5">Auditoría desde el Precio de Lista hasta el Margen Neto de Bolsillo (Pocket Margin), aislando descuentos sin autorización y ventas por debajo del costo real de reposición.</p>
+        </div>
+        <div class="flex items-center gap-3 shrink-0">
+          <div class="bg-crimson-50 border border-crimson-200 rounded-xl px-4 py-2.5 text-right">
+            <div class="text-[10px] font-semibold uppercase text-crimson-600">Fuga en Margen Comercial</div>
+            <div class="text-xl font-mono font-extrabold text-crimson-600" id="p1-total-leak">$46.0M COP / mes</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Waterfall Chart + Salesperson Scatter Matrix -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Waterfall Chart (7 cols) -->
+        <div class="lg:col-span-7 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h3 class="text-base font-bold text-slate-900">La Cascada del Precio (De Precio Lista a Pocket Margin)</h3>
+              <p class="text-xs text-slate-500">Descomposición mensual en millones de pesos ($M COP) y % sobre facturación bruta</p>
+            </div>
+            <span class="text-xs font-mono bg-emerald-50 text-emerald-700 border border-emerald-200 px-2.5 py-1 rounded-md font-semibold" id="p1-pocket-badge">Pocket Margin: 14.8%</span>
+          </div>
+
+          <div id="p1-waterfall-container" class="space-y-3 pt-2">
+            <!-- Populated by JS -->
+          </div>
+
+          <div class="mt-5 p-3.5 bg-amber-50/80 border border-amber-200 rounded-xl text-xs text-amber-900 flex items-start gap-2.5">
+            <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-600 shrink-0 mt-0.5"></i>
+            <div>
+              <strong>Trampa del Costo Promedio Ponderado:</strong> El ERP liquida comisiones sobre el costo promedio histórico del inventario. Sin embargo, al cruzar las facturas contra la <strong>Última Orden de Compra (Costo de Reposición)</strong>, se destapa una descapitalización oculta de <strong id="p1-replacement-inline">$12.6M COP/mes</strong>.
+            </div>
+          </div>
+        </div>
+
+        <!-- Auditoría de Vendedores Scatter & Table (5 cols) -->
+        <div class="lg:col-span-5 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-base font-bold text-slate-900">Dispersión de Vendedores (<code class="text-xs font-mono text-crimson-600">dim_vendedor</code>)</h3>
+              <span class="text-[11px] font-mono bg-crimson-50 text-crimson-600 px-2 py-0.5 rounded border border-crimson-200">Límite Política: 8.0% Dto.</span>
+            </div>
+            <p class="text-xs text-slate-500 mb-3">Volumen de Venta ($M) vs. % Descuento Promedio Otorgado. Identifica vendedores que cumplen cuota destruyendo margen.</p>
+
+            <!-- SVG Scatter Plot -->
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 mb-4">
+              <svg id="p1-scatter-svg" viewBox="0 0 420 210" class="w-full h-48 overflow-visible"></svg>
+            </div>
+
+            <!-- Compact Salesperson Table -->
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr class="border-b border-slate-200 text-[10px] uppercase text-slate-500 bg-slate-50">
+                    <th class="py-2 px-2">Vendedor</th>
+                    <th class="py-2 px-2 text-right">Venta ($M)</th>
+                    <th class="py-2 px-2 text-right">% Dto Prom.</th>
+                    <th class="py-2 px-2 text-right">Fuga Exceso</th>
+                    <th class="py-2 px-2 text-right">Margen Real</th>
+                  </tr>
+                </thead>
+                <tbody id="p1-salespeople-table" class="divide-y divide-slate-100">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Detailed Table: Alerta de Descapitalización: Ventas bajo Costo de Reposición -->
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="p-5 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 bg-slate-50/60">
+          <div>
+            <h3 class="text-base font-bold text-slate-900">Auditoría de SKUs Vendidos por Debajo del Costo de Reposición Actual</h3>
+            <p class="text-xs text-slate-500">Comparativa entre Costo Promedio Histórico del ERP vs. Última Orden de Compra Registrada (<code class="font-mono">fact_ordenes_compra</code>)</p>
+          </div>
+          <span class="text-xs font-mono bg-crimson-50 text-crimson-600 border border-crimson-200 px-3 py-1 rounded-lg font-semibold">Comisiones pagadas sobre utilidad ficticia</span>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="border-b border-slate-200 text-[11px] uppercase text-slate-500 bg-slate-50">
+                <th class="py-3 px-4">SKU / Referencia</th>
+                <th class="py-3 px-4">Categoría</th>
+                <th class="py-3 px-4 text-right">Precio Venta Neto</th>
+                <th class="py-3 px-4 text-right">Costo Promedio ERP</th>
+                <th class="py-3 px-4 text-right">Margen Contable (Falso)</th>
+                <th class="py-3 px-4 text-right">Costo Última OC (Reposición)</th>
+                <th class="py-3 px-4 text-right">Margen Reposición Real</th>
+                <th class="py-3 px-4 text-right">Pérdida Mensual Real</th>
+              </tr>
+            </thead>
+            <tbody id="p1-sku-replacement-table" class="divide-y divide-slate-200">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- =====================================================================
+         PAGE 2: 2. ANOMALÍAS EN DEVOLUCIONES Y NOTAS CRÉDITO
+         ===================================================================== -->
+    <section id="page-2" class="space-y-6 hidden">
+      
+      <!-- Page Header -->
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-amber-50 text-amber-700 border border-amber-200">Frente 2 de 5</span>
+            <span class="text-xs font-mono text-slate-500">Tablas: fact_notas_credito • fact_ventas • fact_kardex • dim_motivo_devolucion</span>
+          </div>
+          <h2 class="text-xl font-bold text-slate-900 mt-1">2. Anomalías en Devoluciones y Notas Crédito (Channel Stuffing y Cruce con Bodega)</h2>
+          <p class="text-xs text-slate-600 mt-0.5">Identificación de facturación artificial en los días 27–30 para inflar comisiones y auditoría forense de Notas Crédito emitidas sin entrada física en el Kardex.</p>
+        </div>
+        <div class="bg-crimson-50 border border-crimson-200 rounded-xl px-4 py-2.5 text-right shrink-0">
+          <div class="text-[10px] font-semibold uppercase text-crimson-600">Fuga en Devoluciones Anómalas</div>
+          <div class="text-xl font-mono font-extrabold text-crimson-600" id="p2-total-leak">$21.0M COP / mes</div>
+        </div>
+      </div>
+
+      <!-- Dual Timeline Chart (Channel Stuffing) + Motivos Breakdown -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Left 8 cols: Channel Stuffing Timeline -->
+        <div class="lg:col-span-8 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+            <div>
+              <h3 class="text-base font-bold text-slate-900">Detección de "Channel Stuffing" (Picos Facturación Días 27–30 vs. Notas Crédito Días 1–5)</h3>
+              <p class="text-xs text-slate-500">Pedidos forzados al cierre de mes que se anulan en la primera semana del mes siguiente tras cobrar la comisión</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <label for="p2SalesFilter" class="text-xs font-medium text-slate-600">Filtrar Vendedor:</label>
+              <select id="p2SalesFilter" onchange="renderPage2()" class="bg-slate-100 border border-slate-300 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-800 focus:outline-none">
+                <option value="ALL">Todos los Vendedores (Consolidado)</option>
+                <option value="CARLOS">Carlos Mendoza (¡Alerta Crítica!)</option>
+                <option value="ANDRES">Andrés Pineda (Riesgo Alto)</option>
+                <option value="LAURA">Laura Gómez (Comportamiento Normal)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Legend -->
+          <div class="flex flex-wrap items-center gap-4 text-xs mb-3">
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-navy-700 inline-block"></span> Facturación Diaria (Días 1–26)</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-amber-500 inline-block"></span> Pico Cierre de Mes (Días 27–30)</span>
+            <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-crimson-600 inline-block"></span> Notas Crédito Anómalas (Días 1–5 Mes Sig.)</span>
+          </div>
+
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
+            <svg id="p2-stuffing-svg" viewBox="0 0 700 220" class="w-full h-56 overflow-visible"></svg>
+          </div>
+
+          <div class="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+            <div class="bg-amber-50 border border-amber-200 rounded-xl p-3">
+              <div class="text-amber-700 font-semibold">Facturación Días 27–30</div>
+              <div class="text-lg font-mono font-bold text-slate-900 mt-0.5" id="p2-endmonth-sales">$518.0M COP</div>
+              <div class="text-[11px] text-amber-800">28.0% de toda la venta del mes en 4 días</div>
+            </div>
+            <div class="bg-crimson-50 border border-crimson-200 rounded-xl p-3">
+              <div class="text-crimson-600 font-semibold">Notas Crédito Días 1–5 Mes Sig.</div>
+              <div class="text-lg font-mono font-bold text-crimson-600 mt-0.5" id="p2-earlymonth-nc">-$39.4M COP</div>
+              <div class="text-[11px] text-crimson-800">68% corresponde a pedidos no solicitados</div>
+            </div>
+            <div class="bg-slate-100 border border-slate-200 rounded-xl p-3">
+              <div class="text-slate-700 font-semibold">Comisiones + Flete Inverso Perdido</div>
+              <div class="text-lg font-mono font-bold text-slate-900 mt-0.5" id="p2-fake-commissions">$9.6M COP / mes</div>
+              <div class="text-[11px] text-slate-600">Liquidadas al cierre antes de la NC</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 4 cols: Breakdown by Return Reason -->
+        <div class="lg:col-span-4 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <h3 class="text-base font-bold text-slate-900">Desglose por Motivo (<code class="text-xs font-mono text-amber-600">dim_motivo_devolucion</code>)</h3>
+            <p class="text-xs text-slate-500 mt-0.5 mb-4">Causas raíz de notas crédito y doble flete logístico inverso</p>
+
+            <div id="p2-reasons-list" class="space-y-4">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+          <div class="mt-6 p-3.5 bg-crimson-50 border border-crimson-200 rounded-xl text-xs text-crimson-900">
+            <div class="font-bold flex items-center gap-1.5 text-crimson-700 mb-1">
+              <i data-lucide="shield-alert" class="w-4 h-4"></i>
+              <span>Regla de Auditoría Recomendada:</span>
+            </div>
+            Diferir la liquidación de comisiones hasta el día 10 hábil del mes siguiente, descontando automáticamente toda Nota Crédito asociada a facturas del cierre.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Critical Audit Table: Notas Crédito sin Entrada Física en Kardex -->
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="p-5 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 bg-crimson-50/40">
+          <div class="flex items-center gap-2.5">
+            <span class="p-2 rounded-lg bg-crimson-600 text-white"><i data-lucide="file-x-2" class="w-4 h-4"></i></span>
+            <div>
+              <h3 class="text-base font-bold text-slate-900">Tabla Forense: Notas Crédito Emitidas SIN Documento de Entrada Física en Kardex</h3>
+              <p class="text-xs text-slate-600">Cruce <code class="font-mono">fact_notas_credito (Devolución)</code> LEFT JOIN <code class="font-mono">fact_kardex (Entrada Almacén)</code> donde <code class="font-mono">id_entrada IS NULL</code></p>
+            </div>
+          </div>
+          <span class="text-xs font-mono font-bold bg-crimson-600 text-white px-3 py-1.5 rounded-lg" id="p2-missing-kardex-badge">Pérdida Directa: $11.4M COP</span>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="border-b border-slate-200 text-[11px] uppercase text-slate-500 bg-slate-50">
+                <th class="py-3 px-4">N° Nota Crédito</th>
+                <th class="py-3 px-4">Fecha Emisión</th>
+                <th class="py-3 px-4">Cliente / NIT</th>
+                <th class="py-3 px-4">SKU Devuelto</th>
+                <th class="py-3 px-4 text-right">Valor Acreditado</th>
+                <th class="py-3 px-4 text-center">Doc. Entrada Kardex</th>
+                <th class="py-3 px-4">Usuario Autorizador</th>
+                <th class="py-3 px-4 text-center">Estado Forense</th>
+              </tr>
+            </thead>
+            <tbody id="p2-nc-kardex-table" class="divide-y divide-slate-200">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- =====================================================================
+         PAGE 3: 3. FUGAS EN INVENTARIO Y CAPITAL DE TRABAJO (KARDEX)
+         ===================================================================== -->
+    <section id="page-3" class="space-y-6 hidden">
+      
+      <!-- Page Header -->
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-amber-50 text-amber-700 border border-amber-200">Frente 3 de 5</span>
+            <span class="text-xs font-mono text-slate-500">Tablas: fact_kardex • fact_saldos_inventario • dim_bodega • dim_usuario</span>
+          </div>
+          <h2 class="text-xl font-bold text-slate-900 mt-1">3. Fugas en Inventario y Capital de Trabajo (Matriz GMROI, Robo Hormiga y Stock Fantasma)</h2>
+          <p class="text-xs text-slate-600 mt-0.5">Detección de $420M atrapados en baja rotación/bajo margen, patrón de ajustes manuales en el rango $450k–$499k debajo del tope de autorización ($500k) y Stock Fantasma (&gt;45 días sin venta).</p>
+        </div>
+        <div class="bg-crimson-50 border border-crimson-200 rounded-xl px-4 py-2.5 text-right shrink-0">
+          <div class="text-[10px] font-semibold uppercase text-crimson-600">Fuga en Inventario y Kardex</div>
+          <div class="text-xl font-mono font-extrabold text-crimson-600" id="p3-total-leak">$26.5M COP / mes</div>
+        </div>
+      </div>
+
+      <!-- GMROI Quadrant Matrix + Ant Theft Adjustments -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Left 6 cols: Interactive GMROI Quadrant Matrix -->
+        <div class="lg:col-span-6 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-base font-bold text-slate-900">Matriz Interactiva de Cuadrantes GMROI</h3>
+              <span class="text-xs font-mono bg-slate-100 text-slate-700 px-2.5 py-1 rounded font-semibold">Meta GMROI &ge; 1.8x</span>
+            </div>
+            <p class="text-xs text-slate-500 mb-4">Haz clic en cada cuadrante para auditar el capital de trabajo inmovilizado y el plan de liberación de caja:</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="p3-gmroi-grid">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+          <div id="p3-gmroi-detail" class="mt-4 p-4 rounded-xl bg-navy-800 text-white">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- Right 6 cols: Auditoría de Ajustes Manuales de Kardex (Robo Hormiga) -->
+        <div class="lg:col-span-6 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <div>
+                <h3 class="text-base font-bold text-slate-900">Patrón de "Robo Hormiga": Ajustes Manuales ($450k–$499k)</h3>
+                <p class="text-xs text-slate-500">Salidas manuales en <code class="font-mono">fact_kardex</code> agrupadas justo debajo del tope de autorización gerencial de <strong>$500,000 COP</strong>.</p>
+              </div>
+              <span class="bg-crimson-50 text-crimson-600 border border-crimson-200 text-xs font-mono font-bold px-2.5 py-1 rounded-lg shrink-0">Tope: $500k COP</span>
+            </div>
+
+            <!-- Visual Histogram of Manual Adjustments vs $500k Threshold -->
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-3 my-3">
+              <div class="flex justify-between text-[11px] font-mono text-slate-500 mb-1">
+                <span>Histograma de Ajustes Negativos por Rango de Valor</span>
+                <span class="text-crimson-600 font-bold">Línea Roja = Tope Autorización ($500,000)</span>
+              </div>
+              <svg id="p3-threshold-svg" viewBox="0 0 500 130" class="w-full h-32 overflow-visible"></svg>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr class="border-b border-slate-200 text-[10px] uppercase text-slate-500 bg-slate-50">
+                    <th class="py-2 px-2.5">Usuario Kardex</th>
+                    <th class="py-2 px-2.5">Bodega / Turno</th>
+                    <th class="py-2 px-2.5">Concepto Ajuste</th>
+                    <th class="py-2 px-2.5 text-center">N° Ajustes</th>
+                    <th class="py-2 px-2.5 text-right">Valor Promedio</th>
+                    <th class="py-2 px-2.5 text-right">Fuga Acumulada</th>
+                  </tr>
+                </thead>
+                <tbody id="p3-anttheft-table" class="divide-y divide-slate-100">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Detector de Stock Fantasma (>45 días sin venta) -->
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="p-5 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 bg-slate-50/60">
+          <div>
+            <h3 class="text-base font-bold text-slate-900">Detector de "Stock Fantasma" (Saldo Positivo en ERP sin Ventas en &gt;45 Días)</h3>
+            <p class="text-xs text-slate-500">SKUs de alta rotación histórica que figuran con unidades disponibles en el sistema pero llevan más de 45 días sin facturar (merma no registrada que bloquea el reabastecimiento).</p>
+          </div>
+          <span class="text-xs font-mono font-semibold bg-amber-50 text-amber-700 border border-amber-200 px-3 py-1 rounded-lg">Lucro Cesante + Merma: $9.4M / mes</span>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="border-b border-slate-200 text-[11px] uppercase text-slate-500 bg-slate-50">
+                <th class="py-3 px-4">SKU / Producto</th>
+                <th class="py-3 px-4">Bodega</th>
+                <th class="py-3 px-4 text-right">Saldo Sistema (ERP)</th>
+                <th class="py-3 px-4 text-right">Días Sin Venta</th>
+                <th class="py-3 px-4 text-right">Demanda Histórica</th>
+                <th class="py-3 px-4 text-right">Costo Inventario Fantasma</th>
+                <th class="py-3 px-4 text-right">Margen Perdido / Mes</th>
+                <th class="py-3 px-4 text-center">Acción Sugerida</th>
+              </tr>
+            </thead>
+            <tbody id="p3-phantom-table" class="divide-y divide-slate-200">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- =====================================================================
+         PAGE 4: 4. VARIACIONES EN COMPRAS Y CUENTAS POR PAGAR
+         ===================================================================== -->
+    <section id="page-4" class="space-y-6 hidden">
+      
+      <!-- Page Header -->
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-blue-50 text-blue-700 border border-blue-200">Frente 4 de 5</span>
+            <span class="text-xs font-mono text-slate-500">Tablas: fact_ordenes_compra • fact_entradas_almacen • fact_facturas_proveedor</span>
+          </div>
+          <h2 class="text-xl font-bold text-slate-900 mt-1">4. Variaciones en Compras y Cuentas por Pagar (3-Way Match y Descuentos Financieros)</h2>
+          <p class="text-xs text-slate-600 mt-0.5">Discrepancias entre Orden de Compra, Entrada a Almacén y Factura Proveedor, calculadora de pronto pago (&gt;44% E.A.) y dispersión de precios entre sucursales.</p>
+        </div>
+        <div class="bg-crimson-50 border border-crimson-200 rounded-xl px-4 py-2.5 text-right shrink-0">
+          <div class="text-[10px] font-semibold uppercase text-crimson-600">Fuga en Abastecimiento y CXP</div>
+          <div class="text-xl font-mono font-extrabold text-crimson-600" id="p4-total-leak">$16.5M COP / mes</div>
+        </div>
+      </div>
+
+      <!-- 3-Way Match Table + Early Payment Discount Calculator -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Left 7 cols: Auditoría 3-Way Match -->
+        <div class="lg:col-span-7 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <div>
+                <h3 class="text-base font-bold text-slate-900">Discrepancias en el "3-Way Match" (OC vs. Entrada Almacén vs. Factura)</h3>
+                <p class="text-xs text-slate-500">Facturas pagadas a proveedores con precios unitarios mayores a la OC o cantidades superiores a las recibidas</p>
+              </div>
+              <span class="bg-crimson-50 text-crimson-600 border border-crimson-200 text-xs font-mono font-bold px-2.5 py-1 rounded-lg" id="p4-3way-badge">Sobrecosto: $7.2M</span>
+            </div>
+
+            <div class="overflow-x-auto mt-3">
+              <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr class="border-b border-slate-200 text-[10px] uppercase text-slate-500 bg-slate-50">
+                    <th class="py-2.5 px-3">Proveedor / Factura</th>
+                    <th class="py-2.5 px-3">SKU / Insumo</th>
+                    <th class="py-2.5 px-3 text-right">Precio / Cant. OC</th>
+                    <th class="py-2.5 px-3 text-right">Recibido / Facturado</th>
+                    <th class="py-2.5 px-3 text-right">Sobrecosto Pagado</th>
+                    <th class="py-2.5 px-3 text-center">Tipo Discrepancia</th>
+                  </tr>
+                </thead>
+                <tbody id="p4-3way-table" class="divide-y divide-slate-200">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="mt-4 p-3.5 bg-slate-50 border border-slate-200 rounded-xl text-xs text-slate-700 flex items-center justify-between">
+            <span><strong>Regla de Bloqueo en ERP:</strong> Impedir causación contable cuando <code class="font-mono text-crimson-600">Precio_Factura &gt; Precio_OC</code>.</span>
+            <span class="font-mono font-bold text-emerald-600">Efectividad: 100%</span>
+          </div>
+        </div>
+
+        <!-- Right 5 cols: Calculadora de Descuentos por Pronto Pago Perdidos -->
+        <div class="lg:col-span-5 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-base font-bold text-slate-900">Calculadora de Pronto Pago Perdido</h3>
+              <span class="text-xs font-mono bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded font-semibold">Arbitraje Tesorería</span>
+            </div>
+            <p class="text-xs text-slate-500 mb-3">Desaprovechar un descuento del <strong>2.5% a 10 días (neto 35d)</strong> equivale a pagar una tasa implícita del <strong>44.6% E.A.</strong> frente al costo de crédito bancario.</p>
+
+            <!-- Interactive Cost of Bank Credit Slider -->
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 mb-4">
+              <div class="flex justify-between items-center text-xs font-semibold text-slate-700">
+                <span>Costo Crédito Bancario / Tesorería (Tasa E.A.):</span>
+                <span id="p4BankRateVal" class="font-mono font-bold text-navy-800">15.5% E.A.</span>
+              </div>
+              <input id="p4BankRateSlider" type="range" min="10" max="24" step="0.5" value="15.5" oninput="renderPage4()" class="w-full h-1.5 bg-slate-300 rounded-lg cursor-pointer mt-2" />
+              <div class="flex justify-between text-[10px] text-slate-400 mt-1">
+                <span>10% E.A.</span>
+                <span>17% E.A.</span>
+                <span>24% E.A.</span>
+              </div>
+            </div>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr class="border-b border-slate-200 text-[10px] uppercase text-slate-500 bg-slate-50">
+                    <th class="py-2 px-2">Proveedor</th>
+                    <th class="py-2 px-2 text-center">Condición</th>
+                    <th class="py-2 px-2 text-right">Tasa Implícita</th>
+                    <th class="py-2 px-2 text-right">Dto. Perdido</th>
+                    <th class="py-2 px-2 text-right">Ganancia Neta</th>
+                  </tr>
+                </thead>
+                <tbody id="p4-discounts-table" class="divide-y divide-slate-100">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="mt-4 bg-emerald-50 border border-emerald-200 rounded-xl p-3 text-xs text-emerald-900 flex items-center justify-between">
+            <span>Utilidad financiera neta tomando los descuentos:</span>
+            <span class="text-base font-mono font-extrabold text-emerald-700" id="p4-net-arbitrage">+$5.8M COP / mes</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Dispersión de Precios de Compra entre Sucursales -->
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="p-5 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 bg-slate-50/60">
+          <div>
+            <h3 class="text-base font-bold text-slate-900">Dispersión de Precios de Compra entre Sucursales (Mismo SKU, Mismo Mes)</h3>
+            <p class="text-xs text-slate-500">Compras descentralizadas o de urgencia que pagan hasta un +14.8% más caro el mismo producto que la regional principal.</p>
+          </div>
+          <span class="text-xs font-mono font-semibold bg-amber-50 text-amber-700 border border-amber-200 px-3 py-1 rounded-lg">Fuga por Compras Fraccionadas: $3.9M / mes</span>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="border-b border-slate-200 text-[11px] uppercase text-slate-500 bg-slate-50">
+                <th class="py-3 px-4">SKU / Producto</th>
+                <th class="py-3 px-4 text-right">Mejor Precio (Consolidado)</th>
+                <th class="py-3 px-4 text-right">Precio Sucursal Más Cara</th>
+                <th class="py-3 px-4 text-center">Sucursal Desviada</th>
+                <th class="py-3 px-4 text-right">Brecha Unitaria (%)</th>
+                <th class="py-3 px-4 text-right">Unidades Compradas</th>
+                <th class="py-3 px-4 text-right">Sobrecosto Total Mes</th>
+              </tr>
+            </thead>
+            <tbody id="p4-dispersion-table" class="divide-y divide-slate-200">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- =====================================================================
+         PAGE 5: 5. CARTERA, CONDICIONES DE PAGO Y COSTOS OCULTOS DE SERVIR
+         ===================================================================== -->
+    <section id="page-5" class="space-y-6 hidden">
+      
+      <!-- Page Header -->
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-crimson-50 text-crimson-600 border border-crimson-200">Frente 5 de 5</span>
+            <span class="text-xs font-mono text-slate-500">Tablas: fact_cartera • fact_recaudos • dim_condicion_pago • fact_fletes</span>
+          </div>
+          <h2 class="text-xl font-bold text-slate-900 mt-1">5. Cartera, Condiciones de Pago y Costos Ocultos de Servir (Cost-to-Serve)</h2>
+          <p class="text-xs text-slate-600 mt-0.5">Clientes con descuento de "Contado" que pagan a 42 días sin intereses, pedidos micro-fragmentados donde el flete supera el margen y ranking de Clientes Falsos Rentables.</p>
+        </div>
+        <div class="bg-crimson-50 border border-crimson-200 rounded-xl px-4 py-2.5 text-right shrink-0">
+          <div class="text-[10px] font-semibold uppercase text-crimson-600">Fuga en Cartera y Logística</div>
+          <div class="text-xl font-mono font-extrabold text-crimson-600" id="p5-total-leak">$32.5M COP / mes</div>
+        </div>
+      </div>
+
+      <!-- Mora Oculta + Pedidos Micro-Fragmentados -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Left 6 cols: Mora Oculta (Plazo Pactado vs Día Real de Recaudo) -->
+        <div class="lg:col-span-6 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-base font-bold text-slate-900">Mora Oculta: Plazo Pactado (<code class="text-xs font-mono text-crimson-600">dim_condicion_pago</code>) vs. Recaudo Real</h3>
+              <span class="text-xs font-mono bg-crimson-50 text-crimson-600 border border-crimson-200 px-2.5 py-0.5 rounded font-semibold">Costo WACC: 1.8% Mes</span>
+            </div>
+            <p class="text-xs text-slate-500 mb-4">Clientes que reciben lista de precio o descuento de "Contado / 30 Días", pero pagan en 42 a 64 días financiándose gratis con la caja de la empresa:</p>
+
+            <div id="p5-mora-bars" class="space-y-4">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+          <div class="mt-5 p-3.5 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-900 flex items-start gap-2.5">
+            <i data-lucide="clock" class="w-4 h-4 text-amber-600 shrink-0 mt-0.5"></i>
+            <div>
+              <strong>Doble Castigo Financiero:</strong> A los clientes en condición <em>"Contado Comercial (-5% Dto)"</em> que pagan en promedio al <strong>día 42</strong> se les regala simultáneamente el descuento en factura y 39 días de capital de trabajo sin cobro de mora.
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 6 cols: Auditoría Logística: Pedidos Micro-Fragmentados -->
+        <div class="lg:col-span-6 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="text-base font-bold text-slate-900">Pedidos Micro-Fragmentados (<code class="text-xs font-mono text-crimson-600">Flete &gt; Margen Bruto</code>)</h3>
+              <span class="text-xs font-mono bg-crimson-50 text-crimson-600 border border-crimson-200 px-2.5 py-0.5 rounded font-semibold">Sin Pedido Mínimo</span>
+            </div>
+            <p class="text-xs text-slate-500 mb-4">Clientes que fraccionan sus compras en 16 a 22 entregas mensuales pequeñas donde el costo del transporte supera la utilidad bruta del pedido:</p>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-left border-collapse text-xs">
+                <thead>
+                  <tr class="border-b border-slate-200 text-[10px] uppercase text-slate-500 bg-slate-50">
+                    <th class="py-2.5 px-2.5">Cliente / Ruta</th>
+                    <th class="py-2.5 px-2.5 text-center">Pedidos / Mes</th>
+                    <th class="py-2.5 px-2.5 text-right">Ticket Promedio</th>
+                    <th class="py-2.5 px-2.5 text-right">Margen por Pedido</th>
+                    <th class="py-2.5 px-2.5 text-right">Costo Flete Envío</th>
+                    <th class="py-2.5 px-2.5 text-right">Pérdida Logística Mes</th>
+                  </tr>
+                </thead>
+                <tbody id="p5-microorders-table" class="divide-y divide-slate-200">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="mt-4 p-3.5 bg-emerald-50 border border-emerald-200 rounded-xl text-xs text-emerald-900 flex items-center justify-between">
+            <span><strong>Política Correctiva:</strong> Pedido mínimo de $650,000 COP o consolidación a 1 entrega semanal.</span>
+            <span class="font-mono font-bold text-emerald-700">Recupera $13.3M/mes</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Ranking de Clientes Falsos Rentables -->
+      <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="p-5 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 bg-slate-50/60">
+          <div>
+            <h3 class="text-base font-bold text-slate-900">Ranking de "Clientes Falsos Rentables" (Margen Bruto en Papel vs. Pocket Margin Negativo)</h3>
+            <p class="text-xs text-slate-500">Grandes compradores en volumen que parecen rentables contablemente, pero destruyen caja al descontar notas crédito, fletes micro-fragmentados y costo financiero de mora.</p>
+          </div>
+          <span class="text-xs font-mono font-bold bg-navy-800 text-emerald-400 px-3 py-1.5 rounded-lg">Cost-to-Serve Analytics</span>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="border-b border-slate-200 text-[11px] uppercase text-slate-500 bg-slate-50">
+                <th class="py-3 px-4">Cliente (Top Volumen)</th>
+                <th class="py-3 px-4 text-right">Facturación Mes</th>
+                <th class="py-3 px-4 text-right">Margen Bruto ERP</th>
+                <th class="py-3 px-4 text-right">(-) Notas Crédito / Rebates</th>
+                <th class="py-3 px-4 text-right">(-) Fletes (N° Entregas)</th>
+                <th class="py-3 px-4 text-right">(-) Costo Financiero Mora</th>
+                <th class="py-3 px-4 text-right">Pocket Margin Real ($M)</th>
+                <th class="py-3 px-4 text-right">Pocket Margin (%)</th>
+              </tr>
+            </thead>
+            <tbody id="p5-falseclients-table" class="divide-y divide-slate-200">
+              <!-- Populated by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- =====================================================================
+         PAGE 6: 6. CASO DE NEGOCIO & ROI DE LA CONSULTORÍA
+         ===================================================================== -->
+    <section id="page-6" class="space-y-6 hidden">
+
+      <!-- Top Executive ROI Banner -->
+      <div class="bg-gradient-to-r from-navy-900 via-navy-800 to-emerald-950 rounded-2xl p-6 text-white shadow-lg border border-emerald-500/30 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+        <div class="space-y-1.5">
+          <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-emerald-400">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-dot"></span>
+            <span>Simulador Financiero de Cierre B2B • Conectado en Vivo al Diagnóstico</span>
+          </div>
+          <h2 class="text-xl sm:text-2xl font-extrabold">6. Caso de Negocio & ROI de la Consultoría de Datos</h2>
+          <p class="text-xs sm:text-sm text-slate-300 max-w-4xl">
+            Personaliza el alcance de los frentes a intervenir, aplica un escenario conservador de recuperación y demuestra en cuántos días el proyecto se autofinancia con el propio flujo de caja rescatado.
+          </p>
+        </div>
+
+        <div class="bg-navy-950/90 border border-emerald-500/40 rounded-2xl px-5 py-3.5 text-right shrink-0">
+          <div class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Fuga Mensual Base en Alcance</div>
+          <div class="text-2xl sm:text-3xl font-mono font-extrabold text-crimson-500 mt-0.5" id="roi-scope-leak-badge">$142.5M COP / mes</div>
+          <div class="text-[11px] font-mono text-emerald-400 mt-0.5" id="roi-scope-pillars-count">5 de 5 frentes seleccionados ($1,710.0M / año)</div>
+        </div>
+      </div>
+
+      <!-- STEP 1: SELECTOR DE ALCANCE POR PILARES (CHECKBOXES INTERACTIVOS) -->
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
+          <div>
+            <h3 class="text-sm font-bold text-slate-900 flex items-center gap-2">
+              <i data-lucide="check-square" class="w-4 h-4 text-emerald-600"></i>
+              <span>Paso 1: Selecciona el Alcance de Frentes a Intervenir en el Proyecto</span>
+            </h3>
+            <p class="text-xs text-slate-500">Activa o desactiva los módulos según la prioridad del cliente para recalcular la Fuga Base en Alcance</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button type="button" onclick="setAllScopePillars(true)" class="text-[11px] font-semibold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-2.5 py-1 rounded-lg transition">
+              Seleccionar Todos (5)
+            </button>
+            <button type="button" onclick="setQuickTop2Scope()" class="text-[11px] font-semibold text-navy-800 bg-slate-100 hover:bg-slate-200 border border-slate-200 px-2.5 py-1 rounded-lg transition">
+              Solo Fase 1: Margen + Cartera (Pareto 55%)
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3" id="roi-scope-checkboxes">
+          <!-- Populated dynamically by JS -->
+        </div>
+      </div>
+
+      <!-- STEP 2: ESCENARIOS RÁPIDOS & 4 SLIDERS + 4 TARJETAS EJECUTIVAS DE CIERRE -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Left 5 cols: Parameter Controls & Scenario Presets -->
+        <div class="lg:col-span-5 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between space-y-5">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+                <i data-lucide="sliders" class="w-4 h-4 text-emerald-600"></i>
+                <span>Paso 2: Parámetros del Caso de Negocio</span>
+              </h3>
+              <span class="text-[11px] font-mono bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Co-creación en Vivo</span>
+            </div>
+
+            <!-- Quick Scenario Buttons -->
+            <div class="mb-5">
+              <label class="block text-[11px] font-semibold uppercase tracking-wider text-slate-500 mb-2">Botones Rápidos de Escenario de Recuperación:</label>
+              <div class="grid grid-cols-3 gap-2">
+                <button type="button" onclick="applyRoiScenario(12)" id="scen-btn-12" class="scen-btn border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 rounded-xl py-2 px-2 text-center transition">
+                  <div class="text-[10px] uppercase font-semibold text-slate-500">Pesimista</div>
+                  <div class="text-sm font-mono font-extrabold text-slate-900">12%</div>
+                </button>
+                <button type="button" onclick="applyRoiScenario(18)" id="scen-btn-18" class="scen-btn border-2 border-emerald-600 bg-emerald-50 text-emerald-800 rounded-xl py-2 px-2 text-center transition shadow-sm">
+                  <div class="text-[10px] uppercase font-bold text-emerald-700">Conservador</div>
+                  <div class="text-sm font-mono font-extrabold text-emerald-700">18%</div>
+                </button>
+                <button type="button" onclick="applyRoiScenario(30)" id="scen-btn-30" class="scen-btn border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 rounded-xl py-2 px-2 text-center transition">
+                  <div class="text-[10px] uppercase font-semibold text-slate-500">Moderado</div>
+                  <div class="text-sm font-mono font-extrabold text-slate-900">30%</div>
+                </button>
+              </div>
+            </div>
+
+            <!-- 4 Interactive Sliders -->
+            <div class="space-y-4">
+              
+              <!-- Slider 1: % Fuga Recuperada -->
+              <div class="p-3.5 rounded-xl bg-emerald-50/60 border border-emerald-200">
+                <div class="flex justify-between items-center text-xs font-bold text-slate-800">
+                  <span>1. % de Fuga Recuperada (Efectividad):</span>
+                  <span id="roiSliderPctLabel" class="font-mono text-sm font-extrabold text-emerald-700">18%</span>
+                </div>
+                <input id="roiSliderPct" type="range" min="5" max="50" step="1" value="18" oninput="updateDashboard()" class="w-full h-2 bg-emerald-200 rounded-lg cursor-pointer mt-2" />
+                <div class="flex justify-between text-[10px] font-mono text-slate-500 mt-1">
+                  <span>5% (Mínimo)</span>
+                  <span>18% (Conservador)</span>
+                  <span>30% (Moderado)</span>
+                  <span>50% (Alto)</span>
+                </div>
+              </div>
+
+              <!-- Slider 2: Inversión Inicial Setup Consultoría -->
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <div class="flex justify-between items-center text-xs font-bold text-slate-800">
+                  <span>2. Inversión Inicial Setup Consultoría:</span>
+                  <span id="roiSliderSetupLabel" class="font-mono text-sm font-extrabold text-navy-800">$18.0M COP</span>
+                </div>
+                <input id="roiSliderSetup" type="range" min="5" max="60" step="1" value="18" oninput="updateDashboard()" class="w-full h-2 bg-slate-300 rounded-lg cursor-pointer mt-2" />
+                <div class="flex justify-between text-[10px] font-mono text-slate-500 mt-1">
+                  <span>$5.0M COP</span>
+                  <span>$18.0M Estándar</span>
+                  <span>$35.0M</span>
+                  <span>$60.0M COP</span>
+                </div>
+              </div>
+
+              <!-- Slider 3: Fee Mensual de Acompañamiento -->
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <div class="flex justify-between items-center text-xs font-bold text-slate-800">
+                  <span>3. Fee Mensual Acompañamiento / Auditoría:</span>
+                  <span id="roiSliderFeeLabel" class="font-mono text-sm font-extrabold text-navy-800">$2.0M COP / mes</span>
+                </div>
+                <input id="roiSliderFee" type="range" min="0" max="10" step="0.5" value="2.0" oninput="updateDashboard()" class="w-full h-2 bg-slate-300 rounded-lg cursor-pointer mt-2" />
+                <div class="flex justify-between text-[10px] font-mono text-slate-500 mt-1">
+                  <span>$0.0M (Sin Fee)</span>
+                  <span>$2.0M / mes</span>
+                  <span>$5.0M / mes</span>
+                  <span>$10.0M / mes</span>
+                </div>
+              </div>
+
+              <!-- Slider 4: Margen Neto Actual de la Empresa -->
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
+                <div class="flex justify-between items-center text-xs font-bold text-slate-800">
+                  <span>4. Margen Neto Actual de la Comercializadora:</span>
+                  <span id="roiSliderMarginLabel" class="font-mono text-sm font-extrabold text-navy-800">6.0%</span>
+                </div>
+                <input id="roiSliderMargin" type="range" min="2" max="15" step="0.5" value="6.0" oninput="updateDashboard()" class="w-full h-2 bg-slate-300 rounded-lg cursor-pointer mt-2" />
+                <div class="flex justify-between text-[10px] font-mono text-slate-500 mt-1">
+                  <span>2.0% (Mayorista)</span>
+                  <span>6.0% (Promedio)</span>
+                  <span>10.0%</span>
+                  <span>15.0% (Especializado)</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="bg-navy-800 text-slate-200 rounded-xl p-3.5 text-xs flex items-start gap-2.5">
+            <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
+            <div>
+              <strong>Garantía de Escenario Conservador:</strong> Aún dejando el <strong>82%</strong> de las fugas sin tocar, ese <strong>18%</strong> recuperado supera más de 12 veces el fee mensual de soporte.
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 7 cols: 4 Executive Closing Cards + J-Curve Cumulative Cash Flow Chart -->
+        <div class="lg:col-span-7 flex flex-col justify-between space-y-6">
+          
+          <!-- 4 Executive Closing KPI Cards (2x2 Grid) -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            
+            <!-- Card 1: Flujo de Caja Neto Recuperado -->
+            <div class="bg-white rounded-2xl p-5 border-l-4 border-l-emerald-600 border border-slate-200 shadow-sm">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">1. Flujo de Caja Neto Recuperado</span>
+                <span class="p-2 rounded-lg bg-emerald-50 text-emerald-600"><i data-lucide="wallet" class="w-4 h-4"></i></span>
+              </div>
+              <div class="mt-2 flex items-baseline gap-2">
+                <span class="text-2xl sm:text-3xl font-mono font-extrabold text-emerald-700" id="roi-card-net-monthly">+$23.7M</span>
+                <span class="text-xs font-mono font-semibold text-slate-500">COP libres / mes</span>
+              </div>
+              <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
+                <span class="text-slate-500">Flujo Neto Anual (descontando Fee):</span>
+                <span class="font-mono font-bold text-emerald-700" id="roi-card-net-annual">+$283.8M / año</span>
+              </div>
+            </div>
+
+            <!-- Card 2: Tiempo de Retorno (Payback en Días) -->
+            <div class="bg-white rounded-2xl p-5 border-l-4 border-l-navy-800 border border-slate-200 shadow-sm">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold uppercase tracking-wider text-navy-800">2. Tiempo de Retorno (Payback)</span>
+                <span class="p-2 rounded-lg bg-slate-100 text-navy-800"><i data-lucide="timer" class="w-4 h-4"></i></span>
+              </div>
+              <div class="mt-2 flex items-baseline gap-2">
+                <span class="text-2xl sm:text-3xl font-mono font-extrabold text-navy-900" id="roi-card-payback-days">23 Días</span>
+                <span class="text-xs font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full font-semibold" id="roi-card-payback-months">0.8 meses</span>
+              </div>
+              <div class="mt-2.5">
+                <div class="flex justify-between text-[10px] font-mono text-slate-500 mb-1">
+                  <span>Progreso de recuperación en el Mes 1</span>
+                  <span id="roi-payback-bar-label">76% del Mes 1</span>
+                </div>
+                <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                  <div id="roi-payback-bar" class="bg-emerald-600 h-full rounded-full transition-all duration-300" style="width: 76%"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3: Costo Diario y Semanal de Inacción -->
+            <div class="bg-white rounded-2xl p-5 border-l-4 border-l-crimson-600 border border-slate-200 shadow-sm">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold uppercase tracking-wider text-crimson-600">3. Costo de Inacción (Postergar)</span>
+                <span class="p-2 rounded-lg bg-crimson-50 text-crimson-600"><i data-lucide="hourglass" class="w-4 h-4"></i></span>
+              </div>
+              <div class="mt-2 flex items-baseline gap-2">
+                <span class="text-2xl sm:text-3xl font-mono font-extrabold text-crimson-600" id="roi-card-coi-daily">-$855,000</span>
+                <span class="text-xs font-mono text-slate-500">COP / día de espera</span>
+              </div>
+              <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
+                <span class="text-slate-500">Pérdida por cada semana de demora:</span>
+                <span class="font-mono font-bold text-crimson-600" id="roi-card-coi-weekly">-$5.99M / semana</span>
+              </div>
+            </div>
+
+            <!-- Card 4: ROI Neto a 12 Meses & Equivalencia en Ventas -->
+            <div class="bg-white rounded-2xl p-5 border-l-4 border-l-amber-500 border border-slate-200 shadow-sm">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold uppercase tracking-wider text-amber-700">4. ROI Neto Anual & Ventas Equiv.</span>
+                <span class="p-2 rounded-lg bg-amber-50 text-amber-600"><i data-lucide="award" class="w-4 h-4"></i></span>
+              </div>
+              <div class="mt-2 flex items-baseline gap-2">
+                <span class="text-2xl sm:text-3xl font-mono font-extrabold text-slate-900" id="roi-card-roi-pct">633% ROI</span>
+                <span class="text-xs font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full font-bold" id="roi-card-multiple">7.3x inversión</span>
+              </div>
+              <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
+                <span class="text-slate-500">Equivale a vender (<span id="roi-card-margin-inline">6.0%</span> neto):</span>
+                <span class="font-mono font-bold text-navy-800" id="roi-card-equiv-annual">$5,130.0M / año</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Interactive J-Curve Cumulative Cash Flow Chart (Mes 0 to Mes 12) -->
+          <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex-1 flex flex-col justify-between">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
+              <div>
+                <h3 class="text-base font-bold text-slate-900">Curva J de Flujo de Caja Neto Acumulado (Mes 0 a Mes 12)</h3>
+                <p class="text-xs text-slate-500">Incluye desembolso inicial en el Mes 0, cruce de Punto de Equilibrio (Break-Even) y caja neta acumulada al cierre del año</p>
+              </div>
+              <div class="flex items-center gap-3 text-xs font-mono">
+                <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-crimson-600 inline-block"></span> Inversión / Saldo Negativo</span>
+                <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-emerald-600 inline-block"></span> Ganancia Neta Acumulada</span>
+              </div>
+            </div>
+
+            <!-- SVG J-Curve Chart -->
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
+              <svg id="roi-jcurve-svg" viewBox="0 0 720 230" class="w-full h-56 overflow-visible"></svg>
+            </div>
+
+            <!-- Quarterly Cash Flow Milestones -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4 text-xs">
+              <div class="bg-crimson-50/70 border border-crimson-200 rounded-xl p-2.5">
+                <div class="text-[10px] font-mono uppercase text-crimson-700">Mes 0 (Setup Inicial)</div>
+                <div class="text-sm font-mono font-bold text-crimson-600 mt-0.5" id="jcurve-m0">-$18.0M COP</div>
+              </div>
+              <div class="bg-emerald-50/70 border border-emerald-200 rounded-xl p-2.5">
+                <div class="text-[10px] font-mono uppercase text-emerald-700">Trimestre 1 (Mes 3)</div>
+                <div class="text-sm font-mono font-bold text-emerald-700 mt-0.5" id="jcurve-m3">+$53.0M COP</div>
+              </div>
+              <div class="bg-emerald-50/70 border border-emerald-200 rounded-xl p-2.5">
+                <div class="text-[10px] font-mono uppercase text-emerald-700">Semestre 1 (Mes 6)</div>
+                <div class="text-sm font-mono font-bold text-emerald-700 mt-0.5" id="jcurve-m6">+$123.9M COP</div>
+              </div>
+              <div class="bg-navy-800 text-white rounded-xl p-2.5">
+                <div class="text-[10px] font-mono uppercase text-emerald-400">Cierre Año 1 (Mes 12)</div>
+                <div class="text-sm font-mono font-extrabold text-emerald-400 mt-0.5" id="jcurve-m12">+$265.8M COP</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- STEP 3: TARJETA DE RESUMEN DE PROPUESTA EJECUTIVA (COPIABLE AL PORTAPAPELES) -->
+      <div class="bg-white rounded-2xl border-2 border-emerald-600/30 shadow-md overflow-hidden">
+        <div class="bg-navy-800 text-white px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div class="flex items-center gap-2.5">
+            <div class="p-2 rounded-lg bg-emerald-500/20 text-emerald-400">
+              <i data-lucide="file-check-2" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <h3 class="text-base font-bold">Resumen de Propuesta Ejecutiva (Generado Automáticamente para Cotización / Acta)</h3>
+              <p class="text-xs text-slate-300">Síntesis persuasiva con las cifras exactas configuradas en el simulador, lista para enviar por correo o WhatsApp a Gerencia</p>
+            </div>
+          </div>
+
+          <button type="button" onclick="copyExecutiveProposal()" id="copyProposalBtn" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow flex items-center gap-2 transition shrink-0">
+            <i data-lucide="copy" class="w-4 h-4"></i>
+            <span id="copyProposalBtnText">Copiar Resumen para Cotización</span>
+          </button>
+        </div>
+
+        <div class="p-6 bg-slate-50/70">
+          <div id="roi-proposal-text" class="bg-white border border-slate-200 rounded-xl p-5 text-xs sm:text-sm text-slate-800 leading-relaxed font-sans space-y-3 shadow-inner">
+            <!-- Populated dynamically by JS -->
+          </div>
+          <!-- Hidden textarea for reliable iframe clipboard copy -->
+          <textarea id="roi-proposal-raw" class="sr-only" aria-hidden="true"></textarea>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-slate-200 mt-8 py-4">
+    <div class="max-w-[1600px] mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-500">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-navy-800">CONECTA | Inteligencia Comercial & Auditoría de Fugas</span>
+        <span>•</span>
+        <span>Diagnóstico Ejecutivo B2B para Empresas Comercializadoras en Colombia (COP)</span>
+      </div>
+      <div class="font-mono text-[11px] text-slate-400">
+        7 Vistas Interactivas • Conectado dinámicamente a Sucursal, Canal y Simulador de ROI
+      </div>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       MODAL: MODELO ESTRELLA & CONSULTAS SQL / MEDIDAS DAX
+       ===================================================================== -->
+  <div id="sqlModal" class="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[88vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden">
+      <div class="bg-navy-800 text-white px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <i data-lucide="database" class="w-5 h-5 text-emerald-400"></i>
+          <div>
+            <h3 class="font-bold text-base">Arquitectura del Modelo en Estrella y Lógica SQL / DAX de Auditoría</h3>
+            <p class="text-xs text-slate-300">Especificación técnica para conectar este diagnóstico al ERP del cliente (Siesa, Siigo, SAP Business One, World Office, Odoo, Netsuite)</p>
+          </div>
+        </div>
+        <button type="button" onclick="closeSqlModal()" class="text-slate-300 hover:text-white p-1 rounded-lg">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="p-6 overflow-y-auto space-y-5 text-xs text-slate-700">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
+            <h4 class="font-bold text-slate-900 uppercase text-[11px] tracking-wider mb-2 text-emerald-700">Tablas de Hechos (Fact Tables)</h4>
+            <ul class="space-y-1.5 font-mono text-[11px]">
+              <li>• <strong>fact_ventas:</strong> id_factura, sku, id_cliente, id_vendedor, cant, precio_lista, dto_linea, costo_erp</li>
+              <li>• <strong>fact_notas_credito:</strong> id_nc, id_factura_origen, fecha_nc, id_motivo, valor_nc, id_entrada_kardex</li>
+              <li>• <strong>fact_kardex:</strong> id_mov, fecha, sku, id_bodega, tipo_mov, cantidad, costo_total, id_usuario</li>
+              <li>• <strong>fact_compras_cxp:</strong> id_oc, id_entrada, id_factura_prov, precio_oc, precio_fact, dto_pronto_pago</li>
+              <li>• <strong>fact_recaudos_fletes:</strong> id_factura, fecha_venc, fecha_pago_real, costo_flete_entrega</li>
+            </ul>
+          </div>
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
+            <h4 class="font-bold text-slate-900 uppercase text-[11px] tracking-wider mb-2 text-navy-800">Dimensiones Maestro (Dim Tables)</h4>
+            <ul class="space-y-1.5 font-mono text-[11px]">
+              <li>• <strong>dim_productos:</strong> sku, nombre, categoria, costo_ultima_oc, stock_minimo</li>
+              <li>• <strong>dim_clientes:</strong> id_cliente, razon_social, id_canal, id_condicion_pago, cupo</li>
+              <li>• <strong>dim_vendedor:</strong> id_vendedor, nombre, id_sucursal, tope_descuento_autorizado</li>
+              <li>• <strong>dim_motivo_devolucion:</strong> id_motivo, descripcion, requiere_ingreso_fisico</li>
+              <li>• <strong>dim_calendario:</strong> fecha, anio, mes, dia_mes, es_cierre_mes (días 27-30)</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="font-bold text-slate-900 text-sm">Consultas Clave de Detección Forense (SQL / DAX)</h4>
+
+          <div class="bg-navy-900 text-slate-100 rounded-xl p-4 font-mono text-[11px] overflow-x-auto">
+            <div class="text-emerald-400 mb-1">-- 1. Detección de Notas Crédito por Devolución SIN Entrada Física en Kardex (Página 2)</div>
+            SELECT nc.id_nc, nc.fecha_nc, nc.id_cliente, nc.sku, nc.valor_nc, nc.usuario_autoriza<br>
+            FROM fact_notas_credito nc<br>
+            INNER JOIN dim_motivo_devolucion m ON nc.id_motivo = m.id_motivo<br>
+            LEFT JOIN fact_kardex k ON nc.id_nc = k.doc_referencia AND k.tipo_mov = 'ENTRADA_DEVOLUCION'<br>
+            WHERE m.requiere_ingreso_fisico = TRUE AND k.id_mov IS NULL;
+          </div>
+
+          <div class="bg-navy-900 text-slate-100 rounded-xl p-4 font-mono text-[11px] overflow-x-auto">
+            <div class="text-amber-400 mb-1">-- 2. Detección de Robo Hormiga: Ajustes Manuales Bajo Umbral de Supervisión ($500,000 COP) (Página 3)</div>
+            SELECT id_usuario, id_bodega, COUNT(*) AS num_ajustes, AVG(ABS(costo_total)) AS promedio_ajuste, SUM(ABS(costo_total)) AS fuga_total<br>
+            FROM fact_kardex<br>
+            WHERE tipo_mov IN ('AJUSTE_AVERIA', 'AJUSTE_INVENTARIO_NEG') <br>
+            &nbsp;&nbsp;AND ABS(costo_total) BETWEEN 450000 AND 499999<br>
+            GROUP BY id_usuario, id_bodega HAVING COUNT(*) &gt;= 5;
+          </div>
+
+          <div class="bg-navy-900 text-slate-100 rounded-xl p-4 font-mono text-[11px] overflow-x-auto">
+            <div class="text-crimson-400 mb-1">-- 3. Medida DAX: Erosión por Ventas Bajo Costo de Reposición Actual (Página 1)</div>
+            Fuga_Costo_Reposicion = <br>
+            SUMX(<br>
+            &nbsp;&nbsp;fact_ventas,<br>
+            &nbsp;&nbsp;VAR CostoUltimaOC = RELATED(dim_productos[costo_ultima_oc])<br>
+            &nbsp;&nbsp;VAR CostoContable = fact_ventas[costo_unitario_erp]<br>
+            &nbsp;&nbsp;RETURN IF(CostoUltimaOC &gt; CostoContable, (CostoUltimaOC - CostoContable) * fact_ventas[cantidad], 0)<br>
+            )
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-slate-100 px-6 py-3 border-t border-slate-200 flex justify-end">
+        <button type="button" onclick="closeSqlModal()" class="bg-navy-800 hover:bg-navy-700 text-white text-xs font-semibold px-4 py-2 rounded-lg transition">
+          Cerrar Especificación Técnica
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       JAVASCRIPT ENGINE: STATE, DATA MODELS & DYNAMIC RENDERERS
+       ===================================================================== -->
+  <script>
+    // Global State
+    let currentTab = 0;
+    let selectedGmroiQuadrant = 'DESTRUCTORES';
+
+    // Scope selection state for Page 6 (All 5 pillars active by default)
+    let activeScopePillars = {
+      1: true, // Erosión del Margen ($46.0M base)
+      2: true, // Devoluciones y NC ($21.0M base)
+      3: true, // Inventario y Kardex ($26.5M base)
+      4: true, // Compras y CXP ($16.5M base)
+      5: true  // Cartera y Costos de Servir ($32.5M base)
+    };
+
+    // Multipliers for Branch (Sucursal) and Channel (Canal)
+    const branchMultipliers = {
+      ALL:  { scale: 1.00, name: 'Todas las Sucursales' },
+      CALI: { scale: 0.38, name: 'Cali Principal' },
+      BOG:  { scale: 0.32, name: 'Bogotá Norte' },
+      MED:  { scale: 0.18, name: 'Medellín Sur' },
+      BAQ:  { scale: 0.12, name: 'Barranquilla Costa' }
+    };
+
+    const channelMultipliers = {
+      ALL:  { scale: 1.00, name: 'Todos los Canales' },
+      MAY:  { scale: 0.42, name: 'Mayorista' },
+      TAT:  { scale: 0.26, name: 'Distribuidores TAT' },
+      INST: { scale: 0.22, name: 'Institucional B2B' },
+      ECOM: { scale: 0.10, name: 'E-Commerce' }
+    };
+
+    // Base Monthly Metrics ($M COP) at Consolidated Level (Total = $142.5M COP / month -> $1,710.0M / year)
+    const baseMetrics = {
+      grossSales: 1850.0,
+      invoicesCount: 14280,
+      trappedCapital: 420.0,
+      totalBaseLeak: 142.5,
+      pillars: [
+        {
+          id: 1,
+          title: '1. Erosión del Margen Comercial (Cascada del Precio)',
+          shortTitle: '1. Margen Comercial',
+          baseLeak: 46.0,
+          share: 32.3,
+          color: 'crimson',
+          icon: 'trending-down',
+          tables: 'fact_ventas • dim_lista_precios • dim_vendedor',
+          highlight: 'Descuentos fuera de política (>8%) y ventas bajo costo de reposición.'
+        },
+        {
+          id: 5,
+          title: '5. Cartera, Condiciones de Pago y Costos de Servir',
+          shortTitle: '5. Cartera y Logística',
+          baseLeak: 32.5,
+          share: 22.8,
+          color: 'crimson',
+          icon: 'truck',
+          tables: 'fact_recaudos • dim_condicion_pago • fact_fletes',
+          highlight: 'Mora oculta en clientes de contado (42d) y micro-pedidos con flete > margen.'
+        },
+        {
+          id: 3,
+          title: '3. Fugas en Inventario y Capital de Trabajo (Kardex)',
+          shortTitle: '3. Inventario y Kardex',
+          baseLeak: 26.5,
+          share: 18.6,
+          color: 'amber',
+          icon: 'package-search',
+          tables: 'fact_kardex • fact_saldos_inventario • dim_usuario',
+          highlight: '$420M atrapados (GMROI < 1), robo hormiga ($450k-$499k) y stock fantasma.'
+        },
+        {
+          id: 2,
+          title: '2. Anomalías en Devoluciones y Notas Crédito',
+          shortTitle: '2. Devoluciones y NC',
+          baseLeak: 21.0,
+          share: 14.7,
+          color: 'amber',
+          icon: 'file-warning',
+          tables: 'fact_notas_credito • fact_kardex • dim_motivo',
+          highlight: 'Channel stuffing días 27-30 y Notas Crédito sin entrada física en Kardex.'
+        },
+        {
+          id: 4,
+          title: '4. Variaciones en Compras y Cuentas por Pagar',
+          shortTitle: '4. Compras y CXP',
+          baseLeak: 16.5,
+          share: 11.6,
+          color: 'blue',
+          icon: 'shopping-cart',
+          tables: 'fact_ordenes_compra • fact_facturas_proveedor',
+          highlight: 'Discrepancias en 3-Way Match y pérdida de pronto pago (>44% E.A.).'
+        }
+      ]
+    };
+
+    // Formatting Helpers
+    function fmtM(val, decimals) {
+      const dec = typeof decimals === 'number' ? decimals : 1;
+      return '$' + Number(val).toLocaleString('es-CO', { minimumFractionDigits: dec, maximumFractionDigits: dec }) + 'M';
+    }
+
+    function fmtCOP(val) {
+      return '$' + Math.round(Number(val)).toLocaleString('es-CO');
+    }
+
+    function getScale() {
+      const branchEl = document.getElementById('branchSelect');
+      const channelEl = document.getElementById('channelSelect');
+      const b = branchEl ? branchEl.value : 'ALL';
+      const c = channelEl ? channelEl.value : 'ALL';
+      return branchMultipliers[b].scale * channelMultipliers[c].scale;
+    }
+
+    function getContextNames() {
+      const branchEl = document.getElementById('branchSelect');
+      const channelEl = document.getElementById('channelSelect');
+      const b = branchEl ? branchEl.value : 'ALL';
+      const c = channelEl ? channelEl.value : 'ALL';
+      return {
+        branchName: branchMultipliers[b].name,
+        channelName: channelMultipliers[c].name
+      };
+    }
+
+    function getRoiParams() {
+      const pctEl = document.getElementById('roiSliderPct');
+      const setupEl = document.getElementById('roiSliderSetup');
+      const feeEl = document.getElementById('roiSliderFee');
+      const marginEl = document.getElementById('roiSliderMargin');
+
+      const pct = parseFloat(pctEl ? pctEl.value : 18) / 100;
+      const setupM = parseFloat(setupEl ? setupEl.value : 18.0);
+      const feeM = parseFloat(feeEl ? feeEl.value : 2.0);
+      const netMargin = parseFloat(marginEl ? marginEl.value : 6.0) / 100;
+      return { pct: pct, setupM: setupM, feeM: feeM, netMargin: netMargin };
+    }
+
+    // Navigation Tab Switcher (0 to 6)
+    function switchTab(tabIndex) {
+      currentTab = tabIndex;
+      for (let i = 0; i <= 6; i++) {
+        const page = document.getElementById('page-' + i);
+        const btn = document.getElementById('tab-btn-' + i);
+        if (!page || !btn) continue;
+
+        if (i === tabIndex) {
+          page.classList.remove('hidden');
+          if (i === 6) {
+            btn.classList.add('active-roi');
+            btn.classList.remove('bg-emerald-50', 'text-emerald-700');
+          } else {
+            btn.classList.add('active');
+          }
+        } else {
+          page.classList.add('hidden');
+          btn.classList.remove('active', 'active-roi');
+          if (i === 6) {
+            btn.classList.add('bg-emerald-50', 'text-emerald-700');
+          }
+        }
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      updateDashboard();
+    }
+
+    // Reset Global Filters & ROI Defaults
+    function resetFilters() {
+      const branchEl = document.getElementById('branchSelect');
+      const channelEl = document.getElementById('channelSelect');
+      if (branchEl) branchEl.value = 'ALL';
+      if (channelEl) channelEl.value = 'ALL';
+
+      const pctEl = document.getElementById('roiSliderPct');
+      const setupEl = document.getElementById('roiSliderSetup');
+      const feeEl = document.getElementById('roiSliderFee');
+      const marginEl = document.getElementById('roiSliderMargin');
+
+      if (pctEl) pctEl.value = 18;
+      if (setupEl) setupEl.value = 18;
+      if (feeEl) feeEl.value = 2.0;
+      if (marginEl) marginEl.value = 6.0;
+
+      setAllScopePillars(true);
+      updateDashboard();
+    }
+
+    // Modal controls
+    function openSqlModal() {
+      const m = document.getElementById('sqlModal');
+      if (!m) return;
+      m.classList.remove('hidden');
+      m.classList.add('flex');
+    }
+
+    function closeSqlModal() {
+      const m = document.getElementById('sqlModal');
+      if (!m) return;
+      m.classList.add('hidden');
+      m.classList.remove('flex');
+    }
+
+    // Scope Pillar Toggle Functions (Page 6)
+    function toggleScopePillar(pillarId) {
+      const activeCount = Object.values(activeScopePillars).filter(Boolean).length;
+      if (activeScopePillars[pillarId] && activeCount <= 1) {
+        return;
+      }
+      activeScopePillars[pillarId] = !activeScopePillars[pillarId];
+      updateDashboard();
+    }
+
+    function setAllScopePillars(state) {
+      [1, 2, 3, 4, 5].forEach(function(id) {
+        activeScopePillars[id] = state;
+      });
+      updateDashboard();
+    }
+
+    function setQuickTop2Scope() {
+      activeScopePillars = { 1: true, 2: false, 3: false, 4: false, 5: true };
+      updateDashboard();
+    }
+
+    // Quick Scenario Buttons (12%, 18%, 30%)
+    function applyRoiScenario(pctVal) {
+      const slider = document.getElementById('roiSliderPct');
+      if (slider) {
+        slider.value = pctVal;
+      }
+      updateDashboard();
+    }
+
+    // Master Update Orchestrator
+    function updateDashboard() {
+      try {
+        const scale = getScale();
+        const roi = getRoiParams();
+        const goalPctText = Math.round(roi.pct * 100) + '%';
+
+        const totalMonthlyLeak = baseMetrics.totalBaseLeak * scale;
+        const totalAnnualLeak = totalMonthlyLeak * 12;
+
+        document.querySelectorAll('.goal-pct-inline').forEach(function(el) {
+          el.textContent = goalPctText;
+        });
+
+        renderPage0(scale, roi, totalMonthlyLeak, totalAnnualLeak);
+        renderPage1(scale);
+        renderPage2(scale);
+        renderPage3(scale);
+        renderPage4(scale);
+        renderPage5(scale);
+        renderPage6(scale, roi);
+
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+          window.lucide.createIcons();
+        }
+      } catch (err) {
+        console.error('Error actualizando dashboard:', err);
+      }
+    }
+
+    /* =====================================================================
+       RENDER PAGE 0: RESUMEN EJECUTIVO
+       ===================================================================== */
+    function renderPage0(scale, roi, totalMonthlyLeak, totalAnnualLeak) {
+      const ctx = getContextNames();
+      const grossSales = baseMetrics.grossSales * scale;
+      const trappedCap = baseMetrics.trappedCapital * scale;
+      const monthlyRec = totalMonthlyLeak * roi.pct;
+      const equivMonthlySales = monthlyRec / roi.netMargin;
+      const equivAnnualSales = equivMonthlySales * 12;
+      const pctInt = Math.round(roi.pct * 100);
+      const marginPctText = (roi.netMargin * 100).toFixed(1);
+
+      document.getElementById('p0-context-label').textContent = ctx.branchName + ' • ' + ctx.channelName;
+      document.getElementById('p0-banner-leak-inline').textContent = fmtM(totalMonthlyLeak) + ' COP';
+
+      document.getElementById('kpi-monthly-leak').textContent = fmtM(totalMonthlyLeak);
+      document.getElementById('kpi-gross-sales').textContent = fmtM(grossSales) + ' / mes';
+      document.getElementById('kpi-annual-leak').textContent = fmtM(totalAnnualLeak);
+      document.getElementById('kpi-trapped-capital').textContent = fmtM(trappedCap) + ' (GMROI < 1)';
+      document.getElementById('kpi-equiv-sales').textContent = fmtM(equivMonthlySales);
+      document.getElementById('kpi-equiv-text').innerHTML =
+        'Al <strong>' + marginPctText + '%</strong> de margen neto, recuperar el <strong>' + pctInt + '%</strong> equivale a vender <strong>' + fmtM(equivAnnualSales) + '</strong> extra al año.';
+
+      document.getElementById('kpi-rec-pct').textContent = pctInt + '%';
+      document.getElementById('kpi-rec-val').textContent = '+' + fmtM(monthlyRec);
+      document.getElementById('p0-total-badge').textContent = 'Fuga Total: ' + fmtM(totalMonthlyLeak) + ' / mes';
+
+      // Render Horizontal Impact Bars
+      const barsContainer = document.getElementById('p0-pillars-bars');
+      barsContainer.innerHTML = baseMetrics.pillars.map(function(p) {
+        const val = p.baseLeak * scale;
+        const rec = val * roi.pct;
+        const barColor = p.color === 'crimson' ? 'bg-crimson-600' : (p.color === 'amber' ? 'bg-amber-500' : 'bg-blue-600');
+        return (
+          '<div onclick="switchTab(' + p.id + ')" class="group cursor-pointer p-2.5 rounded-xl hover:bg-slate-50 border border-transparent hover:border-slate-200 transition">' +
+            '<div class="flex items-center justify-between text-xs mb-1.5">' +
+              '<span class="font-bold text-slate-800 group-hover:text-navy-800 flex items-center gap-1.5">' +
+                '<span>' + p.title + '</span>' +
+                '<i data-lucide="arrow-up-right" class="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition text-emerald-600"></i>' +
+              '</span>' +
+              '<div class="flex items-center gap-3 font-mono">' +
+                '<span class="text-slate-500">' + p.share + '%</span>' +
+                '<span class="font-bold text-crimson-600">' + fmtM(val) + ' / mes</span>' +
+              '</div>' +
+            '</div>' +
+            '<div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden flex">' +
+              '<div class="' + barColor + ' h-full rounded-full transition-all duration-500" style="width: ' + (p.share * 2.6) + '%"></div>' +
+            '</div>' +
+            '<div class="flex justify-between items-center mt-1 text-[11px] text-slate-500">' +
+              '<span>Tablas: <code class="font-mono text-slate-600">' + p.tables + '</code></span>' +
+              '<span class="text-emerald-700 font-mono font-medium">Recuperable (' + pctInt + '%): +' + fmtM(rec) + '/mes</span>' +
+            '</div>' +
+          '</div>'
+        );
+      }).join('');
+
+      // Render Right-Side Interactive Cards
+      const cardsContainer = document.getElementById('p0-pillar-cards');
+      cardsContainer.innerHTML = baseMetrics.pillars.map(function(p) {
+        const val = p.baseLeak * scale;
+        const badgeBg = p.color === 'crimson'
+          ? 'bg-crimson-50 text-crimson-600 border-crimson-200'
+          : (p.color === 'amber' ? 'bg-amber-50 text-amber-700 border-amber-200' : 'bg-blue-50 text-blue-700 border-blue-200');
+        return (
+          '<div onclick="switchTab(' + p.id + ')" class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm card-hover cursor-pointer flex items-center justify-between gap-3">' +
+            '<div class="space-y-1">' +
+              '<div class="flex items-center gap-2">' +
+                '<span class="text-[11px] font-mono font-bold px-2 py-0.5 rounded border ' + badgeBg + '">Página ' + p.id + '</span>' +
+                '<h4 class="text-xs font-bold text-slate-900">' + p.shortTitle + '</h4>' +
+              '</div>' +
+              '<p class="text-[11px] text-slate-500 line-clamp-1">' + p.highlight + '</p>' +
+            '</div>' +
+            '<div class="text-right shrink-0">' +
+              '<div class="text-sm font-mono font-extrabold text-crimson-600">' + fmtM(val) + '</div>' +
+              '<span class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600">' +
+                '<span>Auditar</span>' +
+                '<i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>' +
+              '</span>' +
+            '</div>' +
+          '</div>'
+        );
+      }).join('');
+
+      // Render Top 6 Transactional Alerts Table
+      const alertsData = [
+        {
+          severity: 'CRÍTICO',
+          sevClass: 'bg-crimson-600 text-white',
+          title: 'Descuentos comerciales fuera de política (>8.0%) otorgados sin autorización',
+          tables: 'fact_ventas × dim_vendedor × dim_lista_precios',
+          impact: 25.2 * scale,
+          tab: 1
+        },
+        {
+          severity: 'CRÍTICO',
+          sevClass: 'bg-crimson-600 text-white',
+          title: 'Clientes con descuento de "Contado (-5%)" pagando en promedio a 42 días',
+          tables: 'fact_recaudos × dim_condicion_pago × dim_clientes',
+          impact: 19.2 * scale,
+          tab: 5
+        },
+        {
+          severity: 'ALTO',
+          sevClass: 'bg-amber-500 text-white',
+          title: 'Pedidos micro-fragmentados donde el flete de entrega supera el margen bruto',
+          tables: 'fact_ventas × fact_fletes_entrega × dim_rutas',
+          impact: 13.3 * scale,
+          tab: 5
+        },
+        {
+          severity: 'CRÍTICO',
+          sevClass: 'bg-crimson-600 text-white',
+          title: 'SKUs vendidos por debajo del Costo de Reposición Actual (Última OC)',
+          tables: 'fact_ventas × fact_ordenes_compra (Último Costo)',
+          impact: 12.6 * scale,
+          tab: 1
+        },
+        {
+          severity: 'CRÍTICO',
+          sevClass: 'bg-crimson-600 text-white',
+          title: 'Notas Crédito por devolución emitidas SIN documento de entrada en Kardex',
+          tables: 'fact_notas_credito LEFT JOIN fact_kardex',
+          impact: 11.4 * scale,
+          tab: 2
+        },
+        {
+          severity: 'ALTO',
+          sevClass: 'bg-amber-500 text-white',
+          title: 'Patrón de "robo hormiga": ajustes manuales en Kardex entre $450k y $499k COP',
+          tables: 'fact_kardex × dim_usuario_bodega',
+          impact: 9.8 * scale,
+          tab: 3
+        }
+      ];
+
+      document.getElementById('p0-alerts-table').innerHTML = alertsData.map(function(a) {
+        return (
+          '<tr class="hover:bg-slate-50 transition">' +
+            '<td class="py-3 px-4">' +
+              '<span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded ' + a.sevClass + '">' + a.severity + '</span>' +
+            '</td>' +
+            '<td class="py-3 px-4 font-semibold text-slate-900">' + a.title + '</td>' +
+            '<td class="py-3 px-4 font-mono text-[11px] text-slate-600">' + a.tables + '</td>' +
+            '<td class="py-3 px-4 text-right font-mono font-bold text-crimson-600">-' + fmtM(a.impact) + ' / mes</td>' +
+            '<td class="py-3 px-4 text-right font-mono font-bold text-emerald-600">+' + fmtM(a.impact * roi.pct) + ' / mes</td>' +
+            '<td class="py-3 px-4 text-center">' +
+              '<button type="button" onclick="switchTab(' + a.tab + ')" class="bg-navy-800 hover:bg-navy-700 text-white text-[11px] font-medium px-3 py-1 rounded-lg transition inline-flex items-center gap-1">' +
+                '<span>Auditar Caso</span>' +
+                '<i data-lucide="arrow-right" class="w-3 h-3"></i>' +
+              '</button>' +
+            '</td>' +
+          '</tr>'
+        );
+      }).join('');
+    }
+
+    /* =====================================================================
+       RENDER PAGE 1: EROSIÓN DEL MARGEN COMERCIAL ($46.0M Base)
+       ===================================================================== */
+    function renderPage1(scale) {
+      const totalLeak = 46.0 * scale;
+      document.getElementById('p1-total-leak').textContent = fmtM(totalLeak) + ' COP / mes';
+      document.getElementById('p1-replacement-inline').textContent = fmtM(12.6 * scale) + ' COP/mes';
+
+      const gross = 1850.0 * scale;
+      const dtoPol = 80.1 * scale;
+      const dtoExcess = 25.2 * scale;
+      const rebatesUnmet = 8.2 * scale;
+      const netInvoiced = gross - dtoPol - dtoExcess - rebatesUnmet;
+      const cmvAccounting = 1261.0 * scale;
+      const replacementGap = 12.6 * scale;
+      const realPocketMargin = netInvoiced - cmvAccounting - replacementGap;
+      const pocketPct = ((realPocketMargin / gross) * 100).toFixed(1);
+
+      document.getElementById('p1-pocket-badge').textContent = 'Pocket Margin Real: ' + pocketPct + '% (' + fmtM(realPocketMargin) + ')';
+
+      const waterfallSteps = [
+        { label: '1. Facturación Bruta a Precio de Lista', val: gross, pct: '100.0%', type: 'base', width: 100, note: 'Valor teórico según dim_lista_precios' },
+        { label: '2. (-) Descuentos Comerciales dentro de Política (≤8%)', val: -dtoPol, pct: '-4.3%', type: 'normal-deduct', width: 42, note: 'Escalas por volumen autorizadas' },
+        { label: '3. (-) FUGA: Descuentos Fuera de Política (>8% sin autorización)', val: -dtoExcess, pct: '-1.4%', type: 'leak', width: 25, note: 'Concesiones discrecionales de vendedores' },
+        { label: '4. (-) FUGA: Notas Crédito por Rebates / Bonificaciones sin Meta', val: -rebatesUnmet, pct: '-0.4%', type: 'leak', width: 16, note: 'Rebates otorgados a clientes que no cumplieron cuota' },
+        { label: '5. (=) Venta Neta Efectivamente Facturada', val: netInvoiced, pct: '93.9%', type: 'subtotal', width: 93.9, note: 'Ingreso neto antes del costo de mercancía' },
+        { label: '6. (-) Costo de Mercancía Vendida (Costo Promedio ERP)', val: -cmvAccounting, pct: '-68.2%', type: 'cost', width: 68.2, note: 'Costo histórico registrado en kardex' },
+        { label: '7. (-) FUGA: Desfasaje Costo de Reposición (Última OC vs Promedio)', val: -replacementGap, pct: '-0.7%', type: 'leak', width: 20, note: 'Descapitalización por vender sin actualizar lista de precios' },
+        { label: '8. (=) Margen Comercial Real de Bolsillo (Pocket Margin)', val: realPocketMargin, pct: pocketPct + '%', type: 'final', width: (realPocketMargin / gross) * 100 * 2.2, note: 'Utilidad comercial real para cubrir logística y operación' }
+      ];
+
+      document.getElementById('p1-waterfall-container').innerHTML = waterfallSteps.map(function(s) {
+        let barStyle = 'bg-navy-800';
+        let textStyle = 'text-slate-900';
+        let rowBg = 'bg-slate-50/70 border-slate-200';
+        if (s.type === 'leak') {
+          barStyle = 'bg-crimson-600';
+          textStyle = 'text-crimson-600 font-extrabold';
+          rowBg = 'bg-crimson-50/60 border-crimson-200';
+        } else if (s.type === 'final') {
+          barStyle = 'bg-emerald-600';
+          textStyle = 'text-emerald-700 font-extrabold';
+          rowBg = 'bg-emerald-50/60 border-emerald-200';
+        } else if (s.type === 'subtotal') {
+          barStyle = 'bg-navy-600';
+        } else if (s.type === 'cost' || s.type === 'normal-deduct') {
+          barStyle = 'bg-slate-400';
+        }
+
+        const formattedVal = s.val >= 0 ? fmtM(s.val) : '-' + fmtM(Math.abs(s.val));
+        return (
+          '<div class="p-2.5 rounded-xl border ' + rowBg + '">' +
+            '<div class="flex items-center justify-between text-xs mb-1">' +
+              '<span class="font-semibold text-slate-800">' + s.label + '</span>' +
+              '<div class="flex items-center gap-2 font-mono">' +
+                '<span class="text-[11px] text-slate-500">(' + s.pct + ')</span>' +
+                '<span class="' + textStyle + '">' + formattedVal + '</span>' +
+              '</div>' +
+            '</div>' +
+            '<div class="w-full bg-slate-200/70 h-2.5 rounded-full overflow-hidden">' +
+              '<div class="' + barStyle + ' h-full rounded-full" style="width: ' + Math.min(100, Math.max(8, s.width)) + '%"></div>' +
+            '</div>' +
+            '<div class="text-[10px] text-slate-500 mt-1">' + s.note + '</div>' +
+          '</div>'
+        );
+      }).join('');
+
+      // Salespeople Scatter & Table
+      const salespeople = [
+        { name: 'Carlos Mendoza', vol: 410 * scale, dto: 14.2, leak: 15.1 * scale, margin: 11.4 },
+        { name: 'Andrés Pineda', vol: 345 * scale, dto: 11.8, leak: 8.0 * scale, margin: 13.8 },
+        { name: 'Julián Ríos', vol: 290 * scale, dto: 8.9, leak: 2.1 * scale, margin: 17.2 },
+        { name: 'Laura Gómez', vol: 315 * scale, dto: 6.4, leak: 0.0, margin: 21.5 },
+        { name: 'Diana Castro', vol: 265 * scale, dto: 5.8, leak: 0.0, margin: 22.4 },
+        { name: 'Camilo Vargas', vol: 225 * scale, dto: 6.1, leak: 0.0, margin: 21.9 }
+      ];
+
+      const svg = document.getElementById('p1-scatter-svg');
+      const maxVol = 450 * scale;
+      const policyY = 180 - (8.0 / 16.0) * 150;
+      let svgContent =
+        '<line x1="45" y1="20" x2="45" y2="180" stroke="#CBD5E1" stroke-width="1.5" />' +
+        '<line x1="45" y1="180" x2="395" y2="180" stroke="#CBD5E1" stroke-width="1.5" />' +
+        '<line x1="45" y1="' + policyY + '" x2="395" y2="' + policyY + '" stroke="#E11D48" stroke-width="1.5" stroke-dasharray="4 4" />' +
+        '<text x="392" y="' + (policyY - 5) + '" text-anchor="end" fill="#E11D48" font-size="9" font-family="JetBrains Mono" font-weight="bold">Límite Política (8.0% Dto)</text>' +
+        '<rect x="45" y="20" width="350" height="' + (policyY - 20) + '" fill="#FFE4E6" opacity="0.35" />' +
+        '<text x="220" y="202" text-anchor="middle" fill="#64748B" font-size="10">Volumen de Facturación Mensual ($M COP) →</text>' +
+        '<text x="12" y="100" text-anchor="middle" fill="#64748B" font-size="9" transform="rotate(-90 12,100)">% Dto. Promedio →</text>';
+
+      salespeople.forEach(function(sp) {
+        const cx = 55 + (sp.vol / maxVol) * 320;
+        const cy = 180 - (sp.dto / 16.0) * 150;
+        const color = sp.dto > 10 ? '#E11D48' : (sp.dto > 8 ? '#D97706' : '#059669');
+        svgContent +=
+          '<g class="cursor-pointer">' +
+            '<circle cx="' + cx + '" cy="' + cy + '" r="7" fill="' + color + '" fill-opacity="0.85" stroke="#FFFFFF" stroke-width="2" />' +
+            '<text x="' + cx + '" y="' + (cy - 10) + '" text-anchor="middle" fill="#0F172A" font-size="9" font-weight="600">' + sp.name.split(' ')[0] + ' (' + sp.dto + '%)</text>' +
+          '</g>';
+      });
+      svg.innerHTML = svgContent;
+
+      document.getElementById('p1-salespeople-table').innerHTML = salespeople.map(function(sp) {
+        const dtoBadge = sp.dto > 8
+          ? '<span class="text-crimson-600 font-bold">' + sp.dto.toFixed(1) + '%</span>'
+          : '<span class="text-emerald-600 font-semibold">' + sp.dto.toFixed(1) + '%</span>';
+        return (
+          '<tr class="hover:bg-slate-50">' +
+            '<td class="py-2 px-2 font-semibold text-slate-800">' + sp.name + '</td>' +
+            '<td class="py-2 px-2 text-right font-mono">' + fmtM(sp.vol) + '</td>' +
+            '<td class="py-2 px-2 text-right font-mono">' + dtoBadge + '</td>' +
+            '<td class="py-2 px-2 text-right font-mono ' + (sp.leak > 0 ? 'text-crimson-600 font-bold' : 'text-slate-400') + '">' + (sp.leak > 0 ? '-' + fmtM(sp.leak) : '$0.0M') + '</td>' +
+            '<td class="py-2 px-2 text-right font-mono font-semibold ' + (sp.margin < 15 ? 'text-crimson-600' : 'text-emerald-700') + '">' + sp.margin.toFixed(1) + '%</td>' +
+          '</tr>'
+        );
+      }).join('');
+
+      const skusReplacement = [
+        { sku: 'SKU-4092 • Aceite Industrial Sintético 20L', cat: 'Lubricantes', price: 248000, costErp: 218000, costOc: 254000, loss: 4.6 * scale },
+        { sku: 'SKU-1184 • Cable Cobre Encauchetado 3x12 AWG (Rollo)', cat: 'Eléctricos', price: 412000, costErp: 365000, costOc: 421000, loss: 3.5 * scale },
+        { sku: 'SKU-7721 • Resina Poliéster Importada Tambor 200Kg', cat: 'Químicos', price: 1890000, costErp: 1680000, costOc: 1920000, loss: 2.7 * scale },
+        { sku: 'SKU-3019 • Rodamiento Cónico Pesado Ref. 32214', cat: 'Transmisión', price: 94500, costErp: 82000, costOc: 96000, loss: 1.8 * scale }
+      ];
+
+      document.getElementById('p1-sku-replacement-table').innerHTML = skusReplacement.map(function(item) {
+        const fakeMargin = (((item.price - item.costErp) / item.price) * 100).toFixed(1);
+        const realMargin = (((item.price - item.costOc) / item.price) * 100).toFixed(1);
+        return (
+          '<tr class="hover:bg-slate-50">' +
+            '<td class="py-3 px-4 font-semibold text-slate-900">' + item.sku + '</td>' +
+            '<td class="py-3 px-4 text-slate-600">' + item.cat + '</td>' +
+            '<td class="py-3 px-4 text-right font-mono">' + fmtCOP(item.price) + '</td>' +
+            '<td class="py-3 px-4 text-right font-mono text-slate-600">' + fmtCOP(item.costErp) + '</td>' +
+            '<td class="py-3 px-4 text-right font-mono font-semibold text-emerald-600">+' + fakeMargin + '% (Aparente)</td>' +
+            '<td class="py-3 px-4 text-right font-mono font-bold text-slate-900">' + fmtCOP(item.costOc) + '</td>' +
+            '<td class="py-3 px-4 text-right font-mono font-bold text-crimson-600">' + realMargin + '% (Descapitaliza)</td>' +
+            '<td class="py-3 px-4 text-right font-mono font-extrabold text-crimson-600">-' + fmtM(item.loss) + ' / mes</td>' +
+          '</tr>'
+        );
+      }).join('');
+    }
+
+    /* =====================================================================
+       RENDER PAGE 2: ANOMALÍAS EN DEVOLUCIONES Y NOTAS CRÉDITO ($21.0M Base)
+       ===================================================================== */
+    function renderPage2(scaleOverride) {
+      const scale = scaleOverride || getScale();
+      const salesFilterEl = document.getElementById('p2SalesFilter');
+      const salesFilter = salesFilterEl ? salesFilterEl.value : 'ALL';
+      const filterFactor = salesFilter === 'CARLOS' ? 0.45 : (salesFilter === 'ANDRES' ? 0.30 : (salesFilter === 'LAURA' ? 0.12 : 1.0));
+      const spikeMultiplier = salesFilter === 'LAURA' ? 0.25 : 1.0;
+
+      document.getElementById('p2-total-leak').textContent = fmtM(21.0 * scale) + ' COP / mes';
+      document.getElementById('p2-endmonth-sales').textContent = fmtM(518.0 * scale * filterFactor) + ' COP';
+      document.getElementById('p2-earlymonth-nc').textContent = '-' + fmtM(39.4 * scale * filterFactor * spikeMultiplier) + ' COP';
+      document.getElementById('p2-fake-commissions').textContent = fmtM(9.6 * scale * filterFactor * spikeMultiplier) + ' COP / mes';
+      document.getElementById('p2-missing-kardex-badge').textContent = 'Pérdida Directa: ' + fmtM(11.4 * scale) + ' COP';
+
+      const daysData = [
+        { label: 'D1-5', val: 42, type: 'normal' },
+        { label: 'D6-10', val: 46, type: 'normal' },
+        { label: 'D11-15', val: 49, type: 'normal' },
+        { label: 'D16-20', val: 44, type: 'normal' },
+        { label: 'D21-26', val: 52, type: 'normal' },
+        { label: 'Día 27', val: Math.round(92 * spikeMultiplier + 25), type: 'spike' },
+        { label: 'Día 28', val: Math.round(118 * spikeMultiplier + 25), type: 'spike' },
+        { label: 'Día 29', val: Math.round(142 * spikeMultiplier + 25), type: 'spike' },
+        { label: 'Día 30 (Cierre)', val: Math.round(166 * spikeMultiplier + 25), type: 'spike' },
+        { label: 'NC Día 1', val: -Math.round(58 * spikeMultiplier), type: 'nc' },
+        { label: 'NC Día 2', val: -Math.round(74 * spikeMultiplier), type: 'nc' },
+        { label: 'NC Día 3', val: -Math.round(62 * spikeMultiplier), type: 'nc' },
+        { label: 'NC Día 4-5', val: -Math.round(48 * spikeMultiplier), type: 'nc' }
+      ];
+
+      const svg = document.getElementById('p2-stuffing-svg');
+      const zeroY = 135;
+      let barsHtml =
+        '<line x1="35" y1="' + zeroY + '" x2="680" y2="' + zeroY + '" stroke="#64748B" stroke-width="1.5" />' +
+        '<text x="30" y="35" text-anchor="end" fill="#64748B" font-size="9" font-family="JetBrains Mono">+Venta</text>' +
+        '<text x="30" y="200" text-anchor="end" fill="#E11D48" font-size="9" font-family="JetBrains Mono">-Notas Cr.</text>';
+
+      daysData.forEach(function(d, idx) {
+        const x = 48 + idx * 48;
+        const barW = 32;
+        if (d.val >= 0) {
+          const h = (d.val / 190) * 105;
+          const y = zeroY - h;
+          const fill = d.type === 'spike' ? '#F59E0B' : '#16354D';
+          barsHtml +=
+            '<rect x="' + x + '" y="' + y + '" width="' + barW + '" height="' + h + '" rx="4" fill="' + fill + '" />' +
+            '<text x="' + (x + barW / 2) + '" y="' + (y - 5) + '" text-anchor="middle" fill="#0F172A" font-size="8.5" font-family="JetBrains Mono" font-weight="600">$' + Math.round(d.val * scale * filterFactor) + 'M</text>' +
+            '<text x="' + (x + barW / 2) + '" y="' + (zeroY + 14) + '" text-anchor="middle" fill="#475569" font-size="8.5" font-weight="600">' + d.label + '</text>';
+        } else {
+          const h = (Math.abs(d.val) / 100) * 65;
+          const fill = '#E11D48';
+          barsHtml +=
+            '<rect x="' + x + '" y="' + zeroY + '" width="' + barW + '" height="' + h + '" rx="4" fill="' + fill + '" />' +
+            '<text x="' + (x + barW / 2) + '" y="' + (zeroY + h + 11) + '" text-anchor="middle" fill="#E11D48" font-size="8.5" font-family="JetBrains Mono" font-weight="bold">-$' + Math.max(1, Math.round(Math.abs(d.val) * 0.18 * scale * filterFactor)) + 'M</text>' +
+            '<text x="' + (x + barW / 2) + '" y="' + (zeroY - 6) + '" text-anchor="middle" fill="#E11D48" font-size="8" font-weight="600">' + d.label + '</text>';
+        }
+      });
+      svg.innerHTML = barsHtml;
+
+      const reasons = [
+        { name: 'Producto no solicitado / Pedido forzado al cierre', pct: 45, val: 9.5 * scale, color: 'bg-crimson-600' },
+        { name: 'Diferencia en precio o descuento no aplicado en factura', pct: 28, val: 5.9 * scale, color: 'bg-amber-500' },
+        { name: 'Avería en transporte propio (Logística Inversa)', pct: 17, val: 3.6 * scale, color: 'bg-amber-600' },
+        { name: 'Producto con fecha de vencimiento corta', pct: 10, val: 2.0 * scale, color: 'bg-slate-500' }
+      ];
+
+      document.getElementById('p2-reasons-list').innerHTML = reasons.map(function(r) {
+        return (
+          '<div>' +
+            '<div class="flex justify-between text-xs mb-1">' +
+              '<span class="font-semibold text-slate-800">' + r.name + '</span>' +
+              '<span class="font-mono font-bold text-slate-900">' + fmtM(r.val) + ' (' + r.pct + '%)</span>' +
+            '</div>' +
+            '<div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">' +
+              '<div class="' + r.color + ' h-full rounded-full" style="width: ' + r.pct + '%"></div>' +
+            '</div>' +
+          '</div>'
+        );
+      }).join('');
+
+      const missingKardexRows = [
+        { nc: 'NC-2026-8841', date: '03/Oct/2026', client: 'Distribuciones El Sol SAS (900.412.881)', sku: 'SKU-4092 • Aceite Sintético (18 Unid)', val: 4.46 * scale, user: 'usr_facturacion02', status: 'SIN ENTRADA FÍSICA' },
+        { nc: 'NC-2026-8859', date: '04/Oct/2026', client: 'Ferretería Industrial del Valle (890.311.092)', sku: 'SKU-1184 • Cable Cobre 3x12 (9 Rollos)', val: 3.71 * scale, user: 'usr_cartera01', status: 'SIN ENTRADA FÍSICA' },
+        { nc: 'NC-2026-8904', date: '05/Oct/2026', client: 'Comercializadora Andina B2B (901.008.441)', sku: 'SKU-5510 • Válvula Inoxidable 2" (14 Unid)', val: 3.23 * scale, user: 'usr_facturacion02', status: 'SIN ENTRADA FÍSICA' }
+      ];
+
+      document.getElementById('p2-nc-kardex-table').innerHTML = missingKardexRows.map(function(r) {
+        return (
+          '<tr class="hover:bg-crimson-50/30">' +
+            '<td class="py-3 px-4 font-mono font-bold text-crimson-600">' + r.nc + '</td>' +
+            '<td class="py-3 px-4 font-mono text-slate-600">' + r.date + '</td>' +
+            '<td class="py-3 px-4 font-semibold text-slate-900">' + r.client + '</td>' +
+            '<td class="py-3 px-4 text-slate-700">' + r.sku + '</td>' +
+            '<td class="py-3 px-4 text-right font-mono font-bold text-crimson-600">' + fmtM(r.val, 2) + ' COP</td>' +
+            '<td class="py-3 px-4 text-center"><span class="font-mono text-[10px] bg-crimson-100 text-crimson-700 px-2 py-0.5 rounded font-bold">NULL (No Existe)</span></td>' +
+            '<td class="py-3 px-4 font-mono text-slate-700">' + r.user + '</td>' +
+            '<td class="py-3 px-4 text-center"><span class="bg-crimson-600 text-white text-[10px] font-mono font-bold px-2.5 py-1 rounded-full">' + r.status + '</span></td>' +
+          '</tr>'
+        );
+      }).join('');
+    }
+
+    /* =====================================================================
+       RENDER PAGE 3: FUGAS EN INVENTARIO Y CAPITAL DE TRABAJO ($26.5M Base)
+       ===================================================================== */
+    function selectGmroi(qKey) {
+      selectedGmroiQuadrant = qKey;
+      renderPage3();
+      if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons();
+      }
+    }
+
+    function renderPage3(scaleOverride) {
+      const scale = scaleOverride || getScale();
+      document.getElementById('p3-total-leak').textContent = fmtM(26.5 * scale) + ' COP / mes';
+
+      const quadrants = {
+        ESTRELLAS: {
+          key: 'ESTRELLAS',
+          title: '1. Estrellas (Alta Rotación / Alto Margen)',
+          gmroi: '3.4x GMROI',
+          capital: 580 * scale,
+          skus: 310,
+          badge: 'bg-emerald-50 text-emerald-700 border-emerald-300',
+          desc: 'Productos líderes que generan caja y rentabilidad. El riesgo crítico aquí es el Stock Fantasma (>45 días sin venta).',
+          action: 'Garantizar nivel de servicio del 99.5% y conteo cíclico semanal para evitar lucro cesante.'
+        },
+        FLUJO: {
+          key: 'FLUJO',
+          title: '2. Generadores de Tráfico (Alta Rotación / Bajo Margen)',
+          gmroi: '1.9x GMROI',
+          capital: 490 * scale,
+          skus: 245,
+          badge: 'bg-blue-50 text-blue-700 border-blue-300',
+          desc: 'Productos gancho de alta velocidad pero margen estrecho. Sensibles a descuentos y fletes.',
+          action: 'Prohibir descuentos adicionales en factura y exigir venta cruzada con productos Estrella.'
+        },
+        ESPECIALIDADES: {
+          key: 'ESPECIALIDADES',
+          title: '3. Especialidades (Baja Rotación / Alto Margen)',
+          gmroi: '1.5x GMROI',
+          capital: 310 * scale,
+          skus: 420,
+          badge: 'bg-amber-50 text-amber-700 border-amber-300',
+          desc: 'Referencias técnicas de buen margen pero lenta salida. Si se sobre-compran pasan a ser hueso.',
+          action: 'Migrar a compra bajo pedido (Back-to-Back) o inventario en consignación con el proveedor.'
+        },
+        DESTRUCTORES: {
+          key: 'DESTRUCTORES',
+          title: '4. Destructores de Capital (GMROI < 1.0x • Hueso)',
+          gmroi: '0.52x GMROI',
+          capital: 420 * scale,
+          skus: 685,
+          badge: 'bg-crimson-50 text-crimson-600 border-crimson-300',
+          desc: '¡ALERTA DE CAPITAL DE TRABAJO! 685 SKUs con baja rotación y bajo margen que atrapan $420M COP y drenan $7.3M/mes en costo financiero y bodegaje.',
+          action: 'Bloquear órdenes de compra automáticas de inmediato y ejecutar plan de liquidación comercial.'
+        }
+      };
+
+      document.getElementById('p3-gmroi-grid').innerHTML = Object.values(quadrants).map(function(q) {
+        const isSelected = q.key === selectedGmroiQuadrant;
+        const borderClass = isSelected ? 'ring-2 ring-navy-800 border-navy-800 bg-slate-50' : 'border-slate-200 bg-white hover:bg-slate-50';
+        return (
+          '<div onclick="selectGmroi(\'' + q.key + '\')" class="p-4 rounded-xl border ' + borderClass + ' cursor-pointer transition">' +
+            '<div class="flex items-center justify-between mb-1.5">' +
+              '<span class="text-[11px] font-mono font-bold px-2 py-0.5 rounded border ' + q.badge + '">' + q.gmroi + '</span>' +
+              '<span class="text-xs font-mono text-slate-500">' + q.skus + ' SKUs</span>' +
+            '</div>' +
+            '<h4 class="text-xs font-bold text-slate-900">' + q.title + '</h4>' +
+            '<div class="mt-2 flex items-baseline justify-between">' +
+              '<span class="text-[11px] text-slate-500">Capital Atrapado:</span>' +
+              '<span class="text-sm font-mono font-extrabold text-slate-900">' + fmtM(q.capital) + ' COP</span>' +
+            '</div>' +
+          '</div>'
+        );
+      }).join('');
+
+      const activeQ = quadrants[selectedGmroiQuadrant];
+      document.getElementById('p3-gmroi-detail').innerHTML =
+        '<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-700 pb-2.5 mb-2.5">' +
+          '<div>' +
+            '<span class="text-[10px] font-mono uppercase tracking-wider text-emerald-400">Diagnóstico del Cuadrante Seleccionado</span>' +
+            '<h4 class="text-sm font-bold text-white">' + activeQ.title + ' — Capital en Inventario: ' + fmtM(activeQ.capital) + ' COP</h4>' +
+          '</div>' +
+          '<span class="text-xs font-mono bg-white/10 px-2.5 py-1 rounded text-emerald-300 shrink-0">' + activeQ.gmroi + '</span>' +
+        '</div>' +
+        '<p class="text-xs text-slate-300 mb-2">' + activeQ.desc + '</p>' +
+        '<div class="text-xs text-emerald-300 font-medium flex items-center gap-1.5">' +
+          '<i data-lucide="check-circle-2" class="w-4 h-4 shrink-0"></i>' +
+          '<span><strong>Plan de Acción:</strong> ' + activeQ.action + '</span>' +
+        '</div>';
+
+      // Histogram of Manual Adjustments showing spike at $450k-$499k just below $500k
+      const thresholdSvg = document.getElementById('p3-threshold-svg');
+      const bins = [
+        { range: '$100k-$249k', count: 7, suspicious: false },
+        { range: '$250k-$349k', count: 10, suspicious: false },
+        { range: '$350k-$419k', count: 13, suspicious: false },
+        { range: '$420k-$449k', count: 32, suspicious: true },
+        { range: '$450k-$499k', count: 58, suspicious: true },
+        { range: '≥$500k (Firma)', count: 3, suspicious: false }
+      ];
+
+      let histHtml =
+        '<line x1="30" y1="105" x2="480" y2="105" stroke="#CBD5E1" stroke-width="1.5" />' +
+        '<line x1="402" y1="10" x2="402" y2="105" stroke="#E11D48" stroke-width="2" stroke-dasharray="4 3" />' +
+        '<text x="396" y="20" text-anchor="end" fill="#E11D48" font-size="8.5" font-family="JetBrains Mono" font-weight="bold">Tope $500k →</text>';
+
+      bins.forEach(function(b, i) {
+        const x = 42 + i * 72;
+        const h = (b.count / 62) * 82;
+        const y = 105 - h;
+        const fill = b.suspicious ? '#E11D48' : '#64748B';
+        histHtml +=
+          '<rect x="' + x + '" y="' + y + '" width="44" height="' + h + '" rx="4" fill="' + fill + '" />' +
+          '<text x="' + (x + 22) + '" y="' + (y - 4) + '" text-anchor="middle" fill="' + fill + '" font-size="9" font-family="JetBrains Mono" font-weight="bold">' + b.count + ' aj.</text>' +
+          '<text x="' + (x + 22) + '" y="120" text-anchor="middle" fill="#475569" font-size="8">' + b.range + '</text>';
+      });
+      thresholdSvg.innerHTML = histHtml;
+
+      const antTheftRows = [
+        { user: 'bodega_aux04 (M. Valencia)', wh: 'Bodega Central • Turno Noche', concept: 'Baja por avería / rotura interna', count: Math.max(4, Math.round(11 * scale)), avg: 486500, total: 5.35 * scale },
+        { user: 'bodega_aux09 (R. Córdoba)', wh: 'Bodega Despachos • Sábados', concept: 'Ajuste diferencia conteo físico', count: Math.max(3, Math.round(6 * scale)), avg: 472000, total: 2.83 * scale },
+        { user: 'inventario_sup02 (J. Mora)', wh: 'Bodega Secundaria • Turno Día', concept: 'Consumo interno / muestras', count: Math.max(2, Math.round(4 * scale)), avg: 458000, total: 1.62 * scale }
+      ];
+
+      document.getElementById('p3-anttheft-table').innerHTML = antTheftRows.map(function(r) {
+        return (
+          '<tr class="hover:bg-crimson-50/30">' +
+            '<td class="py-2.5 px-2.5 font-mono font-bold text-slate-900">' + r.user + '</td>' +
+            '<td class="py-2.5 px-2.5 text-slate-600">' + r.wh + '</td>' +
+            '<td class="py-2.5 px-2.5 text-slate-700">' + r.concept + '</td>' +
+            '<td class="py-2.5 px-2.5 text-center font-mono font-bold text-crimson-600">' + r.count + '</td>' +
+            '<td class="py-2.5 px-2.5 text-right font-mono font-semibold text-amber-700">' + fmtCOP(r.avg) + '</td>' +
+            '<td class="py-2.5 px-2.5 text-right font-mono font-extrabold text-crimson-600">-' + fmtM(r.total, 2) + '</td>' +
+          '</tr>'
+        );
+      }).join('');
+
+      // Phantom Stock (>45 days without sales)
+      const phantomRows = [
+        { sku: 'SKU-8810 • Kit Embrague Pesado Ref. OEM-90', wh: 'Cali Principal', stock: 34, days: 58, demand: '1.8 unid/día', cost: 14.2 * scale, lostMargin: 4.4 * scale },
+        { sku: 'SKU-2044 • Bomba Hidráulica Alta Presión 3HP', wh: 'Bogotá Norte', stock: 19, days: 51, demand: '1.1 unid/día', cost: 11.6 * scale, lostMargin: 3.1 * scale },
+        { sku: 'SKU-6190 • Caja Automática Protección IP66', wh: 'Medellín Sur', stock: 62, days: 47, demand: '3.4 unid/día', cost: 6.8 * scale, lostMargin: 1.9 * scale }
+      ];
+
+      document.getElementById('p3-phantom-table').innerHTML = phantomRows.map(function(r) {
+        return (
+          '<tr class="hover:bg-slate-50">' +
+            '<td class="py-3 px-4 font-semibold text-slate-900">' + r.sku + '</td>' +
+            '<td class="py-3 px-4 text-slate-600">' + r.wh + '</td>' +
+            '<td class="py-3 px-4 text-right font-mono font-bold text-emerald-700">' + r.stock + ' unid (Falso)</td>' +
+            '<td class="py-3 px-4 text-right font-mono font-bold text-crimson-600">' + r.days + ' días sin venta</td>' +
+            '<td class="py-3 px-4 text-right font-mono text-slate-600">' + r.demand + '</td>' +
+            '<td class="py-3 px-4 text-right font-mono font-semibold text-slate-800">' + fmtM(r.cost) + '</td>' +
+            '<td class="py-3 px-4 text-right font-mono font-extrabold text-crimson-600">-' + fmtM(r.lostMargin) + ' / mes</td>' +
+            '<td class="py-3 px-4 text-center">' +
+              '<span class="bg-amber-100 text-amber-800 text-[10px] font-mono font-bold px-2.5 py-1 rounded-full">Conteo Físico & Desbloqueo OC</span>' +
+            '</td>' +
+          '</tr>'
+        );
+      }).join('');
+    }
+
+    /* =====================================================================
+       RENDER PAGE 4: VARIACIONES EN COMPRAS Y CXP ($16.5M Base)
+       ===================================================================== */
+    function renderPage4(scaleOverride) {
+      const scale = scaleOverride || getScale();
+      const bankSliderEl = document.getElementById('p4BankRateSlider');
+      const bankRate = bankSliderEl ? parseFloat(bankSliderEl.value) : 15.5;
+      const bankRateValEl = document.getElementById('p4BankRateVal');
+      if (bankRateValEl) {
+        bankRateValEl.textContent = bankRate.toFixed(1) + '% E.A.';
+      }
+
+      document.getElementById('p4-total-leak').textContent = fmtM(16.5 * scale) + ' COP / mes';
+      document.getElementById('p4-3way-badge').textContent = 'Sobrecosto: ' + fmtM(7.2 * scale);
+
+      const matchRows = [
+        { prov: 'Importadora Global Químicos • FP-9912', sku: 'SKU-7721 • Resina Tambor', oc: '$1,790,000 (20 Un)', bill: '$1,910,000 (20 Un)', over: 2.40 * scale, type: 'Precio Factura > Precio OC (+6.7%)' },
+        { prov: 'Cables & Conductores Nacionales • FP-4401', sku: 'SKU-1184 • Cable 3x12', oc: '$398,000 (150 Un)', bill: '$398,000 (157 Un)', over: 2.78 * scale, type: 'Cant. Facturada (157) > Recibida (150)' },
+        { prov: 'Lubricantes del Pacífico • FP-7120', sku: 'SKU-4092 • Aceite 20L', oc: '$236,000 (202 Un)', bill: '$246,000 (202 Un)', over: 2.02 * scale, type: 'Escala de descuento OC no aplicada' }
+      ];
+
+      document.getElementById('p4-3way-table').innerHTML = matchRows.map(function(r) {
+        return (
+          '<tr class="hover:bg-slate-50">' +
+            '<td class="py-2.5 px-3 font-semibold text-slate-900">' + r.prov + '</td>' +
+            '<td class="py-2.5 px-3 text-slate-700">' + r.sku + '</td>' +
+            '<td class="py-2.5 px-3 text-right font-mono text-slate-600">' + r.oc + '</td>' +
+            '<td class="py-2.5 px-3 text-right font-mono font-semibold text-slate-900">' + r.bill + '</td>' +
+            '<td class="py-2.5 px-3 text-right font-mono font-extrabold text-crimson-600">-' + fmtM(r.over, 2) + '</td>' +
+            '<td class="py-2.5 px-3 text-center"><span class="bg-crimson-50 text-crimson-600 border border-crimson-200 text-[10px] font-mono font-semibold px-2 py-0.5 rounded">' + r.type + '</span></td>' +
+          '</tr>'
+        );
+      }).join('');
+
+      const suppliersDisc = [
+        { name: 'Cables & Conductores SA', terms: '2.5% a 10d (Neto 35d)', ea: 44.6, lostDto: 2.4 * scale },
+        { name: 'Lubricantes del Pacífico', terms: '3.0% a 10d (Neto 40d)', ea: 44.9, lostDto: 1.8 * scale },
+        { name: 'Importadora Global Químicos', terms: '2.0% a 10d (Neto 30d)', ea: 44.6, lostDto: 1.2 * scale }
+      ];
+
+      let totalNetArbitrage = 0;
+      document.getElementById('p4-discounts-table').innerHTML = suppliersDisc.map(function(s) {
+        const netRatio = Math.max(0.1, (s.ea - bankRate) / s.ea);
+        const netGain = s.lostDto * netRatio;
+        totalNetArbitrage += netGain;
+        return (
+          '<tr class="hover:bg-slate-50">' +
+            '<td class="py-2 px-2 font-semibold text-slate-800">' + s.name + '</td>' +
+            '<td class="py-2 px-2 text-center font-mono text-[11px] text-slate-600">' + s.terms + '</td>' +
+            '<td class="py-2 px-2 text-right font-mono font-bold text-emerald-700">' + s.ea.toFixed(1) + '% E.A.</td>' +
+            '<td class="py-2 px-2 text-right font-mono text-crimson-600">-' + fmtM(s.lostDto, 2) + '</td>' +
+            '<td class="py-2 px-2 text-right font-mono font-extrabold text-emerald-600">+' + fmtM(netGain, 2) + '</td>' +
+          '</tr>'
+        );
+      }).join('');
+
+      document.getElementById('p4-net-arbitrage').textContent = '+' + fmtM(totalNetArbitrage, 2) + ' COP / mes';
+
+      const dispRows = [
+        { sku: 'SKU-9012 • Cinta Aislante Industrial 3M (Caja x100)', best: 385000, worst: 442000, branch: 'Barranquilla Costa', gap: '+14.8%', units: Math.round(32 * scale), over: 1.82 * scale },
+        { sku: 'SKU-3019 • Rodamiento Cónico Pesado Ref. 32214', best: 82000, worst: 93500, branch: 'Medellín Sur', gap: '+14.0%', units: Math.round(110 * scale), over: 1.26 * scale },
+        { sku: 'SKU-5104 • Sellador Poliuretano Cartucho 300ml', best: 21400, worst: 24100, branch: 'Bogotá Norte', gap: '+12.6%', units: Math.round(304 * scale), over: 0.82 * scale }
+      ];
+
+      document.getElementById('p4-dispersion-table').innerHTML = dispRows.map(function(r) {
+        return (
+          '<tr class="hover:bg-slate-50">' +
+            '<td class="py-3 px-4 font-semibold text-slate-900">' + r.sku + '</td>' +
+            '<td class="py-3 px-4 text-right font-mono text-emerald-700 font-semibold">' + fmtCOP(r.best) + '</td>' +
+            '<td class="py-3 px-4 text-right font-mono text-crimson-600 font-bold">' + fmtCOP(r.worst) + '</td>' +
+            '<td class="py-3 px-4 text-center"><span class="bg-amber-50 text-amber-800 border border-amber-200 text-[11px] font-mono px-2.5 py-0.5 rounded">' + r.branch + '</span></td>' +
+            '<td class="py-3 px-4 text-right font-mono font-bold text-crimson-600">' + r.gap + '</td>' +
+            '<td class="py-3 px-4 text-right font-mono text-slate-700">' + r.units + ' unid.</td>' +
+            '<td class="py-3 px-4 text-right font-mono font-extrabold text-crimson-600">-' + fmtM(r.over, 2) + ' / mes</td>' +
+          '</tr>'
+        );
+      }).join('');
+    }
+
+    /* =====================================================================
+       RENDER PAGE 5: CARTERA Y COSTOS OCULTOS DE SERVIR ($32.5M Base)
+       ===================================================================== */
+    function renderPage5(scaleOverride) {
+      const scale = scaleOverride || getScale();
+      document.getElementById('p5-total-leak').textContent = fmtM(32.5 * scale) + ' COP / mes';
+
+      const moraSegments = [
+        { term: 'Condición: "Contado Comercial (-5% Dto)"', pactado: 3, real: 42, portfolio: 410 * scale, leak: 8.4 * scale },
+        { term: 'Condición: "Crédito 15 Días"', pactado: 15, real: 46, portfolio: 380 * scale, leak: 4.5 * scale },
+        { term: 'Condición: "Crédito 30 Días Estándar"', pactado: 30, real: 64, portfolio: 620 * scale, leak: 6.3 * scale }
+      ];
+
+      document.getElementById('p5-mora-bars').innerHTML = moraSegments.map(function(m) {
+        const pactW = (m.pactado / 75) * 100;
+        const realW = (m.real / 75) * 100;
+        return (
+          '<div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-2">' +
+            '<div class="flex items-center justify-between text-xs">' +
+              '<span class="font-bold text-slate-900">' + m.term + '</span>' +
+              '<span class="font-mono font-bold text-crimson-600">Costo Financiero: -' + fmtM(m.leak, 1) + '/mes</span>' +
+            '</div>' +
+            '<div class="space-y-1.5 text-[11px]">' +
+              '<div class="flex items-center gap-2">' +
+                '<span class="w-28 text-slate-500">Plazo Pactado:</span>' +
+                '<div class="flex-1 bg-slate-200 h-2.5 rounded-full overflow-hidden">' +
+                  '<div class="bg-emerald-600 h-full rounded-full" style="width: ' + Math.max(5, pactW) + '%"></div>' +
+                '</div>' +
+                '<span class="w-16 text-right font-mono font-semibold text-emerald-700">' + m.pactado + ' días</span>' +
+              '</div>' +
+              '<div class="flex items-center gap-2">' +
+                '<span class="w-28 text-slate-500">Recaudo Real:</span>' +
+                '<div class="flex-1 bg-slate-200 h-2.5 rounded-full overflow-hidden">' +
+                  '<div class="bg-crimson-600 h-full rounded-full" style="width: ' + realW + '%"></div>' +
+                '</div>' +
+                '<span class="w-16 text-right font-mono font-bold text-crimson-600">' + m.real + ' días</span>' +
+              '</div>' +
+            '</div>' +
+            '<div class="text-[11px] text-slate-500 flex justify-between pt-1 border-t border-slate-200/70">' +
+              '<span>Cartera activa en segmento: <strong class="font-mono text-slate-700">' + fmtM(m.portfolio) + '</strong></span>' +
+              '<span class="text-crimson-600 font-semibold">+' + (m.real - m.pactado) + ' días de financiación gratuita</span>' +
+            '</div>' +
+          '</div>'
+        );
+      }).join('');
+
+      const microRows = [
+        { client: 'Autoservicio y Ferretería La 14 • Ruta Sur', orders: 22, ticket: 185000, margin: 31400, freight: 52000, loss: 4.5 * scale },
+        { client: 'Depósito San Nicolás SAS • Ruta Norte', orders: 19, ticket: 210000, margin: 35700, freight: 56000, loss: 4.1 * scale },
+        { client: 'Suministros Industriales Cauca • Foráneo', orders: 16, ticket: 290000, margin: 46400, freight: 78000, loss: 4.7 * scale }
+      ];
+
+      document.getElementById('p5-microorders-table').innerHTML = microRows.map(function(r) {
+        return (
+          '<tr class="hover:bg-crimson-50/30">' +
+            '<td class="py-2.5 px-2.5 font-semibold text-slate-900">' + r.client + '</td>' +
+            '<td class="py-2.5 px-2.5 text-center font-mono font-bold text-crimson-600">' + r.orders + ' envíos</td>' +
+            '<td class="py-2.5 px-2.5 text-right font-mono text-slate-600">' + fmtCOP(r.ticket) + '</td>' +
+            '<td class="py-2.5 px-2.5 text-right font-mono text-emerald-700">+' + fmtCOP(r.margin) + '</td>' +
+            '<td class="py-2.5 px-2.5 text-right font-mono font-bold text-crimson-600">-' + fmtCOP(r.freight) + '</td>' +
+            '<td class="py-2.5 px-2.5 text-right font-mono font-extrabold text-crimson-600">-' + fmtM(r.loss, 1) + '</td>' +
+          '</tr>'
+        );
+      }).join('');
+
+      const falseClients = [
+        { name: 'MacroDistribuciones del Oriente SAS', sales: 215.0 * scale, grossPct: 20.4, nc: 18.2 * scale, freight: 14.6 * scale, deliveries: 28, finCost: 16.8 * scale, days: 68 },
+        { name: 'Consorcio Ferretero Metropolitano', sales: 168.0 * scale, grossPct: 19.5, nc: 14.1 * scale, freight: 11.4 * scale, deliveries: 24, finCost: 11.9 * scale, days: 61 },
+        { name: 'Inversiones y Suministros El Dorado', sales: 142.0 * scale, grossPct: 21.0, nc: 11.5 * scale, freight: 9.8 * scale, deliveries: 21, finCost: 10.6 * scale, days: 59 },
+        { name: 'Ingeniería & Montajes del Valle (Cliente Modelo)', sales: 155.0 * scale, grossPct: 21.8, nc: 1.8 * scale, freight: 2.4 * scale, deliveries: 4, finCost: 1.9 * scale, days: 28 }
+      ];
+
+      document.getElementById('p5-falseclients-table').innerHTML = falseClients.map(function(c) {
+        const grossVal = c.sales * (c.grossPct / 100);
+        const netVal = grossVal - c.nc - c.freight - c.finCost;
+        const netPct = (netVal / c.sales) * 100;
+        const isNegative = netVal < 0;
+        return (
+          '<tr class="' + (isNegative ? 'hover:bg-crimson-50/40' : 'bg-emerald-50/30 hover:bg-emerald-50/60') + '">' +
+            '<td class="py-3 px-4 font-bold text-slate-900">' + c.name + '</td>' +
+            '<td class="py-3 px-4 text-right font-mono font-semibold">' + fmtM(c.sales) + '</td>' +
+            '<td class="py-3 px-4 text-right font-mono text-emerald-700 font-semibold">+' + fmtM(grossVal) + ' (' + c.grossPct + '%)</td>' +
+            '<td class="py-3 px-4 text-right font-mono text-crimson-600">-' + fmtM(c.nc) + '</td>' +
+            '<td class="py-3 px-4 text-right font-mono text-crimson-600">-' + fmtM(c.freight) + ' <span class="text-[10px] text-slate-500">(' + c.deliveries + ' env.)</span></td>' +
+            '<td class="py-3 px-4 text-right font-mono text-crimson-600">-' + fmtM(c.finCost) + ' <span class="text-[10px] text-slate-500">(' + c.days + 'd)</span></td>' +
+            '<td class="py-3 px-4 text-right font-mono font-extrabold ' + (isNegative ? 'text-crimson-600' : 'text-emerald-700') + '">' + (isNegative ? '-' + fmtM(Math.abs(netVal)) : '+' + fmtM(netVal)) + '</td>' +
+            '<td class="py-3 px-4 text-right font-mono font-extrabold">' +
+              '<span class="px-2.5 py-1 rounded-full text-[11px] ' + (isNegative ? 'bg-crimson-600 text-white' : 'bg-emerald-600 text-white') + '">' +
+                (netPct >= 0 ? '+' : '') + netPct.toFixed(1) + '%' +
+              '</span>' +
+            '</td>' +
+          '</tr>'
+        );
+      }).join('');
+    }
+
+    /* =====================================================================
+       RENDER PAGE 6: 6. CASO DE NEGOCIO & ROI DE LA CONSULTORÍA
+       ===================================================================== */
+    function renderPage6(scale, roi) {
+      const ctx = getContextNames();
+
+      const orderedPillars = [
+        { id: 1, name: '1. Margen Comercial', desc: 'Cascada precio y reposición', base: 46.0 },
+        { id: 2, name: '2. Devoluciones y NC', desc: 'Channel stuffing y kardex', base: 21.0 },
+        { id: 3, name: '3. Inventario y Kardex', desc: 'GMROI, robo hormiga y fantasma', base: 26.5 },
+        { id: 4, name: '4. Compras y CXP', desc: '3-Way Match y pronto pago', base: 16.5 },
+        { id: 5, name: '5. Cartera y Logística', desc: 'Mora oculta y micro-fletes', base: 32.5 }
+      ];
+
+      let scopeBaseMonthlyM = 0;
+      let activeCount = 0;
+      const activeNames = [];
+
+      orderedPillars.forEach(function(p) {
+        if (activeScopePillars[p.id]) {
+          scopeBaseMonthlyM += p.base * scale;
+          activeCount++;
+          activeNames.push(p.name);
+        }
+      });
+
+      const checkboxesHtml = orderedPillars.map(function(p) {
+        const checked = activeScopePillars[p.id];
+        const valM = p.base * scale;
+        const cardStyle = checked
+          ? 'border-emerald-600 bg-emerald-50/70 ring-1 ring-emerald-600'
+          : 'border-slate-200 bg-slate-50/60 opacity-65 hover:opacity-100';
+        return (
+          '<div onclick="toggleScopePillar(' + p.id + ')" class="p-3.5 rounded-xl border ' + cardStyle + ' cursor-pointer transition select-none flex flex-col justify-between">' +
+            '<div class="flex items-start justify-between gap-2">' +
+              '<span class="text-xs font-bold text-slate-900">' + p.name + '</span>' +
+              '<span class="w-4 h-4 rounded flex items-center justify-center ' + (checked ? 'bg-emerald-600 text-white' : 'border border-slate-300 bg-white') + '">' +
+                (checked ? '✓' : '') +
+              '</span>' +
+            '</div>' +
+            '<p class="text-[11px] text-slate-500 mt-1">' + p.desc + '</p>' +
+            '<div class="mt-2 pt-1.5 border-t border-slate-200/70 flex items-center justify-between">' +
+              '<span class="text-[10px] uppercase font-mono text-slate-500">Fuga Mes:</span>' +
+              '<span class="text-xs font-mono font-extrabold ' + (checked ? 'text-crimson-600' : 'text-slate-500') + '">' + fmtM(valM) + '</span>' +
+            '</div>' +
+          '</div>'
+        );
+      }).join('');
+      document.getElementById('roi-scope-checkboxes').innerHTML = checkboxesHtml;
+
+      const scopeAnnualM = scopeBaseMonthlyM * 12;
+      document.getElementById('roi-scope-leak-badge').textContent = fmtM(scopeBaseMonthlyM) + ' COP / mes';
+      document.getElementById('roi-scope-pillars-count').textContent = activeCount + ' de 5 frentes seleccionados (' + fmtM(scopeAnnualM) + ' / año)';
+
+      // Highlight active scenario preset button if matching 12%, 18%, or 30%
+      const pctInt = Math.round(roi.pct * 100);
+      [12, 18, 30].forEach(function(preset) {
+        const btn = document.getElementById('scen-btn-' + preset);
+        if (!btn) return;
+        if (pctInt === preset) {
+          btn.className = 'scen-btn border-2 border-emerald-600 bg-emerald-50 text-emerald-800 rounded-xl py-2 px-2 text-center transition shadow-sm';
+        } else {
+          btn.className = 'scen-btn border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 rounded-xl py-2 px-2 text-center transition';
+        }
+      });
+
+      // Update Slider Labels
+      document.getElementById('roiSliderPctLabel').textContent = pctInt + '%';
+      document.getElementById('roiSliderSetupLabel').textContent = fmtM(roi.setupM) + ' COP';
+      document.getElementById('roiSliderFeeLabel').textContent = fmtM(roi.feeM) + ' COP / mes';
+      document.getElementById('roiSliderMarginLabel').textContent = (roi.netMargin * 100).toFixed(1) + '%';
+
+      // Governing Financial Formulas
+      const grossRecoveredMonthlyM = scopeBaseMonthlyM * roi.pct;
+      const netCashFlowMonthlyM = grossRecoveredMonthlyM - roi.feeM;
+      const netCashFlowAnnualM = netCashFlowMonthlyM * 12;
+      const totalYear1GainAfterSetupM = netCashFlowAnnualM - roi.setupM;
+      const totalYear1CostM = roi.setupM + (roi.feeM * 12);
+
+      let paybackDays = 999;
+      let paybackMonths = 99.9;
+      if (netCashFlowMonthlyM > 0.05) {
+        paybackDays = Math.max(1, Math.round(roi.setupM / (netCashFlowMonthlyM / 30)));
+        paybackMonths = roi.setupM / netCashFlowMonthlyM;
+      }
+
+      const coiDailyCOP = (grossRecoveredMonthlyM * 1000000) / 30;
+      const coiWeeklyM = (grossRecoveredMonthlyM / 30) * 7;
+
+      const roiPct12M = totalYear1CostM > 0 ? (totalYear1GainAfterSetupM / totalYear1CostM) * 100 : 0;
+      const multiple12M = totalYear1CostM > 0 ? (netCashFlowAnnualM / totalYear1CostM) : 0;
+
+      const equivSalesMonthlyM = grossRecoveredMonthlyM / roi.netMargin;
+      const equivSalesAnnualM = equivSalesMonthlyM * 12;
+
+      // Update Top Header & Page 0 Badges
+      const paybackText = netCashFlowMonthlyM > 0.05 ? ('Payback: ' + paybackDays + ' días') : 'Ajustar alcance';
+      document.getElementById('headerPaybackBadge').textContent = paybackText;
+      document.getElementById('p0-banner-payback').textContent =
+        netCashFlowMonthlyM > 0.05 ? ('Se paga sola en ' + paybackDays + ' días') : 'Ajustar parámetros';
+
+      // Update 4 Executive Closing Cards
+      const netMonthlyEl = document.getElementById('roi-card-net-monthly');
+      netMonthlyEl.textContent = netCashFlowMonthlyM >= 0 ? ('+' + fmtM(netCashFlowMonthlyM)) : ('-' + fmtM(Math.abs(netCashFlowMonthlyM)));
+      netMonthlyEl.className = 'text-2xl sm:text-3xl font-mono font-extrabold ' + (netCashFlowMonthlyM >= 0 ? 'text-emerald-700' : 'text-crimson-600');
+
+      document.getElementById('roi-card-net-annual').textContent =
+        netCashFlowAnnualM >= 0 ? ('+' + fmtM(netCashFlowAnnualM) + ' / año') : ('-' + fmtM(Math.abs(netCashFlowAnnualM)) + ' / año');
+
+      document.getElementById('roi-card-payback-days').textContent =
+        netCashFlowMonthlyM > 0.05 ? (paybackDays + ' Días') : 'N/A';
+      document.getElementById('roi-card-payback-months').textContent =
+        netCashFlowMonthlyM > 0.05 ? (paybackMonths.toFixed(1) + ' meses') : 'Flujo negativo';
+
+      const month1Progress = netCashFlowMonthlyM > 0.05 ? Math.min(100, Math.round((30 / paybackDays) * 100)) : 5;
+      document.getElementById('roi-payback-bar').style.width = month1Progress + '%';
+      document.getElementById('roi-payback-bar-label').textContent =
+        paybackDays <= 30 ? ('Se recupera al día ' + paybackDays + ' del Mes 1') : (month1Progress + '% recuperado en el Mes 1');
+
+      document.getElementById('roi-card-coi-daily').textContent = '-' + fmtCOP(coiDailyCOP);
+      document.getElementById('roi-card-coi-weekly').textContent = '-' + fmtM(coiWeeklyM, 2) + ' / semana';
+
+      document.getElementById('roi-card-roi-pct').textContent = Math.round(roiPct12M) + '% ROI';
+      document.getElementById('roi-card-multiple').textContent = multiple12M.toFixed(1) + 'x retorno';
+      document.getElementById('roi-card-margin-inline').textContent = (roi.netMargin * 100).toFixed(1) + '%';
+      document.getElementById('roi-card-equiv-annual').textContent = fmtM(equivSalesAnnualM) + ' / año';
+
+      // Render Interactive J-Curve SVG (Mes 0 to Mes 12)
+      const monthsSeries = [];
+      for (let m = 0; m <= 12; m++) {
+        const cumVal = -roi.setupM + (netCashFlowMonthlyM * m);
+        monthsSeries.push({ m: m, label: m === 0 ? 'Mes 0' : ('M' + m), val: cumVal });
+      }
+
+      document.getElementById('jcurve-m0').textContent = '-' + fmtM(roi.setupM) + ' COP';
+      document.getElementById('jcurve-m3').textContent =
+        monthsSeries[3].val >= 0 ? ('+' + fmtM(monthsSeries[3].val) + ' COP') : ('-' + fmtM(Math.abs(monthsSeries[3].val)) + ' COP');
+      document.getElementById('jcurve-m6').textContent =
+        monthsSeries[6].val >= 0 ? ('+' + fmtM(monthsSeries[6].val) + ' COP') : ('-' + fmtM(Math.abs(monthsSeries[6].val)) + ' COP');
+      document.getElementById('jcurve-m12').textContent =
+        monthsSeries[12].val >= 0 ? ('+' + fmtM(monthsSeries[12].val) + ' COP') : ('-' + fmtM(Math.abs(monthsSeries[12].val)) + ' COP');
+
+      const maxAbsVal = Math.max(
+        roi.setupM * 1.3,
+        Math.abs(monthsSeries[12].val) * 1.15,
+        40
+      );
+      const zeroLineY = 165;
+      const maxPosHeight = 135;
+      const maxNegHeight = 50;
+
+      let jSvg =
+        '<line x1="40" y1="' + zeroLineY + '" x2="700" y2="' + zeroLineY + '" stroke="#0F2537" stroke-width="1.5" />' +
+        '<text x="34" y="' + (zeroLineY + 3) + '" text-anchor="end" fill="#0F2537" font-size="9" font-family="JetBrains Mono" font-weight="bold">$0</text>';
+
+      if (netCashFlowMonthlyM > 0.05 && paybackMonths <= 12) {
+        const beX = 52 + paybackMonths * 50;
+        jSvg +=
+          '<line x1="' + beX + '" y1="18" x2="' + beX + '" y2="' + (zeroLineY + 25) + '" stroke="#059669" stroke-width="1.5" stroke-dasharray="4 3" />' +
+          '<rect x="' + Math.min(580, Math.max(45, beX - 58)) + '" y="6" width="116" height="18" rx="4" fill="#059669" />' +
+          '<text x="' + Math.min(638, Math.max(103, beX)) + '" y="18" text-anchor="middle" fill="#FFFFFF" font-size="8.5" font-family="JetBrains Mono" font-weight="bold">Break-Even: Día ' + paybackDays + '</text>';
+      }
+
+      monthsSeries.forEach(function(pt, idx) {
+        const x = 48 + idx * 50;
+        const barW = 30;
+        if (pt.val >= 0) {
+          const h = Math.max(3, (pt.val / maxAbsVal) * maxPosHeight);
+          const y = zeroLineY - h;
+          jSvg +=
+            '<rect x="' + x + '" y="' + y + '" width="' + barW + '" height="' + h + '" rx="4" fill="#059669" />' +
+            '<text x="' + (x + barW / 2) + '" y="' + (y - 5) + '" text-anchor="middle" fill="#047857" font-size="8.5" font-family="JetBrains Mono" font-weight="bold">+' + Math.round(pt.val) + 'M</text>' +
+            '<text x="' + (x + barW / 2) + '" y="' + (zeroLineY + 14) + '" text-anchor="middle" fill="#334155" font-size="8.5" font-weight="600">' + pt.label + '</text>';
+        } else {
+          const h = Math.max(5, (Math.abs(pt.val) / roi.setupM) * maxNegHeight);
+          jSvg +=
+            '<rect x="' + x + '" y="' + zeroLineY + '" width="' + barW + '" height="' + h + '" rx="4" fill="#E11D48" />' +
+            '<text x="' + (x + barW / 2) + '" y="' + (zeroYLabelOffset(zeroLineY, h)) + '" text-anchor="middle" fill="#E11D48" font-size="8.5" font-family="JetBrains Mono" font-weight="bold">-' + Math.round(Math.abs(pt.val)) + 'M</text>' +
+            '<text x="' + (x + barW / 2) + '" y="' + (zeroLineY - 5) + '" text-anchor="middle" fill="#E11D48" font-size="8.5" font-weight="600">' + pt.label + '</text>';
+        }
+      });
+
+      document.getElementById('roi-jcurve-svg').innerHTML = jSvg;
+
+      // Generate Dynamic Executive Proposal Summary & Raw Text for Clipboard
+      const proposalHtml =
+        '<div class="flex flex-wrap items-center justify-between gap-2 pb-2 border-b border-slate-200">' +
+          '<span class="font-mono text-xs font-bold uppercase text-navy-800">MEMORANDO DE CASO DE NEGOCIO • CONECTA ANALYTICS</span>' +
+          '<span class="font-mono text-xs text-slate-500">Alcance: ' + ctx.branchName + ' (' + ctx.channelName + ')</span>' +
+        '</div>' +
+        '<p>' +
+          '<strong>1. Diagnóstico de Fugas en Alcance:</strong> Al auditar los datos transaccionales de <strong>' + activeCount + ' frentes operativos</strong> (' + activeNames.join(', ') + '), identificamos un drenaje silencioso de caja de <strong class="text-crimson-600">' + fmtM(scopeBaseMonthlyM) + ' COP/mes</strong> (equivalente a <strong>' + fmtM(scopeAnnualM) + ' COP al año</strong>).' +
+        '</p>' +
+        '<p>' +
+          '<strong>2. Escenario Conservador de Recuperación (' + pctInt + '%):</strong> Asumiendo de forma prudente que la implementación de alertas tempranas y reglas de bloqueo en el ERP solo corrige el <strong>' + pctInt + '%</strong> de estas fugas, la empresa rescata <strong class="text-emerald-700">' + fmtM(grossRecoveredMonthlyM) + ' COP/mes</strong> brutos (<strong class="text-emerald-700">+' + fmtM(netCashFlowMonthlyM) + ' COP/mes libres</strong> después del fee mensual de acompañamiento de ' + fmtM(roi.feeM) + ').' +
+        '</p>' +
+        '<p>' +
+          '<strong>3. Retorno de Inversión y Costo de Inacción:</strong> La inversión inicial de implementación (<strong>' + fmtM(roi.setupM) + ' COP</strong>) se paga sola en exactamente <strong class="text-navy-900 underline">' + paybackDays + ' días</strong>, generando un flujo de caja neto acumulado en el primer año de <strong class="text-emerald-700">+' + fmtM(totalYear1GainAfterSetupM) + ' COP</strong> (<strong>' + Math.round(roiPct12M) + '% de ROI neto</strong>). Con un margen neto comercial del <strong>' + (roi.netMargin * 100).toFixed(1) + '%</strong>, este ahorro tiene el mismo impacto en el EBITDA que salir a facturar <strong>' + fmtM(equivSalesAnnualM) + ' COP adicionales al año</strong> sin asumir riesgo de cartera. Cada día que se posterga esta decisión le cuesta a la caja de la empresa <strong class="text-crimson-600">' + fmtCOP(coiDailyCOP) + ' COP</strong>.' +
+        '</p>';
+
+      const proposalPlainText =
+        'RESUMEN EJECUTIVO DE CASO DE NEGOCIO - CONECTA ANALYTICS\n' +
+        'Alcance Auditado: ' + ctx.branchName + ' | ' + ctx.channelName + '\n' +
+        'Frentes en Alcance (' + activeCount + '/5): ' + activeNames.join(', ') + '\n\n' +
+        '1. FUGA DETECTADA EN ALCANCE:\n' +
+        '- Fuga Mensual Base: ' + fmtM(scopeBaseMonthlyM) + ' COP / mes (' + fmtM(scopeAnnualM) + ' COP / año).\n\n' +
+        '2. ESCENARIO DE RECUPERACIÓN (' + pctInt + '% DE EFECTIVIDAD):\n' +
+        '- Recuperación Bruta Mensual: ' + fmtM(grossRecoveredMonthlyM) + ' COP / mes.\n' +
+        '- Flujo de Caja Neto Mensual (descontando Fee de ' + fmtM(roi.feeM) + '): +' + fmtM(netCashFlowMonthlyM) + ' COP libres / mes.\n' +
+        '- Flujo Neto Anualizado: +' + fmtM(netCashFlowAnnualM) + ' COP / año.\n\n' +
+        '3. INDICADORES DE DECISIÓN FINANCIERA:\n' +
+        '- Inversión Inicial Setup: ' + fmtM(roi.setupM) + ' COP.\n' +
+        '- Tiempo de Retorno (Payback): ' + paybackDays + ' días (' + paybackMonths.toFixed(1) + ' meses).\n' +
+        '- Beneficio Neto Año 1 (después de pagar Setup y Fees): +' + fmtM(totalYear1GainAfterSetupM) + ' COP (' + Math.round(roiPct12M) + '% ROI Neto).\n' +
+        '- Costo Diario de Inacción: ' + fmtCOP(coiDailyCOP) + ' COP perdidos por cada día de espera.\n' +
+        '- Equivalencia Comercial (al ' + (roi.netMargin * 100).toFixed(1) + '% de margen neto): Equivale a vender ' + fmtM(equivSalesAnnualM) + ' COP adicionales al año.';
+
+      document.getElementById('roi-proposal-text').innerHTML = proposalHtml;
+      document.getElementById('roi-proposal-raw').value = proposalPlainText;
+    }
+
+    function zeroYLabelOffset(zeroLineY, h) {
+      return zeroLineY + h + 11;
+    }
+
+    // Copy Proposal Summary to Clipboard (Iframe safe using execCommand)
+    function copyExecutiveProposal() {
+      const rawTextarea = document.getElementById('roi-proposal-raw');
+      if (!rawTextarea) return;
+      rawTextarea.classList.remove('sr-only');
+      rawTextarea.select();
+      rawTextarea.setSelectionRange(0, 99999);
+      try {
+        document.execCommand('copy');
+      } catch (err) {
+        console.warn('No se pudo copiar automáticamente:', err);
+      }
+      rawTextarea.classList.add('sr-only');
+
+      const btnText = document.getElementById('copyProposalBtnText');
+      const btn = document.getElementById('copyProposalBtn');
+      if (!btnText || !btn) return;
+      const originalText = btnText.textContent;
+      btnText.textContent = '¡Resumen Copiado al Portapapeles!';
+      btn.classList.remove('bg-emerald-600');
+      btn.classList.add('bg-navy-900');
+
+      setTimeout(function() {
+        btnText.textContent = originalText;
+        btn.classList.remove('bg-navy-900');
+        btn.classList.add('bg-emerald-600');
+      }, 2600);
+    }
+
+    // Initialize Dashboard on Window Load
+    window.onload = function() {
+      updateDashboard();
+    };
+  </script>
+</body>
+</html>
