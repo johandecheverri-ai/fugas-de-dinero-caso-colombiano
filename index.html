@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CONECTA | Inteligencia Comercial & Auditoría de Fugas</title>
+  <title>CONECTA 360° | Inteligencia Comercial, Talento & Rentabilidad</title>
+  <meta name="theme-color" content="#0B1926" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="manifest" href="manifest.json" />
   <!-- Tailwind CSS Compilado Localmente (100% Autónomo - Cero Fallos por Bloqueo de CDN/Red) -->
   <style id="conecta-tailwind-bundle">
 /* ==========================================================================
@@ -67,9 +71,10 @@ summary { display: list-item; }
 .pb-2\.5 { padding-bottom: 0.625rem; }
 .pb-3 { padding-bottom: 0.75rem; }
 .pb-4 { padding-bottom: 1rem; }
-.pb-5 { padding-bottom: 1.25rem; }
+.pl-1\.5 { padding-left: 0.375rem; }
 .pl-5 { padding-left: 1.25rem; }
 .pr-1 { padding-right: 0.25rem; }
+.pr-3 { padding-right: 0.75rem; }
 .pt-1 { padding-top: 0.25rem; }
 .pt-1\.5 { padding-top: 0.375rem; }
 .pt-2 { padding-top: 0.5rem; }
@@ -92,14 +97,14 @@ summary { display: list-item; }
 .animate-spin { animation: tw-spin 1s linear infinite; }
 .backdrop-blur-md { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
 .backdrop-blur-sm { backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); }
-.bg-\[\#05080F\] { background-color: #05080F; }
 .bg-\[\#060F17\] { background-color: #060F17; }
-.bg-\[\#07111A\]\/90 { background-color: rgba(7, 17, 26, 0.9); }
 .bg-\[\#090D16\] { background-color: #090D16; }
 .bg-\[\#0B101B\] { background-color: #0B101B; }
 .bg-\[\#0B1926\] { background-color: #0B1926; }
+.bg-\[\#0B1926\]\/95 { background-color: rgba(11, 25, 38, 0.95); }
 .bg-\[\#0D1F2D\] { background-color: #0D1F2D; }
 .bg-\[\#131824\]\/90 { background-color: rgba(19, 24, 36, 0.9); }
+.bg-\[\#161D2B\] { background-color: #161D2B; }
 .bg-\[\#161F30\] { background-color: #161F30; }
 .bg-\[\#1E1F22\]\/90 { background-color: rgba(30, 31, 34, 0.9); }
 .bg-\[\#1E1F22\]\/95 { background-color: rgba(30, 31, 34, 0.95); }
@@ -116,7 +121,6 @@ summary { display: list-item; }
 .bg-amber-500 { background-color: #F59E0B; }
 .bg-amber-500\/20 { background-color: rgba(245, 158, 11, 0.2); }
 .bg-amber-600 { background-color: #D97706; }
-.bg-black\/30 { background-color: rgba(0, 0, 0, 0.3); }
 .bg-blue-100 { background-color: #dbeafe; }
 .bg-blue-400 { background-color: #60a5fa; }
 .bg-blue-50 { background-color: #eff6ff; }
@@ -127,7 +131,6 @@ summary { display: list-item; }
 .bg-blue-500\/20 { background-color: rgba(59, 130, 246, 0.2); }
 .bg-blue-600 { background-color: #2563eb; }
 .bg-crimson-100 { background-color: #ffe4e6; }
-.bg-crimson-400 { background-color: #fb7185; }
 .bg-crimson-50 { background-color: #FFF1F2; }
 .bg-crimson-50\/40 { background-color: rgba(255, 241, 242, 0.4); }
 .bg-crimson-50\/60 { background-color: rgba(255, 241, 242, 0.6); }
@@ -150,10 +153,10 @@ summary { display: list-item; }
 .bg-emerald-50\/60 { background-color: rgba(236, 253, 245, 0.6); }
 .bg-emerald-50\/70 { background-color: rgba(236, 253, 245, 0.7); }
 .bg-emerald-50\/80 { background-color: rgba(236, 253, 245, 0.8); }
+.bg-emerald-500 { background-color: #10B981; }
 .bg-emerald-500\/20 { background-color: rgba(16, 185, 129, 0.2); }
 .bg-emerald-600 { background-color: #059669; }
 .bg-emerald-950\/35 { background-color: rgba(2, 44, 34, 0.35); }
-.bg-emerald-950\/40 { background-color: rgba(2, 44, 34, 0.4); }
 .bg-emerald-950\/60 { background-color: rgba(2, 44, 34, 0.6); }
 .bg-gradient-to-br { background-image: linear-gradient(to bottom right, var(--tw-gradient-stops)); }
 .bg-gradient-to-r { background-image: linear-gradient(to right, var(--tw-gradient-stops)); }
@@ -182,7 +185,6 @@ summary { display: list-item; }
 .bg-slate-800 { background-color: #1e293b; }
 .bg-slate-800\/80 { background-color: rgba(30, 41, 59, 0.8); }
 .bg-slate-800\/90 { background-color: rgba(30, 41, 59, 0.9); }
-.bg-slate-900\/70 { background-color: rgba(15, 23, 42, 0.7); }
 .bg-slate-900\/75 { background-color: rgba(15, 23, 42, 0.75); }
 .bg-transparent { background-color: transparent; }
 .bg-white { background-color: #ffffff; }
@@ -190,6 +192,7 @@ summary { display: list-item; }
 .bg-white\/20 { background-color: rgba(255, 255, 255, 0.2); }
 .bg-white\/5 { background-color: rgba(255, 255, 255, 0.05); }
 .blur-3xl { filter: blur(64px); }
+.bottom-0 { bottom: 0px; }
 .cursor-pointer { cursor: pointer; }
 .decoration-4 { text-decoration-thickness: 4px; }
 .decoration-crimson-500 { text-decoration-color: #F43F5E; }
@@ -241,17 +244,19 @@ summary { display: list-item; }
 .items-baseline { align-items: baseline; }
 .items-center { align-items: center; }
 .items-start { align-items: flex-start; }
+.justify-around { justify-content: space-around; }
 .justify-between { justify-content: space-between; }
 .justify-center { justify-content: center; }
 .justify-end { justify-content: flex-end; }
+.left-0 { left: 0px; }
 .line-clamp-1 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; }
 .max-h-80 { max-height: 20rem; }
-.max-h-\[88vh\] { max-height: 88vh; }
 .max-w-2xl { max-width: 42rem; }
 .max-w-3xl { max-width: 48rem; }
 .max-w-4xl { max-width: 56rem; }
 .max-w-\[1480px\] { max-width: 1480px; }
 .max-w-lg { max-width: 32rem; }
+.min-h-\[220px\] { min-height: 220px; }
 .min-h-screen { min-height: 100vh; }
 .min-w-0 { min-width: 0px; }
 .min-w-max { min-width: max-content; }
@@ -264,6 +269,7 @@ summary { display: list-item; }
 .overflow-y-auto { overflow-y: auto; }
 .pointer-events-none { pointer-events: none; }
 .relative { position: relative; }
+.right-0 { right: 0px; }
 .ring-1 { box-shadow: 0 0 0 1px var(--tw-ring-color, #10B981); }
 .ring-2 { box-shadow: 0 0 0 2px var(--tw-ring-color, #10B981); }
 .ring-emerald-600 { --tw-ring-color: #059669; }
@@ -363,7 +369,6 @@ summary { display: list-item; }
 .w-full { width: 100%; }
 .w-px { width: 1px; }
 .whitespace-pre-line { white-space: pre-line; }
-.whitespace-pre-wrap { white-space: pre-wrap; }
 .z-10 { z-index: 10; }
 .z-20 { z-index: 20; }
 .z-30 { z-index: 30; }
@@ -379,8 +384,9 @@ summary { display: list-item; }
 .mb-2\.5 { margin-bottom: 0.625rem; }
 .mb-3 { margin-bottom: 0.75rem; }
 .mb-4 { margin-bottom: 1rem; }
-.mb-5 { margin-bottom: 1.25rem; }
+.ml-1 { margin-left: 0.25rem; }
 .ml-2 { margin-left: 0.5rem; }
+.mr-1 { margin-right: 0.25rem; }
 .mt-0\.5 { margin-top: 0.125rem; }
 .mt-1 { margin-top: 0.25rem; }
 .mt-2 { margin-top: 0.5rem; }
@@ -461,7 +467,6 @@ summary { display: list-item; }
 .border-slate-700 { border-color: #334155; }
 .border-slate-700\/80 { border-color: rgba(51, 65, 85, 0.8); }
 .border-slate-800 { border-color: #1e293b; }
-.border-slate-800\/80 { border-color: rgba(30, 41, 59, 0.8); }
 .border-slate-800\/90 { border-color: rgba(30, 41, 59, 0.9); }
 .border-white\/10 { border-color: rgba(255, 255, 255, 0.1); }
 .border-white\/15 { border-color: rgba(255, 255, 255, 0.15); }
@@ -472,7 +477,6 @@ summary { display: list-item; }
 .placeholder-slate-400::placeholder { color: #94a3b8; }
 .from-blue-500 { --tw-gradient-from: #3b82f6; --tw-gradient-to: rgba(255, 255, 255, 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
 .from-blue-600 { --tw-gradient-from: #2563eb; --tw-gradient-to: rgba(255, 255, 255, 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
-.from-emerald-600 { --tw-gradient-from: #059669; --tw-gradient-to: rgba(255, 255, 255, 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
 .from-navy-800 { --tw-gradient-from: #0F2537; --tw-gradient-to: rgba(255, 255, 255, 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
 .from-navy-900 { --tw-gradient-from: #0A1926; --tw-gradient-to: rgba(255, 255, 255, 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
 .from-navy-950 { --tw-gradient-from: #07111A; --tw-gradient-to: rgba(255, 255, 255, 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
@@ -488,7 +492,6 @@ summary { display: list-item; }
 .to-navy-800 { --tw-gradient-to: #0F2537; }
 .to-navy-900 { --tw-gradient-to: #0A1926; }
 .to-navy-950 { --tw-gradient-to: #07111A; }
-.to-teal-700 { --tw-gradient-to: #0f766e; }
 .transition { transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
 .transition-all { transition-property: all; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
 .transition-transform { transition-property: transform; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
@@ -510,12 +513,13 @@ summary { display: list-item; }
 .leading-tight { line-height: 1.25; }
 .focus-within\:bg-\[\#232529\]:focus-within { background-color: #232529; }
 .focus-within\:border-blue-400\/60:focus-within { border-color: rgba(96, 165, 250, 0.6); }
+.focus-within\:border-navy-800:focus-within { border-color: #0F2537; }
 .focus\:outline-none:focus { outline: 2px solid transparent; outline-offset: 2px; }
 .group:hover .group-hover\:opacity-100 { opacity: 1; }
 .group:hover .group-hover\:scale-105 { transform: scale(1.05); }
 .group:hover .group-hover\:text-navy-800 { color: #0F2537; }
 .group:hover .group-hover\:text-navy-900 { color: #0A1926; }
-.group[open] .group-open\:rotate-180 { transform: rotate(180deg); }
+.hover\:bg-\[\#1E2738\]:hover { background-color: #1E2738; }
 .hover\:bg-\[\#232529\]:hover { background-color: #232529; }
 .hover\:bg-amber-50:hover { background-color: #FFFBEB; }
 .hover\:bg-amber-50\/40:hover { background-color: rgba(255, 251, 235, 0.4); }
@@ -529,11 +533,11 @@ summary { display: list-item; }
 .hover\:bg-crimson-600:hover { background-color: #E11D48; }
 .hover\:bg-crimson-900\/60:hover { background-color: rgba(136, 19, 55, 0.6); }
 .hover\:bg-emerald-100:hover { background-color: #d1fae5; }
+.hover\:bg-emerald-50:hover { background-color: #ECFDF5; }
 .hover\:bg-emerald-50\/60:hover { background-color: rgba(236, 253, 245, 0.6); }
 .hover\:bg-emerald-500:hover { background-color: #10B981; }
 .hover\:bg-emerald-600:hover { background-color: #059669; }
 .hover\:bg-emerald-700:hover { background-color: #047857; }
-.hover\:bg-emerald-900\/60:hover { background-color: rgba(6, 78, 59, 0.6); }
 .hover\:bg-emerald-950\/60:hover { background-color: rgba(2, 44, 34, 0.6); }
 .hover\:bg-navy-700:hover { background-color: #16354D; }
 .hover\:bg-navy-800:hover { background-color: #0F2537; }
@@ -561,19 +565,21 @@ summary { display: list-item; }
 .hover\:border-navy-800:hover { border-color: #0F2537; }
 .hover\:border-slate-200:hover { border-color: #e2e8f0; }
 .hover\:border-slate-600:hover { border-color: #475569; }
-.hover\:from-emerald-500:hover { --tw-gradient-from: #10B981; --tw-gradient-to: rgba(255, 255, 255, 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+.hover\:from-blue-500:hover { --tw-gradient-from: #3b82f6; --tw-gradient-to: rgba(255, 255, 255, 0); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
 .hover\:opacity-100:hover { opacity: 1; }
 .hover\:shadow-md:hover { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); }
 .hover\:text-amber-800:hover { color: #92400e; }
 .hover\:text-blue-700:hover { color: #1d4ed8; }
 .hover\:text-crimson-700:hover { color: #BE123C; }
-.hover\:text-slate-200:hover { color: #e2e8f0; }
+.hover\:text-navy-800:hover { color: #0F2537; }
+.hover\:text-slate-300:hover { color: #cbd5e1; }
 .hover\:text-white:hover { color: #ffffff; }
-.hover\:to-teal-600:hover { --tw-gradient-to: #0d9488; }
+.hover\:to-emerald-500:hover { --tw-gradient-to: #10B981; }
 @media (min-width: 640px) {
   .sm\:flex { display: flex; }
   .sm\:inline { display: inline; }
   .sm\:inline-block { display: inline-block; }
+  .sm\:hidden { display: none; }
   .sm\:p-10 { padding: 2.5rem; }
   .sm\:p-6 { padding: 1.5rem; }
   .sm\:p-8 { padding: 2rem; }
@@ -607,6 +613,7 @@ summary { display: list-item; }
 @media (min-width: 768px) {
   .md\:flex { display: flex; }
   .md\:inline { display: inline; }
+  .md\:hidden { display: none; }
   .md\:p-10 { padding: 2.5rem; }
   .md\:p-12 { padding: 3rem; }
   .md\:flex-row { flex-direction: row; }
@@ -615,6 +622,7 @@ summary { display: list-item; }
   .md\:justify-between { justify-content: space-between; }
 }
 @media (min-width: 1024px) {
+  .lg\:inline { display: inline; }
   .lg\:col-span-4 { grid-column: span 4 / span 4; }
   .lg\:col-span-5 { grid-column: span 5 / span 5; }
   .lg\:col-span-6 { grid-column: span 6 / span 6; }
@@ -631,7 +639,7 @@ summary { display: list-item; }
   .lg\:text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
 }
 @media (min-width: 1280px) {
-  .xl\:inline { display: inline; }
+  .xl\:flex { display: flex; }
   .xl\:flex-col { flex-direction: column; }
   .xl\:flex-row { flex-direction: row; }
   .xl\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
@@ -986,7 +994,21 @@ summary { display: list-item; }
         <!-- Botón Copiloto Gemini IA -->
         <button type="button" onclick="openAiChatModal()" title="Abrir Copiloto Gemini IA" class="bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-500 hover:to-emerald-500 text-white border border-emerald-400/40 rounded-full px-3.5 py-1.5 text-xs font-bold flex items-center gap-1.5 shadow-md transition cursor-pointer">
           <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-300 animate-pulse"></i>
-          <span>Copiloto Gemini IA</span>
+          <span class="hidden sm:inline">Copiloto Gemini IA</span>
+          <span class="sm:hidden">IA</span>
+        </button>
+
+        <!-- Botón Instalar App PWA (Sprint 2) -->
+        <button type="button" id="pwaInstallBtn" onclick="triggerPwaInstall()" title="Instalar CONECTA 360° como App (PWA)" class="hidden xl:flex bg-slate-800/90 hover:bg-slate-700 text-emerald-300 border border-emerald-500/30 rounded-full px-3 py-1.5 text-xs font-semibold items-center gap-1.5 transition cursor-pointer">
+          <i data-lucide="download" class="w-3.5 h-3.5"></i>
+          <span>Instalar App</span>
+        </button>
+
+        <!-- Píldora de Sesión Ejecutiva & Tenant (Sprint 2 Auth) -->
+        <button type="button" onclick="openAuthModal()" id="authUserPill" title="Sesión Ejecutiva Activa • Cambiar Rol o Empresa" class="bg-[#060F17] hover:bg-slate-800 text-white border border-slate-700 rounded-full pl-1.5 pr-3 py-1 text-xs flex items-center gap-2 transition cursor-pointer">
+          <span id="authAvatarBadge" class="w-6 h-6 rounded-full bg-emerald-600 text-white font-mono font-bold text-[10px] flex items-center justify-center">CR</span>
+          <span id="authRoleLabel" class="hidden lg:inline font-semibold text-slate-200">C. Restrepo (CEO)</span>
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
         </button>
       </div>
 
@@ -1496,7 +1518,7 @@ summary { display: list-item; }
             </button>
           </div>
 
-          <!-- Pilar 3: Auditoría Forense de Fugas -->
+          <!-- Pilar 3: Control Operativo de Fugas -->
           <div class="bg-white rounded-2xl p-6 border-2 border-slate-200 hover:border-crimson-600 transition shadow-sm flex flex-col justify-between">
             <div>
               <div class="flex items-center justify-between pb-3 border-b border-slate-100">
@@ -2828,11 +2850,11 @@ summary { display: list-item; }
         <div class="space-y-1">
           <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-emerald-400">
             <i data-lucide="sparkles" class="w-4 h-4"></i>
-            <span>Diagnóstico Forense de Datos • Contexto Activo: <span id="p0-context-label" class="text-white underline">Todas las Sucursales / Todos los Canales</span></span>
+            <span>Diagnóstico Ejecutivo de Rentabilidad • Contexto Activo: <span id="p0-context-label" class="text-white underline">Todas las Sucursales / Todos los Canales</span></span>
           </div>
           <h2 class="text-lg sm:text-xl font-bold">La contabilidad tradicional reporta un margen bruto aparente del 24.2%, pero la comercializadora pierde el 7.7% de su facturación en 5 fugas operativas silenciosas.</h2>
           <p class="text-xs sm:text-sm text-slate-300 max-w-4xl">
-            Al auditar las tablas transaccionales a nivel de línea de factura y movimiento de kardex (<code class="text-amber-300 font-mono">fact_ventas</code> + <code class="text-amber-300 font-mono">fact_notas_credito</code> + <code class="text-amber-300 font-mono">fact_kardex</code> + <code class="text-amber-300 font-mono">fact_compras</code> + <code class="text-amber-300 font-mono">fact_recaudos</code>), identificamos una pérdida mensual de <strong id="p0-banner-leak-inline" class="text-white">$142.5M COP</strong>.
+            Al auditar las operaciones a nivel de línea de factura, notas crédito, movimientos de inventario, órdenes de compra y recaudos de cartera, identificamos una pérdida mensual de <strong id="p0-banner-leak-inline" class="text-white">$142.5M COP</strong>.
           </p>
         </div>
         <div class="bg-white/10 backdrop-blur-sm border border-white/15 rounded-xl p-3.5 shrink-0 flex items-center gap-3">
@@ -2977,7 +2999,7 @@ summary { display: list-item; }
               <tr class="border-b border-slate-200 text-[11px] font-semibold uppercase tracking-wider text-slate-500 bg-slate-50">
                 <th class="py-3 px-4">Severidad</th>
                 <th class="py-3 px-4">Frente / Anomalía Detectada</th>
-                <th class="py-3 px-4">Tablas / Dimensiones Cruzadas</th>
+                <th class="py-3 px-4">Área / Proceso Auditado</th>
                 <th class="py-3 px-4 text-right">Fuga Mensual</th>
                 <th class="py-3 px-4 text-right">Recuperable (<span class="goal-pct-inline">18%</span>)</th>
                 <th class="py-3 px-4 text-center">Acción</th>
@@ -3002,7 +3024,7 @@ summary { display: list-item; }
         <div>
           <div class="flex items-center gap-2">
             <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-crimson-50 text-crimson-600 border border-crimson-200">Frente 1 de 5</span>
-            <span class="text-xs font-mono text-slate-500">Tablas: fact_ventas • dim_lista_precios • dim_vendedor • fact_ordenes_compra</span>
+            <span class="text-xs font-mono text-slate-500">Proceso: Facturación • Listas de Precios • Fuerza de Ventas • Reposición</span>
           </div>
           <h2 class="text-xl font-bold text-slate-900 mt-1">1. Erosión del Margen Comercial (La Cascada del Precio y Costo de Reposición)</h2>
           <p class="text-xs text-slate-600 mt-0.5">Auditoría desde el Precio de Lista hasta el Margen Neto de Bolsillo (Pocket Margin), aislando descuentos sin autorización y ventas por debajo del costo real de reposición.</p>
@@ -3044,7 +3066,7 @@ summary { display: list-item; }
         <div class="lg:col-span-5 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between mb-2">
-              <h3 class="text-base font-bold text-slate-900">Dispersión de Vendedores (<code class="text-xs font-mono text-crimson-600">dim_vendedor</code>)</h3>
+              <h3 class="text-base font-bold text-slate-900">Dispersión del Equipo Comercial (Volumen vs. Descuento)</h3>
               <span class="text-[11px] font-mono bg-crimson-50 text-crimson-600 px-2 py-0.5 rounded border border-crimson-200">Límite Política: 8.0% Dto.</span>
             </div>
             <p class="text-xs text-slate-500 mb-3">Volumen de Venta ($M) vs. % Descuento Promedio Otorgado. Identifica vendedores que cumplen cuota destruyendo margen.</p>
@@ -3081,7 +3103,7 @@ summary { display: list-item; }
         <div class="p-5 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 bg-slate-50/60">
           <div>
             <h3 class="text-base font-bold text-slate-900">Auditoría de SKUs Vendidos por Debajo del Costo de Reposición Actual</h3>
-            <p class="text-xs text-slate-500">Comparativa entre Costo Promedio Histórico del ERP vs. Última Orden de Compra Registrada (<code class="font-mono">fact_ordenes_compra</code>)</p>
+            <p class="text-xs text-slate-500">Comparativa entre Costo Promedio Histórico del ERP vs. Última Orden de Compra Registrada</p>
           </div>
           <span class="text-xs font-mono bg-crimson-50 text-crimson-600 border border-crimson-200 px-3 py-1 rounded-lg font-semibold">Comisiones pagadas sobre utilidad ficticia</span>
         </div>
@@ -3118,10 +3140,10 @@ summary { display: list-item; }
         <div>
           <div class="flex items-center gap-2">
             <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-amber-50 text-amber-700 border border-amber-200">Frente 2 de 5</span>
-            <span class="text-xs font-mono text-slate-500">Tablas: fact_notas_credito • fact_ventas • fact_kardex • dim_motivo_devolucion</span>
+            <span class="text-xs font-mono text-slate-500">Proceso: Devoluciones • Notas Crédito • Recepción en Bodega</span>
           </div>
           <h2 class="text-xl font-bold text-slate-900 mt-1">2. Anomalías en Devoluciones y Notas Crédito (Channel Stuffing y Cruce con Bodega)</h2>
-          <p class="text-xs text-slate-600 mt-0.5">Identificación de facturación artificial en los días 27–30 para inflar comisiones y auditoría forense de Notas Crédito emitidas sin entrada física en el Kardex.</p>
+          <p class="text-xs text-slate-600 mt-0.5">Identificación de facturación artificial en los días 27–30 para inflar comisiones y control de Notas Crédito emitidas sin ingreso físico de mercancía en bodega.</p>
         </div>
         <div class="bg-crimson-50 border border-crimson-200 rounded-xl px-4 py-2.5 text-right shrink-0">
           <div class="text-[10px] font-semibold uppercase text-crimson-600">Fuga en Devoluciones Anómalas</div>
@@ -3183,7 +3205,7 @@ summary { display: list-item; }
         <!-- Right 4 cols: Breakdown by Return Reason -->
         <div class="lg:col-span-4 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
           <div>
-            <h3 class="text-base font-bold text-slate-900">Desglose por Motivo (<code class="text-xs font-mono text-amber-600">dim_motivo_devolucion</code>)</h3>
+            <h3 class="text-base font-bold text-slate-900">Desglose por Motivo de Devolución</h3>
             <p class="text-xs text-slate-500 mt-0.5 mb-4">Causas raíz de notas crédito y doble flete logístico inverso</p>
 
             <div id="p2-reasons-list" class="space-y-4">
@@ -3208,8 +3230,8 @@ summary { display: list-item; }
           <div class="flex items-center gap-2.5">
             <span class="p-2 rounded-lg bg-crimson-600 text-white"><i data-lucide="file-x-2" class="w-4 h-4"></i></span>
             <div>
-              <h3 class="text-base font-bold text-slate-900">Tabla Forense: Notas Crédito Emitidas SIN Documento de Entrada Física en Kardex</h3>
-              <p class="text-xs text-slate-600">Cruce <code class="font-mono">fact_notas_credito (Devolución)</code> LEFT JOIN <code class="font-mono">fact_kardex (Entrada Almacén)</code> donde <code class="font-mono">id_entrada IS NULL</code></p>
+              <h3 class="text-base font-bold text-slate-900">Control de Auditoría: Notas Crédito Emitidas SIN Entrada Física en Bodega</h3>
+              <p class="text-xs text-slate-600">Devoluciones aplicadas en cartera que no registran comprobante de ingreso físico de mercancía en almacén</p>
             </div>
           </div>
           <span class="text-xs font-mono font-bold bg-crimson-600 text-white px-3 py-1.5 rounded-lg" id="p2-missing-kardex-badge">Pérdida Directa: $11.4M COP</span>
@@ -3226,7 +3248,7 @@ summary { display: list-item; }
                 <th class="py-3 px-4 text-right">Valor Acreditado</th>
                 <th class="py-3 px-4 text-center">Doc. Entrada Kardex</th>
                 <th class="py-3 px-4">Usuario Autorizador</th>
-                <th class="py-3 px-4 text-center">Estado Forense</th>
+                <th class="py-3 px-4 text-center">Estado de Control</th>
               </tr>
             </thead>
             <tbody id="p2-nc-kardex-table" class="divide-y divide-slate-200">
@@ -3248,7 +3270,7 @@ summary { display: list-item; }
         <div>
           <div class="flex items-center gap-2">
             <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-amber-50 text-amber-700 border border-amber-200">Frente 3 de 5</span>
-            <span class="text-xs font-mono text-slate-500">Tablas: fact_kardex • fact_saldos_inventario • dim_bodega • dim_usuario</span>
+            <span class="text-xs font-mono text-slate-500">Proceso: Movimientos de Inventario • Saldos de Bodega • Control de Ajustes</span>
           </div>
           <h2 class="text-xl font-bold text-slate-900 mt-1">3. Fugas en Inventario y Capital de Trabajo (Matriz GMROI, Robo Hormiga y Stock Fantasma)</h2>
           <p class="text-xs text-slate-600 mt-0.5">Detección de $420M atrapados en baja rotación/bajo margen, patrón de ajustes manuales en el rango $450k–$499k debajo del tope de autorización ($500k) y Stock Fantasma (&gt;45 días sin venta).</p>
@@ -3287,7 +3309,7 @@ summary { display: list-item; }
             <div class="flex items-center justify-between mb-2">
               <div>
                 <h3 class="text-base font-bold text-slate-900">Patrón de "Robo Hormiga": Ajustes Manuales ($450k–$499k)</h3>
-                <p class="text-xs text-slate-500">Salidas manuales en <code class="font-mono">fact_kardex</code> agrupadas justo debajo del tope de autorización gerencial de <strong>$500,000 COP</strong>.</p>
+                <p class="text-xs text-slate-500">Salidas manuales de inventario agrupadas justo debajo del tope de autorización gerencial de <strong>$500,000 COP</strong>.</p>
               </div>
               <span class="bg-crimson-50 text-crimson-600 border border-crimson-200 text-xs font-mono font-bold px-2.5 py-1 rounded-lg shrink-0">Tope: $500k COP</span>
             </div>
@@ -3365,7 +3387,7 @@ summary { display: list-item; }
         <div>
           <div class="flex items-center gap-2">
             <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-blue-50 text-blue-700 border border-blue-200">Frente 4 de 5</span>
-            <span class="text-xs font-mono text-slate-500">Tablas: fact_ordenes_compra • fact_entradas_almacen • fact_facturas_proveedor</span>
+            <span class="text-xs font-mono text-slate-500">Proceso: Órdenes de Compra • Recepción de Almacén • Cuentas por Pagar</span>
           </div>
           <h2 class="text-xl font-bold text-slate-900 mt-1">4. Variaciones en Compras y Cuentas por Pagar (3-Way Match y Descuentos Financieros)</h2>
           <p class="text-xs text-slate-600 mt-0.5">Discrepancias entre Orden de Compra, Entrada a Almacén y Factura Proveedor, calculadora de pronto pago (&gt;44% E.A.) y dispersión de precios entre sucursales.</p>
@@ -3505,7 +3527,7 @@ summary { display: list-item; }
         <div>
           <div class="flex items-center gap-2">
             <span class="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-crimson-50 text-crimson-600 border border-crimson-200">Frente 5 de 5</span>
-            <span class="text-xs font-mono text-slate-500">Tablas: fact_cartera • fact_recaudos • dim_condicion_pago • fact_fletes</span>
+            <span class="text-xs font-mono text-slate-500">Proceso: Cartera • Recaudos • Plazos de Pago • Costos de Transporte</span>
           </div>
           <h2 class="text-xl font-bold text-slate-900 mt-1">5. Cartera, Condiciones de Pago y Costos Ocultos de Servir (Cost-to-Serve)</h2>
           <p class="text-xs text-slate-600 mt-0.5">Clientes con descuento de "Contado" que pagan a 42 días sin intereses, pedidos micro-fragmentados donde el flete supera el margen y ranking de Clientes Falsos Rentables.</p>
@@ -3523,7 +3545,7 @@ summary { display: list-item; }
         <div class="lg:col-span-6 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between mb-2">
-              <h3 class="text-base font-bold text-slate-900">Mora Oculta: Plazo Pactado (<code class="text-xs font-mono text-crimson-600">dim_condicion_pago</code>) vs. Recaudo Real</h3>
+              <h3 class="text-base font-bold text-slate-900">Mora Oculta: Plazo Pactado vs. Día Real de Recaudo</h3>
               <span class="text-xs font-mono bg-crimson-50 text-crimson-600 border border-crimson-200 px-2.5 py-0.5 rounded font-semibold">Costo WACC: 1.8% Mes</span>
             </div>
             <p class="text-xs text-slate-500 mb-4">Clientes que reciben lista de precio o descuento de "Contado / 30 Días", pero pagan en 42 a 64 días financiándose gratis con la caja de la empresa:</p>
@@ -3609,47 +3631,46 @@ summary { display: list-item; }
 
     </section>
 
-    <!-- =====================================================================
-         PAGE 6: 6. CASO DE NEGOCIO & ROI DE LA CONSULTORÍA
+        <!-- =====================================================================
+         PAGE 6: 6. SIMULADOR EJECUTIVO DE ROI & CASO DE NEGOCIO (SIMPLIFICADO)
          ===================================================================== -->
     <section id="page-6" class="space-y-6 hidden">
 
-      <!-- Top Executive ROI Banner -->
+      <!-- Encabezado Ejecutivo Limpio -->
       <div class="bg-gradient-to-r from-navy-900 via-navy-800 to-emerald-950 rounded-2xl p-6 text-white shadow-lg border border-emerald-500/30 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-        <div class="space-y-1.5">
+        <div class="space-y-1">
           <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-emerald-400">
             <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-dot"></span>
-            <span>Simulador Financiero de Cierre B2B • Conectado en Vivo al Diagnóstico</span>
+            <span>Calculadora Interactiva de Retorno de Inversión</span>
           </div>
-          <h2 class="text-xl sm:text-2xl font-extrabold">6. Caso de Negocio & ROI de la Consultoría de Datos</h2>
-          <p class="text-xs sm:text-sm text-slate-300 max-w-4xl">
-            Personaliza el alcance de los frentes a intervenir, aplica un escenario conservador de recuperación y demuestra en cuántos días el proyecto se autofinancia con el propio flujo de caja rescatado.
+          <h2 class="text-xl sm:text-2xl font-extrabold">Simulador Simple de ROI &amp; Caso de Negocio</h2>
+          <p class="text-xs sm:text-sm text-slate-300 max-w-3xl">
+            Escribe directamente tus valores o usa las barras deslizantes para calcular en segundos cuánto dinero recupera la empresa cada mes y en cuántos días se paga el proyecto.
           </p>
         </div>
 
         <div class="bg-navy-950/90 border border-emerald-500/40 rounded-2xl px-5 py-3.5 text-right shrink-0">
-          <div class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Fuga Mensual Base en Alcance</div>
+          <div class="text-[11px] uppercase tracking-wider text-slate-400 font-semibold">Fuga Mensual Detectada en Alcance</div>
           <div class="text-2xl sm:text-3xl font-mono font-extrabold text-crimson-500 mt-0.5" id="roi-scope-leak-badge">$142.5M COP / mes</div>
-          <div class="text-[11px] font-mono text-emerald-400 mt-0.5" id="roi-scope-pillars-count">5 de 5 frentes seleccionados ($1,710.0M / año)</div>
+          <div class="text-[11px] font-mono text-emerald-400 mt-0.5" id="roi-scope-pillars-count">5 de 5 frentes activos ($1,710.0M / año)</div>
         </div>
       </div>
 
-      <!-- STEP 1: SELECTOR DE ALCANCE POR PILARES (CHECKBOXES INTERACTIVOS) -->
+      <!-- PASO 1 COMPACTO: FRENTES A INCLUIR -->
       <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
           <div>
             <h3 class="text-sm font-bold text-slate-900 flex items-center gap-2">
-              <i data-lucide="check-square" class="w-4 h-4 text-emerald-600"></i>
-              <span>Paso 1: Selecciona el Alcance de Frentes a Intervenir en el Proyecto</span>
+              <span class="w-6 h-6 rounded-full bg-navy-800 text-white text-xs font-mono font-bold flex items-center justify-center">1</span>
+              <span>Elige qué frentes de fuga quieres incluir en el cálculo</span>
             </h3>
-            <p class="text-xs text-slate-500">Activa o desactiva los módulos según la prioridad del cliente para recalcular la Fuga Base en Alcance</p>
           </div>
           <div class="flex items-center gap-2">
-            <button type="button" onclick="setAllScopePillars(true)" class="text-[11px] font-semibold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-2.5 py-1 rounded-lg transition">
-              Seleccionar Todos (5)
+            <button type="button" onclick="setAllScopePillars(true)" class="text-xs font-semibold text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-3 py-1.5 rounded-lg transition cursor-pointer">
+              Incluir Todos (5)
             </button>
-            <button type="button" onclick="setQuickTop2Scope()" class="text-[11px] font-semibold text-navy-800 bg-slate-100 hover:bg-slate-200 border border-slate-200 px-2.5 py-1 rounded-lg transition">
-              Solo Fase 1: Margen + Cartera (Pareto 55%)
+            <button type="button" onclick="setQuickTop2Scope()" class="text-xs font-semibold text-navy-800 bg-slate-100 hover:bg-slate-200 border border-slate-200 px-3 py-1.5 rounded-lg transition cursor-pointer">
+              Solo Margen + Cartera (55% del total)
             </button>
           </div>
         </div>
@@ -3659,123 +3680,131 @@ summary { display: list-item; }
         </div>
       </div>
 
-      <!-- STEP 2: ESCENARIOS RÁPIDOS & 4 SLIDERS + 4 TARJETAS EJECUTIVAS DE CIERRE -->
+      <!-- PASO 2 + PASO 3: VALORES ESCRITOS / DESLIZABLES (IZQUIERDA) + RESULTADOS CLAROS (DERECHA) -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
         
-        <!-- Left 5 cols: Parameter Controls & Scenario Presets -->
+        <!-- Columna Izquierda (5 cols): Entradas Escritas + Sliders -->
         <div class="lg:col-span-5 bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex flex-col justify-between space-y-5">
-          <div>
-            <div class="flex items-center justify-between mb-3">
+          <div class="space-y-5">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3">
               <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
-                <i data-lucide="sliders" class="w-4 h-4 text-emerald-600"></i>
-                <span>Paso 2: Parámetros del Caso de Negocio</span>
+                <span class="w-6 h-6 rounded-full bg-emerald-600 text-white text-xs font-mono font-bold flex items-center justify-center">2</span>
+                <span>Define los Valores (Escribe o Desliza)</span>
               </h3>
-              <span class="text-[11px] font-mono bg-slate-100 text-slate-600 px-2 py-0.5 rounded">Co-creación en Vivo</span>
+              <button type="button" onclick="resetFilters()" class="text-xs font-semibold text-slate-500 hover:text-navy-800 underline cursor-pointer">
+                Restaurar valores
+              </button>
             </div>
 
-            <!-- Quick Scenario Buttons -->
-            <div class="mb-5">
-              <label class="block text-[11px] font-semibold uppercase tracking-wider text-slate-500 mb-2">Botones Rápidos de Escenario de Recuperación:</label>
-              <div class="grid grid-cols-3 gap-2">
-                <button type="button" onclick="applyRoiScenario(12)" id="scen-btn-12" class="scen-btn border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 rounded-xl py-2 px-2 text-center transition">
-                  <div class="text-[10px] uppercase font-semibold text-slate-500">Pesimista</div>
+            <!-- Escenarios de 1 Clic -->
+            <div>
+              <label class="block text-xs font-semibold text-slate-600 mb-2">Escenarios rápidos de recuperación:</label>
+              <div class="grid grid-cols-3 gap-2.5">
+                <button type="button" onclick="applyRoiScenario(12)" id="scen-btn-12" class="scen-btn border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 rounded-xl py-2 px-2 text-center transition cursor-pointer">
+                  <div class="text-[10px] uppercase font-semibold text-slate-500">Prudente</div>
                   <div class="text-sm font-mono font-extrabold text-slate-900">12%</div>
                 </button>
-                <button type="button" onclick="applyRoiScenario(18)" id="scen-btn-18" class="scen-btn border-2 border-emerald-600 bg-emerald-50 text-emerald-800 rounded-xl py-2 px-2 text-center transition shadow-sm">
-                  <div class="text-[10px] uppercase font-bold text-emerald-700">Conservador</div>
+                <button type="button" onclick="applyRoiScenario(18)" id="scen-btn-18" class="scen-btn border-2 border-emerald-600 bg-emerald-50 text-emerald-800 rounded-xl py-2 px-2 text-center transition shadow-sm cursor-pointer">
+                  <div class="text-[10px] uppercase font-bold text-emerald-700">Recomendado</div>
                   <div class="text-sm font-mono font-extrabold text-emerald-700">18%</div>
                 </button>
-                <button type="button" onclick="applyRoiScenario(30)" id="scen-btn-30" class="scen-btn border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 rounded-xl py-2 px-2 text-center transition">
-                  <div class="text-[10px] uppercase font-semibold text-slate-500">Moderado</div>
+                <button type="button" onclick="applyRoiScenario(30)" id="scen-btn-30" class="scen-btn border border-slate-200 bg-slate-50 hover:bg-slate-100 text-slate-700 rounded-xl py-2 px-2 text-center transition cursor-pointer">
+                  <div class="text-[10px] uppercase font-semibold text-slate-500">Optimista</div>
                   <div class="text-sm font-mono font-extrabold text-slate-900">30%</div>
                 </button>
               </div>
             </div>
 
-            <!-- 4 Interactive Sliders -->
+            <!-- 4 Campos con Entrada Escrita Directa + Barra Deslizante -->
             <div class="space-y-4">
               
-              <!-- Slider 1: % Fuga Recuperada -->
-              <div class="p-3.5 rounded-xl bg-emerald-50/60 border border-emerald-200">
-                <div class="flex justify-between items-center text-xs font-bold text-slate-800">
-                  <span>1. % de Fuga Recuperada (Efectividad):</span>
-                  <span id="roiSliderPctLabel" class="font-mono text-sm font-extrabold text-emerald-700">18%</span>
+              <!-- Parámetro 1: % de Fuga Recuperada -->
+              <div class="p-4 rounded-xl bg-emerald-50/60 border border-emerald-200 space-y-2">
+                <div class="flex items-center justify-between gap-2">
+                  <div>
+                    <label for="roiInputPct" class="text-xs font-bold text-slate-900 block">1. % de Fuga a Recuperar</label>
+                    <span class="text-[11px] text-slate-500">Meta de ahorro sobre la fuga actual</span>
+                  </div>
+                  <div class="flex items-center bg-white border-2 border-emerald-600 rounded-xl px-3 py-1.5 shadow-xs">
+                    <input id="roiInputPct" type="number" min="1" max="100" step="1" value="18" oninput="syncRoiFromInput('pct', this.value)" class="w-16 text-right font-mono text-sm font-extrabold text-emerald-700 bg-transparent focus:outline-none" />
+                    <span class="font-mono text-xs font-bold text-emerald-700 ml-1">%</span>
+                  </div>
                 </div>
-                <input id="roiSliderPct" type="range" min="5" max="50" step="1" value="18" oninput="updateDashboard()" class="w-full h-2 bg-emerald-200 rounded-lg cursor-pointer mt-2" />
-                <div class="flex justify-between text-[10px] font-mono text-slate-500 mt-1">
-                  <span>5% (Mínimo)</span>
-                  <span>18% (Conservador)</span>
-                  <span>30% (Moderado)</span>
-                  <span>50% (Alto)</span>
-                </div>
+                <input id="roiSliderPct" type="range" min="5" max="50" step="1" value="18" oninput="syncRoiFromSlider('pct', this.value)" class="w-full h-2 bg-emerald-200 rounded-lg cursor-pointer" />
+                <span id="roiSliderPctLabel" class="sr-only">18%</span>
               </div>
 
-              <!-- Slider 2: Inversión Inicial Setup Consultoría -->
-              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
-                <div class="flex justify-between items-center text-xs font-bold text-slate-800">
-                  <span>2. Inversión Inicial Setup Consultoría:</span>
-                  <span id="roiSliderSetupLabel" class="font-mono text-sm font-extrabold text-navy-800">$18.0M COP</span>
+              <!-- Parámetro 2: Inversión Inicial (Setup) -->
+              <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                <div class="flex items-center justify-between gap-2">
+                  <div>
+                    <label for="roiInputSetup" class="text-xs font-bold text-slate-900 block">2. Inversión Inicial del Proyecto</label>
+                    <span class="text-[11px] text-slate-500">Valor único de implementación (Millones COP)</span>
+                  </div>
+                  <div class="flex items-center bg-white border-2 border-slate-300 focus-within:border-navy-800 rounded-xl px-2.5 py-1.5 shadow-xs">
+                    <span class="font-mono text-xs font-bold text-slate-400 mr-1">$</span>
+                    <input id="roiInputSetup" type="number" min="0" max="500" step="0.5" value="18" oninput="syncRoiFromInput('setup', this.value)" class="w-16 text-right font-mono text-sm font-extrabold text-navy-900 bg-transparent focus:outline-none" />
+                    <span class="font-mono text-xs font-bold text-slate-500 ml-1">M</span>
+                  </div>
                 </div>
-                <input id="roiSliderSetup" type="range" min="5" max="60" step="1" value="18" oninput="updateDashboard()" class="w-full h-2 bg-slate-300 rounded-lg cursor-pointer mt-2" />
-                <div class="flex justify-between text-[10px] font-mono text-slate-500 mt-1">
-                  <span>$5.0M COP</span>
-                  <span>$18.0M Estándar</span>
-                  <span>$35.0M</span>
-                  <span>$60.0M COP</span>
-                </div>
+                <input id="roiSliderSetup" type="range" min="5" max="60" step="1" value="18" oninput="syncRoiFromSlider('setup', this.value)" class="w-full h-2 bg-slate-300 rounded-lg cursor-pointer" />
+                <span id="roiSliderSetupLabel" class="sr-only">$18.0M COP</span>
               </div>
 
-              <!-- Slider 3: Fee Mensual de Acompañamiento -->
-              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
-                <div class="flex justify-between items-center text-xs font-bold text-slate-800">
-                  <span>3. Fee Mensual Acompañamiento / Auditoría:</span>
-                  <span id="roiSliderFeeLabel" class="font-mono text-sm font-extrabold text-navy-800">$2.0M COP / mes</span>
+              <!-- Parámetro 3: Mensualidad / Acompañamiento -->
+              <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                <div class="flex items-center justify-between gap-2">
+                  <div>
+                    <label for="roiInputFee" class="text-xs font-bold text-slate-900 block">3. Costo Mensual de Soporte</label>
+                    <span class="text-[11px] text-slate-500">Acompañamiento mensual (Millones COP)</span>
+                  </div>
+                  <div class="flex items-center bg-white border-2 border-slate-300 focus-within:border-navy-800 rounded-xl px-2.5 py-1.5 shadow-xs">
+                    <span class="font-mono text-xs font-bold text-slate-400 mr-1">$</span>
+                    <input id="roiInputFee" type="number" min="0" max="100" step="0.5" value="2.0" oninput="syncRoiFromInput('fee', this.value)" class="w-16 text-right font-mono text-sm font-extrabold text-navy-900 bg-transparent focus:outline-none" />
+                    <span class="font-mono text-xs font-bold text-slate-500 ml-1">M/mes</span>
+                  </div>
                 </div>
-                <input id="roiSliderFee" type="range" min="0" max="10" step="0.5" value="2.0" oninput="updateDashboard()" class="w-full h-2 bg-slate-300 rounded-lg cursor-pointer mt-2" />
-                <div class="flex justify-between text-[10px] font-mono text-slate-500 mt-1">
-                  <span>$0.0M (Sin Fee)</span>
-                  <span>$2.0M / mes</span>
-                  <span>$5.0M / mes</span>
-                  <span>$10.0M / mes</span>
-                </div>
+                <input id="roiSliderFee" type="range" min="0" max="10" step="0.5" value="2.0" oninput="syncRoiFromSlider('fee', this.value)" class="w-full h-2 bg-slate-300 rounded-lg cursor-pointer" />
+                <span id="roiSliderFeeLabel" class="sr-only">$2.0M COP / mes</span>
               </div>
 
-              <!-- Slider 4: Margen Neto Actual de la Empresa -->
-              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200">
-                <div class="flex justify-between items-center text-xs font-bold text-slate-800">
-                  <span>4. Margen Neto Actual de la Comercializadora:</span>
-                  <span id="roiSliderMarginLabel" class="font-mono text-sm font-extrabold text-navy-800">6.0%</span>
+              <!-- Parámetro 4: Margen Neto Actual -->
+              <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+                <div class="flex items-center justify-between gap-2">
+                  <div>
+                    <label for="roiInputMargin" class="text-xs font-bold text-slate-900 block">4. Margen Neto de la Empresa</label>
+                    <span class="text-[11px] text-slate-500">Para calcular a cuánta venta equivale el ahorro</span>
+                  </div>
+                  <div class="flex items-center bg-white border-2 border-slate-300 focus-within:border-navy-800 rounded-xl px-3 py-1.5 shadow-xs">
+                    <input id="roiInputMargin" type="number" min="0.5" max="80" step="0.5" value="6.0" oninput="syncRoiFromInput('margin', this.value)" class="w-16 text-right font-mono text-sm font-extrabold text-navy-900 bg-transparent focus:outline-none" />
+                    <span class="font-mono text-xs font-bold text-slate-500 ml-1">%</span>
+                  </div>
                 </div>
-                <input id="roiSliderMargin" type="range" min="2" max="15" step="0.5" value="6.0" oninput="updateDashboard()" class="w-full h-2 bg-slate-300 rounded-lg cursor-pointer mt-2" />
-                <div class="flex justify-between text-[10px] font-mono text-slate-500 mt-1">
-                  <span>2.0% (Mayorista)</span>
-                  <span>6.0% (Promedio)</span>
-                  <span>10.0%</span>
-                  <span>15.0% (Especializado)</span>
-                </div>
+                <input id="roiSliderMargin" type="range" min="2" max="15" step="0.5" value="6.0" oninput="syncRoiFromSlider('margin', this.value)" class="w-full h-2 bg-slate-300 rounded-lg cursor-pointer" />
+                <span id="roiSliderMarginLabel" class="sr-only">6.0%</span>
               </div>
 
             </div>
           </div>
 
           <div class="bg-navy-800 text-slate-200 rounded-xl p-3.5 text-xs flex items-start gap-2.5">
-            <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
             <div>
-              <strong>Garantía de Escenario Conservador:</strong> Aún dejando el <strong>82%</strong> de las fugas sin tocar, ese <strong>18%</strong> recuperado supera más de 12 veces el fee mensual de soporte.
+              <strong>Lectura Simple:</strong> Puedes escribir cualquier cifra en las casillas blancas (por ejemplo, una inversión de <strong>$15M</strong> o una meta del <strong>20%</strong>) y el resultado se actualiza al instante.
             </div>
           </div>
         </div>
 
-        <!-- Right 7 cols: 4 Executive Closing Cards + J-Curve Cumulative Cash Flow Chart -->
+        <!-- Columna Derecha (7 cols): 4 Resultados Claros + Resumen Ejecutivo + Evolución Anual -->
         <div class="lg:col-span-7 flex flex-col justify-between space-y-6">
           
-          <!-- 4 Executive Closing KPI Cards (2x2 Grid) -->
+          <!-- Paso 3: Los 4 Resultados Clave en Lenguaje Directo -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             
-            <!-- Card 1: Flujo de Caja Neto Recuperado -->
+            <!-- Resultado 1: Dinero Libre Recuperado cada Mes -->
             <div class="bg-white rounded-2xl p-5 border-l-4 border-l-emerald-600 border border-slate-200 shadow-sm">
               <div class="flex items-center justify-between">
-                <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">1. Flujo de Caja Neto Recuperado</span>
+                <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">1. Dinero Neto Recuperado / Mes</span>
                 <span class="p-2 rounded-lg bg-emerald-50 text-emerald-600"><i data-lucide="wallet" class="w-4 h-4"></i></span>
               </div>
               <div class="mt-2 flex items-baseline gap-2">
@@ -3783,15 +3812,15 @@ summary { display: list-item; }
                 <span class="text-xs font-mono font-semibold text-slate-500">COP libres / mes</span>
               </div>
               <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
-                <span class="text-slate-500">Flujo Neto Anual (descontando Fee):</span>
+                <span class="text-slate-500">Ahorro libre al año (ya descontado soporte):</span>
                 <span class="font-mono font-bold text-emerald-700" id="roi-card-net-annual">+$283.8M / año</span>
               </div>
             </div>
 
-            <!-- Card 2: Tiempo de Retorno (Payback en Días) -->
+            <!-- Resultado 2: En Cuánto Tiempo se Paga Solo -->
             <div class="bg-white rounded-2xl p-5 border-l-4 border-l-navy-800 border border-slate-200 shadow-sm">
               <div class="flex items-center justify-between">
-                <span class="text-xs font-bold uppercase tracking-wider text-navy-800">2. Tiempo de Retorno (Payback)</span>
+                <span class="text-xs font-bold uppercase tracking-wider text-navy-800">2. ¿En Cuánto Tiempo se Paga Solo?</span>
                 <span class="p-2 rounded-lg bg-slate-100 text-navy-800"><i data-lucide="timer" class="w-4 h-4"></i></span>
               </div>
               <div class="mt-2 flex items-baseline gap-2">
@@ -3800,8 +3829,8 @@ summary { display: list-item; }
               </div>
               <div class="mt-2.5">
                 <div class="flex justify-between text-[10px] font-mono text-slate-500 mb-1">
-                  <span>Progreso de recuperación en el Mes 1</span>
-                  <span id="roi-payback-bar-label">76% del Mes 1</span>
+                  <span>Recuperación de la inversión inicial</span>
+                  <span id="roi-payback-bar-label">Se recupera al día 23 del Mes 1</span>
                 </div>
                 <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
                   <div id="roi-payback-bar" class="bg-emerald-600 h-full rounded-full transition-all duration-300" style="width: 76%"></div>
@@ -3809,50 +3838,70 @@ summary { display: list-item; }
               </div>
             </div>
 
-            <!-- Card 3: Costo Diario y Semanal de Inacción -->
+            <!-- Resultado 3: Cuánto Cuesta Esperar -->
             <div class="bg-white rounded-2xl p-5 border-l-4 border-l-crimson-600 border border-slate-200 shadow-sm">
               <div class="flex items-center justify-between">
-                <span class="text-xs font-bold uppercase tracking-wider text-crimson-600">3. Costo de Inacción (Postergar)</span>
+                <span class="text-xs font-bold uppercase tracking-wider text-crimson-600">3. Lo que Pierdes por Día de Espera</span>
                 <span class="p-2 rounded-lg bg-crimson-50 text-crimson-600"><i data-lucide="hourglass" class="w-4 h-4"></i></span>
               </div>
               <div class="mt-2 flex items-baseline gap-2">
                 <span class="text-2xl sm:text-3xl font-mono font-extrabold text-crimson-600" id="roi-card-coi-daily">-$855,000</span>
-                <span class="text-xs font-mono text-slate-500">COP / día de espera</span>
+                <span class="text-xs font-mono text-slate-500">COP / día</span>
               </div>
               <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
-                <span class="text-slate-500">Pérdida por cada semana de demora:</span>
+                <span class="text-slate-500">Dinero no recuperado cada semana:</span>
                 <span class="font-mono font-bold text-crimson-600" id="roi-card-coi-weekly">-$5.99M / semana</span>
               </div>
             </div>
 
-            <!-- Card 4: ROI Neto a 12 Meses & Equivalencia en Ventas -->
+            <!-- Resultado 4: Retorno Anual y Equivalencia en Ventas -->
             <div class="bg-white rounded-2xl p-5 border-l-4 border-l-amber-500 border border-slate-200 shadow-sm">
               <div class="flex items-center justify-between">
-                <span class="text-xs font-bold uppercase tracking-wider text-amber-700">4. ROI Neto Anual & Ventas Equiv.</span>
+                <span class="text-xs font-bold uppercase tracking-wider text-amber-700">4. Retorno Anual &amp; Ventas Equivalentes</span>
                 <span class="p-2 rounded-lg bg-amber-50 text-amber-600"><i data-lucide="award" class="w-4 h-4"></i></span>
               </div>
               <div class="mt-2 flex items-baseline gap-2">
                 <span class="text-2xl sm:text-3xl font-mono font-extrabold text-slate-900" id="roi-card-roi-pct">633% ROI</span>
-                <span class="text-xs font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full font-bold" id="roi-card-multiple">7.3x inversión</span>
+                <span class="text-xs font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full font-bold" id="roi-card-multiple">6.8x retorno</span>
               </div>
               <div class="mt-2 pt-2 border-t border-slate-100 flex items-center justify-between text-xs">
-                <span class="text-slate-500">Equivale a vender (<span id="roi-card-margin-inline">6.0%</span> neto):</span>
+                <span class="text-slate-500">Equivale a vender (<span id="roi-card-margin-inline">6.0%</span> margen):</span>
                 <span class="font-mono font-bold text-navy-800" id="roi-card-equiv-annual">$5,130.0M / año</span>
               </div>
             </div>
 
           </div>
 
-          <!-- Interactive J-Curve Cumulative Cash Flow Chart (Mes 0 to Mes 12) -->
+          <!-- Evolución del Dinero Acumulado en el Año 1 -->
           <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm flex-1 flex flex-col justify-between">
             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
               <div>
-                <h3 class="text-base font-bold text-slate-900">Curva J de Flujo de Caja Neto Acumulado (Mes 0 a Mes 12)</h3>
-                <p class="text-xs text-slate-500">Incluye desembolso inicial en el Mes 0, cruce de Punto de Equilibrio (Break-Even) y caja neta acumulada al cierre del año</p>
+                <h3 class="text-base font-bold text-slate-900">Evolución de la Ganancia Acumulada (Mes 0 a Mes 12)</h3>
+                <p class="text-xs text-slate-500">Muestra la inversión en el Mes 0 y cómo se acumula el dinero recuperado mes a mes</p>
               </div>
               <div class="flex items-center gap-3 text-xs font-mono">
-                <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-crimson-600 inline-block"></span> Inversión / Saldo Negativo</span>
-                <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-emerald-600 inline-block"></span> Ganancia Neta Acumulada</span>
+                <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-crimson-600 inline-block"></span> Inversión Inicial</span>
+                <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-emerald-600 inline-block"></span> Ganancia Acumulada</span>
+              </div>
+            </div>
+
+            <!-- Hitos Trimestrales Simples -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4 text-xs">
+              <div class="bg-crimson-50/70 border border-crimson-200 rounded-xl p-3">
+                <div class="text-[10px] font-mono uppercase text-crimson-700">Inicio (Mes 0)</div>
+                <div class="text-sm font-mono font-bold text-crimson-600 mt-0.5" id="jcurve-m0">-$18.0M COP</div>
+              </div>
+              <div class="bg-emerald-50/70 border border-emerald-200 rounded-xl p-3">
+                <div class="text-[10px] font-mono uppercase text-emerald-700">Al Mes 3</div>
+                <div class="text-sm font-mono font-bold text-emerald-700 mt-0.5" id="jcurve-m3">+$53.0M COP</div>
+              </div>
+              <div class="bg-emerald-50/70 border border-emerald-200 rounded-xl p-3">
+                <div class="text-[10px] font-mono uppercase text-emerald-700">Al Mes 6</div>
+                <div class="text-sm font-mono font-bold text-emerald-700 mt-0.5" id="jcurve-m6">+$123.9M COP</div>
+              </div>
+              <div class="bg-navy-800 text-white rounded-xl p-3">
+                <div class="text-[10px] font-mono uppercase text-emerald-400">Al Final del Año (Mes 12)</div>
+                <div class="text-sm font-mono font-extrabold text-emerald-400 mt-0.5" id="jcurve-m12">+$265.8M COP</div>
               </div>
             </div>
 
@@ -3860,33 +3909,13 @@ summary { display: list-item; }
             <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
               <svg id="roi-jcurve-svg" viewBox="0 0 720 230" class="w-full h-56 overflow-visible"></svg>
             </div>
-
-            <!-- Quarterly Cash Flow Milestones -->
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4 text-xs">
-              <div class="bg-crimson-50/70 border border-crimson-200 rounded-xl p-2.5">
-                <div class="text-[10px] font-mono uppercase text-crimson-700">Mes 0 (Setup Inicial)</div>
-                <div class="text-sm font-mono font-bold text-crimson-600 mt-0.5" id="jcurve-m0">-$18.0M COP</div>
-              </div>
-              <div class="bg-emerald-50/70 border border-emerald-200 rounded-xl p-2.5">
-                <div class="text-[10px] font-mono uppercase text-emerald-700">Trimestre 1 (Mes 3)</div>
-                <div class="text-sm font-mono font-bold text-emerald-700 mt-0.5" id="jcurve-m3">+$53.0M COP</div>
-              </div>
-              <div class="bg-emerald-50/70 border border-emerald-200 rounded-xl p-2.5">
-                <div class="text-[10px] font-mono uppercase text-emerald-700">Semestre 1 (Mes 6)</div>
-                <div class="text-sm font-mono font-bold text-emerald-700 mt-0.5" id="jcurve-m6">+$123.9M COP</div>
-              </div>
-              <div class="bg-navy-800 text-white rounded-xl p-2.5">
-                <div class="text-[10px] font-mono uppercase text-emerald-400">Cierre Año 1 (Mes 12)</div>
-                <div class="text-sm font-mono font-extrabold text-emerald-400 mt-0.5" id="jcurve-m12">+$265.8M COP</div>
-              </div>
-            </div>
           </div>
 
         </div>
 
       </div>
 
-      <!-- STEP 3: TARJETA DE RESUMEN DE PROPUESTA EJECUTIVA (COPIABLE AL PORTAPAPELES) -->
+      <!-- PASO 3: RESUMEN EJECUTIVO LISTO PARA COPIAR -->
       <div class="bg-white rounded-2xl border-2 border-emerald-600/30 shadow-md overflow-hidden">
         <div class="bg-navy-800 text-white px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div class="flex items-center gap-2.5">
@@ -3894,14 +3923,14 @@ summary { display: list-item; }
               <i data-lucide="file-check-2" class="w-5 h-5"></i>
             </div>
             <div>
-              <h3 class="text-base font-bold">Resumen de Propuesta Ejecutiva (Generado Automáticamente para Cotización / Acta)</h3>
-              <p class="text-xs text-slate-300">Síntesis persuasiva con las cifras exactas configuradas en el simulador, lista para enviar por correo o WhatsApp a Gerencia</p>
+              <h3 class="text-base font-bold">Resumen Ejecutivo Listo para Enviar (Cotización / WhatsApp / Acta)</h3>
+              <p class="text-xs text-slate-300">Se redacta automáticamente con los valores que escribiste arriba</p>
             </div>
           </div>
 
-          <button type="button" onclick="copyExecutiveProposal()" id="copyProposalBtn" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow flex items-center gap-2 transition shrink-0">
+          <button type="button" onclick="copyExecutiveProposal()" id="copyProposalBtn" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow flex items-center gap-2 transition shrink-0 cursor-pointer">
             <i data-lucide="copy" class="w-4 h-4"></i>
-            <span id="copyProposalBtnText">Copiar Resumen para Cotización</span>
+            <span id="copyProposalBtnText">Copiar Resumen</span>
           </button>
         </div>
 
@@ -3909,7 +3938,6 @@ summary { display: list-item; }
           <div id="roi-proposal-text" class="bg-white border border-slate-200 rounded-xl p-5 text-xs sm:text-sm text-slate-800 leading-relaxed font-sans space-y-3 shadow-inner">
             <!-- Populated dynamically by JS -->
           </div>
-          <!-- Hidden textarea for reliable iframe clipboard copy -->
           <textarea id="roi-proposal-raw" class="sr-only" aria-hidden="true"></textarea>
         </div>
       </div>
@@ -3942,7 +3970,7 @@ summary { display: list-item; }
         <div class="flex items-center gap-3">
           <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-slate-300">
             <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>PostgreSQL 17 Vivo</span>
+            <span>Datos en Tiempo Real</span>
             <span class="text-slate-600">•</span>
             <span>Cuota: <strong id="aiQuotaBadge" class="text-emerald-300">--/1000</strong></span>
           </div>
@@ -3960,7 +3988,7 @@ summary { display: list-item; }
         <div id="aiHeroGreeting" class="text-center space-y-4 transition-all duration-300 py-6">
           <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-300 text-xs sm:text-sm font-medium mb-1">
             <i data-lucide="sparkles" class="w-4 h-4"></i>
-            <span>Consultor Estratégico C-Level &amp; Auditor Text-to-SQL en Vivo</span>
+            <span>Consultor Estratégico C-Level &amp; Analítica de Negocio en Tiempo Real</span>
           </div>
           <h2 class="text-3xl sm:text-5xl font-semibold text-white tracking-tight">
             ¿Por dónde empezamos?
@@ -3976,10 +4004,10 @@ summary { display: list-item; }
             <div class="w-full h-full bg-[#090D16] rounded-full"></div>
           </div>
           <div class="text-base sm:text-lg font-medium text-slate-200 animate-pulse">
-            Gemini está analizando tus datos en PostgreSQL 17...
+            Gemini está analizando los indicadores de tu empresa...
           </div>
           <div class="text-xs sm:text-sm text-slate-400 font-mono">
-            Generando síntesis ejecutiva, recomendaciones estratégicas y consulta SQL segura
+            Generando diagnóstico ejecutivo y plan de acción estratégico
           </div>
         </div>
 
@@ -4030,12 +4058,35 @@ summary { display: list-item; }
               <p id="aiActionText" class="text-sm sm:text-[16px] text-emerald-100 leading-relaxed whitespace-pre-line"></p>
             </div>
 
+            <!-- Renderizador Dinámico de Gráficos BI (Sprint 3: Barras, Línea, Donut, KPI) -->
+            <div id="aiDynamicChartSection" class="space-y-3 pt-2">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <h4 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-emerald-300 font-mono flex items-center gap-2">
+                  <i data-lucide="bar-chart-3" class="w-4 h-4 text-emerald-400"></i>
+                  <span id="aiDynamicChartTitle">Visualización Interactiva Generada en Vivo</span>
+                </h4>
+                <div class="flex flex-wrap items-center gap-1.5">
+                  <button type="button" onclick="switchAiChartType('bar')" id="aiChartBtn-bar" class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-emerald-600 text-white transition cursor-pointer">Barras</button>
+                  <button type="button" onclick="switchAiChartType('line')" id="aiChartBtn-line" class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-white/5 hover:bg-white/15 text-slate-300 transition cursor-pointer">Línea</button>
+                  <button type="button" onclick="switchAiChartType('pie')" id="aiChartBtn-pie" class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-white/5 hover:bg-white/15 text-slate-300 transition cursor-pointer">Donut</button>
+                  <button type="button" onclick="switchAiChartType('kpi')" id="aiChartBtn-kpi" class="px-3 py-1 rounded-full text-xs font-mono font-semibold bg-white/5 hover:bg-white/15 text-slate-300 transition cursor-pointer">KPI</button>
+                  <button type="button" onclick="saveCurrentAiInsight()" id="saveAiInsightBtn" class="ml-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-blue-600 hover:bg-blue-500 text-white flex items-center gap-1.5 shadow transition cursor-pointer">
+                    <i data-lucide="bookmark-plus" class="w-3.5 h-3.5"></i>
+                    <span id="saveAiInsightBtnText">Guardar en Tablero</span>
+                  </button>
+                </div>
+              </div>
+              <div id="aiDynamicChartCanvas" class="bg-[#0B101B] border border-slate-700/80 rounded-2xl p-5 flex items-center justify-center min-h-[220px]">
+                <svg id="aiDynamicChartSvg" viewBox="0 0 680 220" class="w-full h-56 overflow-visible"></svg>
+              </div>
+            </div>
+
             <!-- Tabla de Datos de Respaldo en Vivo (Tipografía 14px-15px legible) -->
             <div id="aiTableSection" class="space-y-3 pt-2">
               <div class="flex items-center justify-between">
                 <h4 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-300 font-mono flex items-center gap-2">
                   <i data-lucide="table-2" class="w-4 h-4 text-emerald-400"></i>
-                  <span>Datos en Vivo desde PostgreSQL 17</span>
+                  <span>Datos del Negocio en Tiempo Real</span>
                 </h4>
               </div>
               <div class="overflow-x-auto border border-slate-700/80 rounded-2xl max-h-80 bg-[#0B101B]">
@@ -4046,23 +4097,7 @@ summary { display: list-item; }
               </div>
             </div>
 
-            <!-- Acordeón Colapsable para SQL y Metadatos Técnicos (Cero sobrecarga visual) -->
-            <details class="group bg-[#0B101B] border border-slate-800 rounded-2xl overflow-hidden">
-              <summary class="px-5 py-3.5 text-xs sm:text-sm font-mono text-slate-400 hover:text-slate-200 cursor-pointer flex items-center justify-between select-none">
-                <div class="flex items-center gap-2">
-                  <i data-lucide="terminal" class="w-4 h-4 text-blue-400"></i>
-                  <span>Ver consulta SQL ejecutada y detalles técnicos del motor</span>
-                </div>
-                <span class="text-xs text-slate-500 group-open:rotate-180 transition-transform">▼</span>
-              </summary>
-              <div class="px-5 pb-5 pt-2 border-t border-slate-800/80 space-y-3">
-                <div class="flex flex-wrap items-center justify-between gap-2 text-xs font-mono text-slate-400">
-                  <span>Motor: <strong id="aiEngineBadge" class="text-blue-300">Gemini 2.5 Flash</strong></span>
-                  <span id="aiChartConfigBadge" class="px-2.5 py-0.5 rounded bg-slate-800 text-emerald-300 border border-slate-700">chart: bar</span>
-                </div>
-                <pre id="aiSqlCode" class="p-4 bg-[#05080F] border border-slate-800 rounded-xl text-emerald-300 font-mono text-xs sm:text-sm overflow-x-auto whitespace-pre-wrap leading-relaxed"></pre>
-              </div>
-            </details>
+            
 
           </div>
         </div>
@@ -4083,7 +4118,7 @@ summary { display: list-item; }
               class="bg-transparent flex-1 text-base sm:text-lg text-white focus:outline-none placeholder-slate-400 font-sans"
             />
             <div class="hidden md:flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs sm:text-sm text-slate-300 font-medium shrink-0">
-              <span>Pro Forense</span>
+              <span>Gemini Pro</span>
               <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-slate-400"></i>
             </div>
             <button
@@ -4097,7 +4132,7 @@ summary { display: list-item; }
             </button>
           </div>
 
-          <!-- Píldoras de Modo (Chat / Tarea Forense) estilo captura de Gemini -->
+          <!-- Píldoras de Modo (Chat / Análisis) estilo captura de Gemini -->
           <div class="flex flex-wrap items-center justify-center gap-2 pt-1">
             <span class="px-4 py-1.5 rounded-full bg-[#282A2E] border border-white/15 text-white text-xs sm:text-sm font-medium flex items-center gap-1.5 shadow">
               <i data-lucide="sparkles" class="w-3.5 h-3.5 text-blue-400"></i>
@@ -4105,7 +4140,7 @@ summary { display: list-item; }
             </span>
             <span class="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-slate-300 text-xs sm:text-sm font-medium flex items-center gap-1.5">
               <i data-lucide="database" class="w-3.5 h-3.5 text-emerald-400"></i>
-              <span>Auditoría SQL en Vivo</span>
+              <span>Análisis de Indicadores</span>
             </span>
           </div>
 
@@ -4128,13 +4163,24 @@ summary { display: list-item; }
             </button>
           </div>
 
+          <!-- Mis Hallazgos y Gráficos Guardados (Sprint 4: Persistencia de Consultas) -->
+          <div id="aiSavedInsightsWrapper" class="pt-4">
+            <div class="flex items-center justify-between text-xs font-mono uppercase tracking-wider text-slate-400 mb-2.5">
+              <span class="flex items-center gap-1.5"><i data-lucide="bookmark" class="w-3.5 h-3.5 text-emerald-400"></i> Mis Consultas y Gráficos Anclados (<span id="aiSavedCount">0</span>)</span>
+              <button type="button" onclick="clearSavedAiInsights()" class="text-slate-500 hover:text-slate-300 underline cursor-pointer">Limpiar</button>
+            </div>
+            <div id="aiSavedInsightsGrid" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <!-- Populated dynamically by JS -->
+            </div>
+          </div>
+
         </div>
 
       </div>
 
       <!-- FOOTER MINIMALISTA ESTILO GEMINI -->
       <div class="text-center text-xs text-slate-500 pt-4 border-t border-white/5 z-10">
-        CONECTA Gemini puede cruzar cualquier tabla de PostgreSQL 17 con seguridad RLS de solo lectura • Distribuidora Andina SAS
+        CONECTA Gemini analiza en vivo los indicadores de ventas, talento, inventario y rentabilidad • Distribuidora Andina SAS
       </div>
 
     </section>
@@ -4162,7 +4208,7 @@ summary { display: list-item; }
             <div>
               <span class="font-extrabold tracking-widest text-white">CONECTA</span>
               <span class="text-slate-500 mx-1.5">|</span>
-              <span class="text-slate-300 font-medium">Plataforma B2B de Inteligencia Comercial, Talento Humano & Auditoría Forense (COP)</span>
+              <span class="text-slate-300 font-medium">Plataforma B2B de Inteligencia Comercial, Talento Humano & Control de Rentabilidad (COP)</span>
             </div>
           </div>
           <div class="flex flex-wrap items-center gap-3 font-mono text-[11px] text-slate-400">
@@ -4208,88 +4254,86 @@ summary { display: list-item; }
   </div>
 
   <!-- =====================================================================
-       MODAL: MODELO ESTRELLA & CONSULTAS SQL / MEDIDAS DAX
+       NAVEGACIÓN INFERIOR TÁCTIL MOBILE-FIRST (SPRINT 2: DUAL NAVIGATION)
        ===================================================================== -->
-  <div id="sqlModal" class="fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-sm hidden items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[88vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden">
-      <div class="bg-navy-800 text-white px-6 py-4 flex items-center justify-between">
-        <div class="flex items-center gap-2.5">
-          <i data-lucide="database" class="w-5 h-5 text-emerald-400"></i>
+  <nav id="mobile-bottom-nav" class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0B1926]/95 backdrop-blur-md border-t border-slate-800 px-2 py-1.5 flex items-center justify-around text-slate-400 select-none shadow-2xl">
+    <button type="button" onclick="switchSuite('principal')" id="mob-nav-principal" class="flex flex-col items-center gap-0.5 px-2.5 py-1 rounded-xl text-crimson-400 font-bold">
+      <i data-lucide="shield-alert" class="w-4 h-4"></i>
+      <span class="text-[10px]">Sala 360°</span>
+    </button>
+    <button type="button" onclick="switchSuite('comercial')" id="mob-nav-comercial" class="flex flex-col items-center gap-0.5 px-2.5 py-1 rounded-xl hover:text-white">
+      <i data-lucide="line-chart" class="w-4 h-4"></i>
+      <span class="text-[10px]">Comercial</span>
+    </button>
+    <button type="button" onclick="switchSuite('talento')" id="mob-nav-talento" class="flex flex-col items-center gap-0.5 px-2.5 py-1 rounded-xl hover:text-white">
+      <i data-lucide="users" class="w-4 h-4"></i>
+      <span class="text-[10px]">Talento</span>
+    </button>
+    <button type="button" onclick="switchSuite('fugas')" id="mob-nav-fugas" class="flex flex-col items-center gap-0.5 px-2.5 py-1 rounded-xl hover:text-white">
+      <i data-lucide="calculator" class="w-4 h-4"></i>
+      <span class="text-[10px]">Fugas &amp; ROI</span>
+    </button>
+    <button type="button" onclick="switchSuite('ia')" id="mob-nav-ia" class="flex flex-col items-center gap-0.5 px-2.5 py-1 rounded-xl text-emerald-400 hover:text-white">
+      <i data-lucide="sparkles" class="w-4 h-4"></i>
+      <span class="text-[10px]">Gemini IA</span>
+    </button>
+  </nav>
+
+  <!-- =====================================================================
+       MODAL DE AUTENTICACIÓN EJECUTIVA & PERFIL MULTITENANT (SPRINT 2)
+       ===================================================================== -->
+  <div id="authModal" class="fixed inset-0 z-50 bg-slate-900/75 backdrop-blur-sm hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-lg w-full shadow-2xl border border-slate-200 overflow-hidden">
+      <div class="bg-[#0B1926] text-white px-6 py-4 flex items-center justify-between border-b border-slate-800">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400">
+            <i data-lucide="shield-check" class="w-5 h-5"></i>
+          </div>
           <div>
-            <h3 class="font-bold text-base">Arquitectura del Modelo en Estrella y Lógica SQL / DAX de Auditoría</h3>
-            <p class="text-xs text-slate-300">Especificación técnica para conectar este diagnóstico al ERP del cliente (Siesa, Siigo, SAP Business One, World Office, Odoo, Netsuite)</p>
+            <h3 class="font-bold text-base">Sesión Ejecutiva &amp; Control de Acceso</h3>
+            <p class="text-xs text-slate-400">Tenant Activo: Distribuidora Andina SAS (NIT 900.412.881-4)</p>
           </div>
         </div>
-        <button type="button" onclick="closeSqlModal()" class="text-slate-300 hover:text-white p-1 rounded-lg">
+        <button type="button" onclick="closeAuthModal()" class="text-slate-400 hover:text-white p-1 rounded-lg cursor-pointer">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
 
-      <div class="p-6 overflow-y-auto space-y-5 text-xs text-slate-700">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
-            <h4 class="font-bold text-slate-900 uppercase text-[11px] tracking-wider mb-2 text-emerald-700">Tablas de Hechos (Fact Tables)</h4>
-            <ul class="space-y-1.5 font-mono text-[11px]">
-              <li>• <strong>fact_ventas:</strong> id_factura, sku, id_cliente, id_vendedor, cant, precio_lista, dto_linea, costo_erp</li>
-              <li>• <strong>fact_notas_credito:</strong> id_nc, id_factura_origen, fecha_nc, id_motivo, valor_nc, id_entrada_kardex</li>
-              <li>• <strong>fact_kardex:</strong> id_mov, fecha, sku, id_bodega, tipo_mov, cantidad, costo_total, id_usuario</li>
-              <li>• <strong>fact_compras_cxp:</strong> id_oc, id_entrada, id_factura_prov, precio_oc, precio_fact, dto_pronto_pago</li>
-              <li>• <strong>fact_recaudos_fletes:</strong> id_factura, fecha_venc, fecha_pago_real, costo_flete_entrega</li>
-              <li>• <strong>fact_nomina_liquidacion:</strong> id_liquidacion, id_empleado, periodo, salario_base, comisiones, horas_extras, recargos</li>
-              <li>• <strong>fact_asistencia_ausencias:</strong> id_ausencia, id_empleado, fecha_inicio, dias_perdidos, id_tipologia, costo_tiempo_no_laborado</li>
-            </ul>
-          </div>
-          <div class="bg-slate-50 border border-slate-200 rounded-xl p-4">
-            <h4 class="font-bold text-slate-900 uppercase text-[11px] tracking-wider mb-2 text-navy-800">Dimensiones Maestro (Dim Tables)</h4>
-            <ul class="space-y-1.5 font-mono text-[11px]">
-              <li>• <strong>dim_productos:</strong> sku, nombre, categoria, costo_ultima_oc, stock_minimo</li>
-              <li>• <strong>dim_clientes:</strong> id_cliente, razon_social, id_canal, id_condicion_pago, cupo</li>
-              <li>• <strong>dim_empleados / dim_vendedor:</strong> id_empleado, nombre, id_cargo, id_departamento, id_sucursal, fecha_ingreso, tope_descuento</li>
-              <li>• <strong>dim_motivo_devolucion:</strong> id_motivo, descripcion, requiere_ingreso_fisico</li>
-              <li>• <strong>dim_motivo_retiro:</strong> id_motivo_retiro, descripcion_motive, categoria_pareto, es_voluntaria</li>
-              <li>• <strong>dim_calendario:</strong> fecha, anio, mes, dia_mes, dia_semana (efecto lunes), es_cierre_mes (días 27-30)</li>
-            </ul>
+      <div class="p-6 space-y-4 text-xs text-slate-700">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Cambio Rápido de Perfil Ejecutivo (RBAC Demo):</label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <button type="button" onclick="switchExecutiveProfile('CR', 'C. Restrepo (CEO)', 'principal')" class="p-3 rounded-xl border-2 border-emerald-600 bg-emerald-50/70 text-left hover:bg-emerald-50 transition cursor-pointer">
+              <div class="font-bold text-slate-900">Carlos E. Restrepo</div>
+              <div class="text-[11px] text-emerald-700 font-mono">CEO / Gerencia General • Acceso 360°</div>
+            </button>
+            <button type="button" onclick="switchExecutiveProfile('LG', 'L. Gómez (Dir. Comercial)', 'comercial')" class="p-3 rounded-xl border border-slate-200 bg-slate-50 text-left hover:bg-slate-100 transition cursor-pointer">
+              <div class="font-bold text-slate-900">Laura Gómez</div>
+              <div class="text-[11px] text-slate-500 font-mono">Directora Comercial • Ventas y Margen</div>
+            </button>
+            <button type="button" onclick="switchExecutiveProfile('MP', 'M. Pineda (Dir. Talento)', 'talento')" class="p-3 rounded-xl border border-slate-200 bg-slate-50 text-left hover:bg-slate-100 transition cursor-pointer">
+              <div class="font-bold text-slate-900">Mariana Pineda</div>
+              <div class="text-[11px] text-slate-500 font-mono">Directora RRHH • Nómina y Ausentismo</div>
+            </button>
+            <button type="button" onclick="switchExecutiveProfile('JM', 'J. Mora (Control Operaciones)', 'fugas')" class="p-3 rounded-xl border border-slate-200 bg-slate-50 text-left hover:bg-slate-100 transition cursor-pointer">
+              <div class="font-bold text-slate-900">Jorge Mora</div>
+              <div class="text-[11px] text-slate-500 font-mono">Control Interno • Inventarios y ROI</div>
+            </button>
           </div>
         </div>
 
-        <div class="space-y-3">
-          <h4 class="font-bold text-slate-900 text-sm">Consultas Clave de Detección Forense (SQL / DAX)</h4>
-
-          <div class="bg-navy-900 text-slate-100 rounded-xl p-4 font-mono text-[11px] overflow-x-auto">
-            <div class="text-emerald-400 mb-1">-- 1. Detección de Notas Crédito por Devolución SIN Entrada Física en Kardex (Página 2)</div>
-            SELECT nc.id_nc, nc.fecha_nc, nc.id_cliente, nc.sku, nc.valor_nc, nc.usuario_autoriza<br>
-            FROM fact_notas_credito nc<br>
-            INNER JOIN dim_motivo_devolucion m ON nc.id_motivo = m.id_motivo<br>
-            LEFT JOIN fact_kardex k ON nc.id_nc = k.doc_referencia AND k.tipo_mov = 'ENTRADA_DEVOLUCION'<br>
-            WHERE m.requiere_ingreso_fisico = TRUE AND k.id_mov IS NULL;
+        <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            <div>
+              <div class="font-bold text-slate-900">Conexión en Vivo con Supabase Cloud</div>
+              <div class="text-[11px] text-slate-500"> Políticas de seguridad por empresa activas • Modo PWA Instalable</div>
+            </div>
           </div>
-
-          <div class="bg-navy-900 text-slate-100 rounded-xl p-4 font-mono text-[11px] overflow-x-auto">
-            <div class="text-amber-400 mb-1">-- 2. Detección de Robo Hormiga: Ajustes Manuales Bajo Umbral de Supervisión ($500,000 COP) (Página 3)</div>
-            SELECT id_usuario, id_bodega, COUNT(*) AS num_ajustes, AVG(ABS(costo_total)) AS promedio_ajuste, SUM(ABS(costo_total)) AS fuga_total<br>
-            FROM fact_kardex<br>
-            WHERE tipo_mov IN ('AJUSTE_AVERIA', 'AJUSTE_INVENTARIO_NEG') <br>
-            &nbsp;&nbsp;AND ABS(costo_total) BETWEEN 450000 AND 499999<br>
-            GROUP BY id_usuario, id_bodega HAVING COUNT(*) &gt;= 5;
-          </div>
-
-          <div class="bg-navy-900 text-slate-100 rounded-xl p-4 font-mono text-[11px] overflow-x-auto">
-            <div class="text-crimson-400 mb-1">-- 3. Medida DAX: Erosión por Ventas Bajo Costo de Reposición Actual (Página 1)</div>
-            Fuga_Costo_Reposicion = <br>
-            SUMX(<br>
-            &nbsp;&nbsp;fact_ventas,<br>
-            &nbsp;&nbsp;VAR CostoUltimaOC = RELATED(dim_productos[costo_ultima_oc])<br>
-            &nbsp;&nbsp;VAR CostoContable = fact_ventas[costo_unitario_erp]<br>
-            &nbsp;&nbsp;RETURN IF(CostoUltimaOC &gt; CostoContable, (CostoUltimaOC - CostoContable) * fact_ventas[cantidad], 0)<br>
-            )
-          </div>
+          <button type="button" onclick="closeAuthModal()" class="bg-navy-800 hover:bg-navy-700 text-white font-bold px-4 py-2 rounded-xl transition cursor-pointer">
+            Continuar
+          </button>
         </div>
-      </div>
-
-      <div class="bg-slate-100 px-6 py-3 border-t border-slate-200 flex justify-end">
-        <button type="button" onclick="closeSqlModal()" class="bg-navy-800 hover:bg-navy-700 text-white text-xs font-semibold px-4 py-2 rounded-lg transition">
-          Cerrar Especificación Técnica
-        </button>
       </div>
     </div>
   </div>
@@ -4355,6 +4399,13 @@ summary { display: list-item; }
         const activeSub = document.getElementById('side-fug-' + currentTab);
         if (activeSub) activeSub.classList.add('active-sub');
       }
+      ['principal', 'comercial', 'talento', 'fugas', 'ia'].forEach(function(s) {
+        const mBtn = document.getElementById('mob-nav-' + s);
+        if (!mBtn) return;
+        mBtn.className = (s === currentSuite)
+          ? 'flex flex-col items-center gap-0.5 px-2.5 py-1 rounded-xl bg-white/10 text-emerald-400 font-bold'
+          : 'flex flex-col items-center gap-0.5 px-2.5 py-1 rounded-xl text-slate-400 hover:text-white';
+      });
     }
 
     // Suite Switcher: Alterna entre Sala de Guerra 360°, Comercial, Talento Humano, Auditoría de Fugas y Copiloto Gemini IA
@@ -4454,7 +4505,7 @@ summary { display: list-item; }
         if (navFug) navFug.classList.remove('hidden');
         if (btnFug) btnFug.className = 'side-nav-item w-full px-3 py-2 rounded-xl text-xs font-extrabold transition flex items-center justify-between bg-slate-800 text-white border border-amber-500/40 shadow-sm cursor-pointer';
         if (statusLbl) {
-          statusLbl.textContent = 'Modo Activo: Auditoría Forense de Fugas y Simulador ROI';
+          statusLbl.textContent = 'Modo Activo: Auditoría de Fugas y Simulador ROI';
           statusLbl.className = 'leading-tight text-amber-400';
         }
         switchTab(currentTab);
@@ -4564,7 +4615,7 @@ summary { display: list-item; }
           share: 32.3,
           color: 'crimson',
           icon: 'trending-down',
-          tables: 'fact_ventas • dim_lista_precios • dim_vendedor',
+          tables: 'Facturación • Listas de Precios • Vendedores',
           highlight: 'Descuentos fuera de política (>8%) y ventas bajo costo de reposición.'
         },
         {
@@ -4575,7 +4626,7 @@ summary { display: list-item; }
           share: 22.8,
           color: 'crimson',
           icon: 'truck',
-          tables: 'fact_recaudos • dim_condicion_pago • fact_fletes',
+          tables: 'Cartera • Condiciones de Pago • Fletes',
           highlight: 'Mora oculta en clientes de contado (42d) y micro-pedidos con flete > margen.'
         },
         {
@@ -4586,7 +4637,7 @@ summary { display: list-item; }
           share: 18.6,
           color: 'amber',
           icon: 'package-search',
-          tables: 'fact_kardex • fact_saldos_inventario • dim_usuario',
+          tables: 'Movimientos de Bodega • Saldos de Inventario',
           highlight: '$420M atrapados (GMROI < 1), robo hormiga ($450k-$499k) y stock fantasma.'
         },
         {
@@ -4597,7 +4648,7 @@ summary { display: list-item; }
           share: 14.7,
           color: 'amber',
           icon: 'file-warning',
-          tables: 'fact_notas_credito • fact_kardex • dim_motivo',
+          tables: 'Notas Crédito • Recepción Física en Bodega',
           highlight: 'Channel stuffing días 27-30 y Notas Crédito sin entrada física en Kardex.'
         },
         {
@@ -4608,7 +4659,7 @@ summary { display: list-item; }
           share: 11.6,
           color: 'blue',
           icon: 'shopping-cart',
-          tables: 'fact_ordenes_compra • fact_facturas_proveedor',
+          tables: 'Órdenes de Compra • Facturas de Proveedor',
           highlight: 'Discrepancias en 3-Way Match y pérdida de pronto pago (>44% E.A.).'
         }
       ]
@@ -4643,17 +4694,61 @@ summary { display: list-item; }
       };
     }
 
-    function getRoiParams() {
-      const pctEl = document.getElementById('roiSliderPct');
-      const setupEl = document.getElementById('roiSliderSetup');
-      const feeEl = document.getElementById('roiSliderFee');
-      const marginEl = document.getElementById('roiSliderMargin');
+    function syncRoiFromInput(field, rawVal) {
+      const val = parseFloat(rawVal);
+      if (isNaN(val)) return;
+      if (field === 'pct') {
+        const s = document.getElementById('roiSliderPct');
+        if (s) s.value = Math.min(50, Math.max(5, val));
+      } else if (field === 'setup') {
+        const s = document.getElementById('roiSliderSetup');
+        if (s) s.value = Math.min(60, Math.max(5, val));
+      } else if (field === 'fee') {
+        const s = document.getElementById('roiSliderFee');
+        if (s) s.value = Math.min(10, Math.max(0, val));
+      } else if (field === 'margin') {
+        const s = document.getElementById('roiSliderMargin');
+        if (s) s.value = Math.min(15, Math.max(2, val));
+      }
+      updateDashboard();
+    }
 
-      const pct = parseFloat(pctEl ? pctEl.value : 18) / 100;
-      const setupM = parseFloat(setupEl ? setupEl.value : 18.0);
-      const feeM = parseFloat(feeEl ? feeEl.value : 2.0);
-      const netMargin = parseFloat(marginEl ? marginEl.value : 6.0) / 100;
-      return { pct: pct, setupM: setupM, feeM: feeM, netMargin: netMargin };
+    function syncRoiFromSlider(field, rawVal) {
+      const val = parseFloat(rawVal);
+      if (isNaN(val)) return;
+      if (field === 'pct') {
+        const inp = document.getElementById('roiInputPct');
+        if (inp) inp.value = val;
+      } else if (field === 'setup') {
+        const inp = document.getElementById('roiInputSetup');
+        if (inp) inp.value = val;
+      } else if (field === 'fee') {
+        const inp = document.getElementById('roiInputFee');
+        if (inp) inp.value = val;
+      } else if (field === 'margin') {
+        const inp = document.getElementById('roiInputMargin');
+        if (inp) inp.value = val;
+      }
+      updateDashboard();
+    }
+
+    function getRoiParams() {
+      const pctInp = document.getElementById('roiInputPct');
+      const setupInp = document.getElementById('roiInputSetup');
+      const feeInp = document.getElementById('roiInputFee');
+      const marginInp = document.getElementById('roiInputMargin');
+
+      const pctVal = pctInp && pctInp.value !== '' ? parseFloat(pctInp.value) : 18;
+      const setupVal = setupInp && setupInp.value !== '' ? parseFloat(setupInp.value) : 18.0;
+      const feeVal = feeInp && feeInp.value !== '' ? parseFloat(feeInp.value) : 2.0;
+      const marginVal = marginInp && marginInp.value !== '' ? parseFloat(marginInp.value) : 6.0;
+
+      return {
+        pct: Math.max(0.01, (isNaN(pctVal) ? 18 : pctVal) / 100),
+        setupM: Math.max(0, isNaN(setupVal) ? 18.0 : setupVal),
+        feeM: Math.max(0, isNaN(feeVal) ? 2.0 : feeVal),
+        netMargin: Math.max(0.005, (isNaN(marginVal) ? 6.0 : marginVal) / 100)
+      };
     }
 
     // Navigation Tab Switcher para Auditoría de Fugas (0 to 6)
@@ -4705,29 +4800,284 @@ summary { display: list-item; }
       if (setupEl) setupEl.value = 18;
       if (feeEl) feeEl.value = 2.0;
       if (marginEl) marginEl.value = 6.0;
+      const pctInp = document.getElementById('roiInputPct');
+      const setupInp = document.getElementById('roiInputSetup');
+      const feeInp = document.getElementById('roiInputFee');
+      const marginInp = document.getElementById('roiInputMargin');
+      if (pctInp) pctInp.value = 18;
+      if (setupInp) setupInp.value = 18;
+      if (feeInp) feeInp.value = 2.0;
+      if (marginInp) marginInp.value = 6.0;
 
       setAllScopePillars(true);
       updateDashboard();
     }
 
-    // Modal controls
-    function openSqlModal() {
-      const m = document.getElementById('sqlModal');
+    // =========================================================================
+    // CONECTA COPILOTO GEMINI IA (MÓDULO DE PÁGINA COMPLETA)
+    // =========================================================================
+    // =========================================================================
+    // SPRINT 2 & 3 & 4: PWA, SESIÓN EJECUTIVA Y RENDERIZADOR DINÁMICO DE GRÁFICOS BI
+    // =========================================================================
+    let deferredPwaPrompt = null;
+    let lastAiResultData = null;
+    let currentAiChartType = 'bar';
+
+    window.addEventListener('beforeinstallprompt', function(e) {
+      e.preventDefault();
+      deferredPwaPrompt = e;
+      const btn = document.getElementById('pwaInstallBtn');
+      if (btn) btn.classList.remove('hidden');
+    });
+
+    function triggerPwaInstall() {
+      if (deferredPwaPrompt) {
+        deferredPwaPrompt.prompt();
+      } else {
+        alert('CONECTA 360° está lista como App Progresiva (PWA). En Chrome o Edge puedes instalarla desde el ícono "Instalar aplicación" en la barra de direcciones.');
+      }
+    }
+
+    if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+      navigator.serviceWorker.register('./sw.js').catch(function() {});
+    }
+
+    function openAuthModal() {
+      const m = document.getElementById('authModal');
       if (!m) return;
       m.classList.remove('hidden');
       m.classList.add('flex');
     }
 
-    function closeSqlModal() {
-      const m = document.getElementById('sqlModal');
+    function closeAuthModal() {
+      const m = document.getElementById('authModal');
       if (!m) return;
       m.classList.add('hidden');
       m.classList.remove('flex');
     }
 
-    // =========================================================================
-    // CONECTA IA FORENSE (MÓDULO DE PÁGINA COMPLETA ESTILO GOOGLE GEMINI)
-    // =========================================================================
+    function switchExecutiveProfile(initials, label, defaultSuite) {
+      const av = document.getElementById('authAvatarBadge');
+      const lbl = document.getElementById('authRoleLabel');
+      if (av) av.textContent = initials;
+      if (lbl) lbl.textContent = label;
+      closeAuthModal();
+      if (defaultSuite) switchSuite(defaultSuite);
+    }
+
+    function switchAiChartType(type) {
+      currentAiChartType = type;
+      ['bar', 'line', 'pie', 'kpi'].forEach(function(t) {
+        const b = document.getElementById('aiChartBtn-' + t);
+        if (!b) return;
+        b.className = (t === type)
+          ? 'px-3 py-1 rounded-full text-xs font-mono font-semibold bg-emerald-600 text-white transition cursor-pointer'
+          : 'px-3 py-1 rounded-full text-xs font-mono font-semibold bg-white/5 hover:bg-white/15 text-slate-300 transition cursor-pointer';
+      });
+      if (lastAiResultData) {
+        renderAiDynamicChart(lastAiResultData.rows || [], lastAiResultData.chart_config || {}, type);
+      }
+    }
+
+    function renderAiDynamicChart(rows, chartConfig, overrideType) {
+      const section = document.getElementById('aiDynamicChartSection');
+      const svg = document.getElementById('aiDynamicChartSvg');
+      const titleEl = document.getElementById('aiDynamicChartTitle');
+      if (!section || !svg) return;
+
+      if (!rows || rows.length === 0) {
+        section.classList.add('hidden');
+        return;
+      }
+      section.classList.remove('hidden');
+
+      const cols = Object.keys(rows[0]);
+      const labelCol = (chartConfig && chartConfig.xAxis_column && cols.includes(chartConfig.xAxis_column))
+        ? chartConfig.xAxis_column
+        : cols.find(function(c) { return typeof rows[0][c] === 'string'; }) || cols[0];
+      const numCol = (chartConfig && chartConfig.yAxis_column && cols.includes(chartConfig.yAxis_column))
+        ? chartConfig.yAxis_column
+        : cols.find(function(c) { return typeof rows[0][c] === 'number'; }) || cols[cols.length - 1];
+
+      const chartType = overrideType || (chartConfig && chartConfig.chart_type) || 'bar';
+      currentAiChartType = chartType;
+      ['bar', 'line', 'pie', 'kpi'].forEach(function(t) {
+        const b = document.getElementById('aiChartBtn-' + t);
+        if (b) {
+          b.className = (t === chartType)
+            ? 'px-3 py-1 rounded-full text-xs font-mono font-semibold bg-emerald-600 text-white transition cursor-pointer'
+            : 'px-3 py-1 rounded-full text-xs font-mono font-semibold bg-white/5 hover:bg-white/15 text-slate-300 transition cursor-pointer';
+        }
+      });
+
+      if (titleEl) {
+        titleEl.textContent = (chartConfig && chartConfig.title) ? chartConfig.title : ('Análisis Visual: ' + numCol.replace(/_/g, ' ').toUpperCase());
+      }
+
+      const items = rows.slice(0, 6).map(function(r) {
+        const rawLbl = String(r[labelCol] !== undefined ? r[labelCol] : '');
+        const numVal = Math.abs(Number(r[numCol]) || 0);
+        return {
+          label: rawLbl.length > 18 ? rawLbl.slice(0, 17) + '…' : rawLbl,
+          val: numVal
+        };
+      });
+
+      const maxVal = Math.max.apply(null, items.map(function(i) { return i.val; }).concat([1]));
+      const fmtVal = function(v) {
+        const pesoSign = String.fromCharCode(36);
+        if (v >= 1000000) return pesoSign + (v / 1000000).toFixed(1) + 'M';
+        if (v >= 1000) return v.toLocaleString('es-CO');
+        return String(Math.round(v * 10) / 10);
+      };
+
+      if (chartType === 'kpi') {
+        const total = items.reduce(function(acc, it) { return acc + it.val; }, 0);
+        const topItem = items[0];
+        svg.innerHTML =
+          '<rect x="20" y="15" width="300" height="185" rx="16" fill="#131C2E" stroke="#1E293B" stroke-width="2" />' +
+          '<text x="45" y="60" fill="#94A3B8" font-size="13" font-family="JetBrains Mono" font-weight="700">TOTAL ACUMULADO (' + items.length + ' REGISTROS)</text>' +
+          '<text x="45" y="125" fill="#34D399" font-size="40" font-family="JetBrains Mono" font-weight="800">' + fmtVal(total) + '</text>' +
+          '<text x="45" y="165" fill="#E2E8F0" font-size="13">Indicador: ' + numCol.replace(/_/g, ' ') + '</text>' +
+          '<rect x="350" y="15" width="310" height="185" rx="16" fill="#131C2E" stroke="#1E293B" stroke-width="2" />' +
+          '<text x="375" y="60" fill="#94A3B8" font-size="13" font-family="JetBrains Mono" font-weight="700">PRINCIPAL HALLAZGO (#1)</text>' +
+          '<text x="375" y="115" fill="#60A5FA" font-size="30" font-family="JetBrains Mono" font-weight="800">' + fmtVal(topItem.val) + '</text>' +
+          '<text x="375" y="160" fill="#FFFFFF" font-size="15" font-weight="700">' + topItem.label + '</text>';
+        return;
+      }
+
+      if (chartType === 'pie') {
+        const palette = ['#10B981', '#3B82F6', '#F59E0B', '#F43F5E', '#818CF8', '#2DD4BF'];
+        const total = items.reduce(function(a, b) { return a + b.val; }, 0) || 1;
+        let cumPct = 0;
+        const r = 72;
+        const cx = 170;
+        const cy = 110;
+        const circum = 2 * Math.PI * r;
+        let circles = '';
+        let legend = '';
+        items.forEach(function(it, idx) {
+          const pct = it.val / total;
+          const strokeLen = pct * circum;
+          const offset = -cumPct * circum;
+          cumPct += pct;
+          const col = palette[idx % palette.length];
+          circles += '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="none" stroke="' + col + '" stroke-width="26" stroke-dasharray="' + strokeLen + ' ' + circum + '" stroke-dashoffset="' + offset + '" />';
+          legend +=
+            '<rect x="330" y="' + (30 + idx * 30) + '" width="14" height="14" rx="4" fill="' + col + '" />' +
+            '<text x="352" y="' + (42 + idx * 30) + '" fill="#E2E8F0" font-size="13" font-weight="600">' + it.label + '</text>' +
+            '<text x="640" y="' + (42 + idx * 30) + '" text-anchor="end" fill="#34D399" font-size="13" font-family="JetBrains Mono" font-weight="700">' + fmtVal(it.val) + ' (' + Math.round(pct * 100) + '%)</text>';
+        });
+        svg.innerHTML =
+          circles +
+          '<text x="' + cx + '" y="' + (cy + 5) + '" text-anchor="middle" fill="#FFFFFF" font-size="15" font-family="JetBrains Mono" font-weight="800">' + fmtVal(total) + '</text>' +
+          legend;
+        return;
+      }
+
+      if (chartType === 'line') {
+        const padX = 65;
+        const stepX = items.length > 1 ? (560 / (items.length - 1)) : 0;
+        let pts = [];
+        let circlesAndLabels = '';
+        items.forEach(function(it, idx) {
+          const x = padX + idx * stepX;
+          const y = 175 - (it.val / maxVal) * 125;
+          pts.push(x + ',' + y);
+          circlesAndLabels +=
+            '<circle cx="' + x + '" cy="' + y + '" r="6" fill="#3B82F6" stroke="#FFFFFF" stroke-width="2" />' +
+            '<text x="' + x + '" y="' + (y - 12) + '" text-anchor="middle" fill="#60A5FA" font-size="12" font-family="JetBrains Mono" font-weight="800">' + fmtVal(it.val) + '</text>' +
+            '<text x="' + x + '" y="202" text-anchor="middle" fill="#CBD5E1" font-size="12" font-weight="600">' + it.label + '</text>';
+        });
+        svg.innerHTML =
+          '<line x1="45" y1="180" x2="645" y2="180" stroke="#334155" stroke-width="1.5" />' +
+          '<polyline fill="none" stroke="#10B981" stroke-width="3.5" points="' + pts.join(' ') + '" />' +
+          circlesAndLabels;
+        return;
+      }
+
+      // Default: Bar Chart
+      const barWidth = Math.min(68, Math.floor(520 / items.length));
+      const gap = Math.floor((580 - barWidth * items.length) / (items.length + 1));
+      let bars = '<line x1="40" y1="180" x2="650" y2="180" stroke="#334155" stroke-width="1.5" />';
+      items.forEach(function(it, idx) {
+        const x = 45 + gap + idx * (barWidth + gap);
+        const h = Math.max(8, (it.val / maxVal) * 130);
+        const y = 180 - h;
+        const fill = idx === 0 ? '#10B981' : '#3B82F6';
+        bars +=
+          '<rect x="' + x + '" y="' + y + '" width="' + barWidth + '" height="' + h + '" rx="6" fill="' + fill + '" />' +
+          '<text x="' + (x + barWidth / 2) + '" y="' + (y - 8) + '" text-anchor="middle" fill="#34D399" font-size="12" font-family="JetBrains Mono" font-weight="800">' + fmtVal(it.val) + '</text>' +
+          '<text x="' + (x + barWidth / 2) + '" y="202" text-anchor="middle" fill="#E2E8F0" font-size="12" font-weight="600">' + it.label + '</text>';
+      });
+      svg.innerHTML = bars;
+    }
+
+    function getSavedAiInsights() {
+      try {
+        return JSON.parse(localStorage.getItem('conecta_saved_insights') || '[]');
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function runSavedInsightIndex(idx) {
+      const list = getSavedAiInsights();
+      if (list[idx] && list[idx].question) {
+        runSuggestedAiQuery(list[idx].question);
+      }
+    }
+
+    function renderSavedAiInsights() {
+      const list = getSavedAiInsights();
+      const countEl = document.getElementById('aiSavedCount');
+      const gridEl = document.getElementById('aiSavedInsightsGrid');
+      const wrapEl = document.getElementById('aiSavedInsightsWrapper');
+      if (countEl) countEl.textContent = list.length;
+      if (!gridEl || !wrapEl) return;
+      if (list.length === 0) {
+        wrapEl.classList.add('hidden');
+        return;
+      }
+      wrapEl.classList.remove('hidden');
+      gridEl.innerHTML = list.map(function(item, idx) {
+        return (
+          '<div onclick="runSavedInsightIndex(' + idx + ')" class="p-3.5 rounded-2xl bg-[#161D2B] hover:bg-[#1E2738] border border-white/10 cursor-pointer transition flex items-start justify-between gap-2">' +
+            '<div class="space-y-1 min-w-0">' +
+              '<div class="text-xs font-mono text-emerald-400 uppercase">' + (item.chartType || 'bar') + ' • ' + item.date + '</div>' +
+              '<div class="text-sm font-semibold text-white truncate">' + item.question + '</div>' +
+              '<div class="text-xs text-slate-400 line-clamp-1">' + item.summary + '</div>' +
+            '</div>' +
+            '<span class="text-xs font-mono text-blue-400 shrink-0">Abrir →</span>' +
+          '</div>'
+        );
+      }).join('');
+    }
+
+    function saveCurrentAiInsight() {
+      if (!lastAiResultData) return;
+      const list = getSavedAiInsights();
+      const q = (document.getElementById('aiUserQuestionBubble') || {}).textContent || 'Consulta Ejecutiva';
+      list.unshift({
+        question: q,
+        summary: lastAiResultData.summary || '',
+        chartType: currentAiChartType,
+        date: new Date().toLocaleDateString('es-CO')
+      });
+      localStorage.setItem('conecta_saved_insights', JSON.stringify(list.slice(0, 6)));
+      renderSavedAiInsights();
+      const txt = document.getElementById('saveAiInsightBtnText');
+      if (txt) {
+        txt.textContent = '¡Guardado!';
+        setTimeout(function() { txt.textContent = 'Guardar en Tablero'; }, 1800);
+      }
+    }
+
+    function clearSavedAiInsights() {
+      localStorage.removeItem('conecta_saved_insights');
+      renderSavedAiInsights();
+    }
+
     const SUPABASE_ASK_CONECTA_URL = 'https://fyxmnelszjwpsarqdxwo.supabase.co/functions/v1/ask-conecta';
 
     function openAiChatModal() {
@@ -4800,7 +5150,7 @@ summary { display: list-item; }
           // Render Badges
           document.getElementById('aiLatencyBadge').textContent = (data.latency_ms || 0) + ' ms';
           document.getElementById('aiCountBadge').textContent = data.count || 0;
-          document.getElementById('aiEngineBadge').textContent = data.engine || 'CONECTA Gemini Engine';
+          const engEl = document.getElementById('aiEngineBadge'); if (engEl) engEl.textContent = data.engine || 'CONECTA Gemini Engine';
 
           const quotaBadge = document.getElementById('aiQuotaBadge');
           if (quotaBadge && data.quota) {
@@ -4826,7 +5176,7 @@ summary { display: list-item; }
           // Render Synthesis & Action
           document.getElementById('aiSummaryText').textContent = data.summary || 'Sin síntesis disponible.';
           document.getElementById('aiActionText').textContent = data.recommended_action || 'Revisar datos adjuntos.';
-          document.getElementById('aiSqlCode').textContent = data.sql_query || data.sql || '-- No query';
+          const sqlEl = document.getElementById('aiSqlCode'); if (sqlEl) sqlEl.textContent = data.sql_query || data.sql || '-- No query';
 
           // Render Dynamic Table
           const thead = document.getElementById('aiTableHead');
@@ -4861,7 +5211,7 @@ summary { display: list-item; }
           document.getElementById('aiCountBadge').textContent = '0 (Bloqueado)';
           document.getElementById('aiSummaryText').textContent = '🛡️ ' + (data.error || 'Error procesando la consulta en Supabase.');
           document.getElementById('aiActionText').textContent = data.recommended_action || data.detail || 'Operación impedida por el Guardrail de Seguridad CONECTA.';
-          document.getElementById('aiSqlCode').textContent = data.sql_query || data.sql || '-- BLOQUEADO ANTES DE EJECUCIÓN EN POSTGRESQL';
+          const sqlEl = document.getElementById('aiSqlCode'); if (sqlEl) sqlEl.textContent = data.sql_query || data.sql || '-- BLOQUEADO';
           document.getElementById('aiTableHead').innerHTML = '';
           document.getElementById('aiTableBody').innerHTML = '<tr><td class="py-5 px-4 text-center text-crimson-300 font-mono text-sm">Ejecución abortada por políticas de protección de datos de CONECTA.</td></tr>';
         }
@@ -6106,7 +6456,7 @@ summary { display: list-item; }
           role: 'Auxiliar de Inventarios & Bodega Central',
           branch: 'Bodega Central Cali • Turno Noche (22:00 - 06:00)',
           tenure: '1.4 Años en la Empresa',
-          status: '¡ALERTA CRÍTICA DE AUDITORÍA FORENSE!',
+          status: '¡ALERTA CRÍTICA DE CONTROL INTERNO!',
           statusBadge: 'bg-crimson-600 text-white border-crimson-700 animate-pulse',
           avatarBg: 'bg-crimson-600 text-white',
           kpis: [
@@ -6120,7 +6470,7 @@ summary { display: list-item; }
             roiSales: 'N/A Operativo',
             fugaDirecta: '-' + fmtM(5.35 * scale, 2) + ' COP/mes en mermas sospechosas de Kardex'
           },
-          diagnosis: '<strong>Cruce Forense 360:</strong> Alarma patrimonial. Marcos Valencia acumula 5 días de ausentismo con patrón sistemático de lunes, y su usuario en Kardex (<code class="font-mono bg-white px-1 rounded">bodega_aux04</code>) registra 11 ajustes manuales por un promedio de $486k COP (robo hormiga detectado en Módulo de Fugas Pág. 3).',
+          diagnosis: '<strong>Cruce Integral 360:</strong> Alarma patrimonial. Marcos Valencia acumula 5 días de ausentismo con patrón sistemático de lunes, y su usuario en Kardex (<code class="font-mono bg-white px-1 rounded">bodega_aux04</code>) registra 11 ajustes manuales por un promedio de $486k COP (robo hormiga detectado en Módulo de Fugas Pág. 3).',
           action: 'Intervención inmediata de Control Interno y Recursos Humanos: auditar cámaras del turno noche y suspender privilegios de ajuste manual en Kardex.'
         },
         JORGE: {
@@ -6269,7 +6619,7 @@ summary { display: list-item; }
               '<div class="' + barColor + ' h-full rounded-full transition-all duration-500" style="width: ' + (p.share * 2.6) + '%"></div>' +
             '</div>' +
             '<div class="flex justify-between items-center mt-1 text-[11px] text-slate-500">' +
-              '<span>Tablas: <code class="font-mono text-slate-600">' + p.tables + '</code></span>' +
+              '<span>Proceso: <strong class="font-semibold text-slate-700">' + p.tables + '</strong></span>' +
               '<span class="text-emerald-700 font-mono font-medium">Recuperable (' + pctInt + '%): +' + fmtM(rec) + '/mes</span>' +
             '</div>' +
           '</div>'
@@ -6309,7 +6659,7 @@ summary { display: list-item; }
           severity: 'CRÍTICO',
           sevClass: 'bg-crimson-600 text-white',
           title: 'Descuentos comerciales fuera de política (>8.0%) otorgados sin autorización',
-          tables: 'fact_ventas × dim_vendedor × dim_lista_precios',
+          tables: 'Comercial • Política de Precios y Descuentos',
           impact: 25.2 * scale,
           tab: 1
         },
@@ -6317,7 +6667,7 @@ summary { display: list-item; }
           severity: 'CRÍTICO',
           sevClass: 'bg-crimson-600 text-white',
           title: 'Mora financiera en cartera y clientes de "Contado (-5%)" pagando a 42 días ($8.4M contado + $10.8M crédito)',
-          tables: 'fact_recaudos × dim_condicion_pago × dim_clientes',
+          tables: 'Cartera y Tesorería • Plazos de Recaudo',
           impact: 19.2 * scale,
           tab: 5
         },
@@ -6325,7 +6675,7 @@ summary { display: list-item; }
           severity: 'ALTO',
           sevClass: 'bg-amber-500 text-white',
           title: 'Pedidos micro-fragmentados donde el flete de entrega supera el margen bruto',
-          tables: 'fact_ventas × fact_fletes_entrega × dim_rutas',
+          tables: 'Logística y Despachos • Costo por Ruta',
           impact: 13.3 * scale,
           tab: 5
         },
@@ -6333,7 +6683,7 @@ summary { display: list-item; }
           severity: 'CRÍTICO',
           sevClass: 'bg-crimson-600 text-white',
           title: 'SKUs vendidos por debajo del Costo de Reposición Actual (Última OC)',
-          tables: 'fact_ventas × fact_ordenes_compra (Último Costo)',
+          tables: 'Pricing y Compras • Costo de Reposición',
           impact: 12.6 * scale,
           tab: 1
         },
@@ -6341,7 +6691,7 @@ summary { display: list-item; }
           severity: 'CRÍTICO',
           sevClass: 'bg-crimson-600 text-white',
           title: 'Notas Crédito por devolución emitidas SIN documento de entrada en Kardex',
-          tables: 'fact_notas_credito LEFT JOIN fact_kardex',
+          tables: 'Devoluciones y Almacén • Control de Ingresos',
           impact: 11.4 * scale,
           tab: 2
         },
@@ -6349,7 +6699,7 @@ summary { display: list-item; }
           severity: 'ALTO',
           sevClass: 'bg-amber-500 text-white',
           title: 'Patrón de "robo hormiga": ajustes manuales en Kardex entre $450k y $499k COP',
-          tables: 'fact_kardex × dim_usuario_bodega',
+          tables: 'Bodega e Inventarios • Ajustes Manuales',
           impact: 9.8 * scale,
           tab: 3
         }
@@ -6397,7 +6747,7 @@ summary { display: list-item; }
       document.getElementById('p1-pocket-badge').textContent = 'Pocket Margin Real: ' + pocketPct + '% (' + fmtM(realPocketMargin) + ')';
 
       const waterfallSteps = [
-        { label: '1. Facturación Bruta a Precio de Lista', val: gross, pct: '100.0%', type: 'base', width: 100, note: 'Valor teórico según dim_lista_precios' },
+        { label: '1. Facturación Bruta a Precio de Lista', val: gross, pct: '100.0%', type: 'base', width: 100, note: 'Valor teórico según Lista Oficial de Precios' },
         { label: '2. (-) Descuentos Comerciales dentro de Política (≤8%)', val: -dtoPol, pct: '-4.3%', type: 'normal-deduct', width: 42, note: 'Escalas por volumen autorizadas' },
         { label: '3. (-) FUGA: Descuentos Fuera de Política (>8% sin autorización)', val: -dtoExcess, pct: '-1.4%', type: 'leak', width: 25, note: 'Concesiones discrecionales de vendedores' },
         { label: '4. (-) FUGA: Notas Crédito por Rebates / Bonificaciones sin Meta', val: -rebatesUnmet, pct: '-0.4%', type: 'leak', width: 16, note: 'Rebates otorgados a clientes que no cumplieron cuota' },
